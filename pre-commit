@@ -1,0 +1,3 @@
+#!/bin/sh
+
+perl -i -pe "s/\( version:.*\)/( version: `date` )/" /Users/carl/Dropbox/neocities-cwoolf/eight-tone/my123/dynamic.html
