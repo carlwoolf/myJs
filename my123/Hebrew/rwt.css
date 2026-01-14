@@ -1,0 +1,51 @@
+.bord {
+    border: .3px solid blue;
+    font-weight: bold;
+    font-size: 14px;
+}
+.bord.header {
+    font-weight: bold;
+    font-size: 12px;
+}
+.row.solution {
+    width: 95%;
+}
+.data.row {
+    font-size: xx-small;
+}
+div span {
+    font-size: 6px;
+}
+/* Hebrew font styles */
+.regular-hebrew {
+    font-family: 'David Libre', 'David', 'Times New Roman', serif;
+    font-size: 16px;
+    font-weight: 600;
+    direction: rtl;
+    text-align: right;
+    color: #2c3e50;
+}
+
+.noto-rashi-hebrew-600 {
+    font-size: 16px;
+    font-family: "Noto Rashi Hebrew", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+.word {
+    color: purple;
+    font-size: 16px !important;
+}
+.phrase {
+    color: purple;
+    font-size: 16px !important;
+}
+.black {
+    color: black;
+    font-size: 6px;
+    font-weight: bold;
+}
+.tall {
+    height: 100px;
+}

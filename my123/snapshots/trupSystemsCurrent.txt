@@ -1,0 +1,108 @@
+K:C %% "(auto-declared key: 'C')"
+X: 1
+T: Trup Systems
+Q: 1/4=80
+%
+P: Gen.1.1
+ | "[5B-Tipcha-21]" "<[" ">]" "Key: [C]" DLE z2 | "[5B-Munnach-21_b4Atnch]" "<[" ">]" ELC z2 | "[5B-Atnach-21]" "<[" ">]" B,2 "<[" ">]" CLD z2 | "[5B-Merkha-21]" "<[" ">]" B,LD z2 |
+w: | בְּרֵאשִׁ֖ית | בָּרָ֣א | אֱלֹהִ֑ים | אֵ֥ת |
+ | "[5B-Tipcha-21]" "<[" ">]" DLE z2 | "[5B-Merkha-21]" "<[" ">]" B,LD z2 | "[5B-Sof_Pasuq-21]" "<[" ">]" D2 LE2 C2 z2 |
+w: הַשָּׁמַ֖יִם | וְאֵ֥ת | הָאָֽרֶץ׃ |
+P: Gen.1.2
+ | "[5B-Revia-21]" "<[" ">]" ELDC B,A, z2 | "[5B-Merkha-21]" "<[" ">]" B,LD z2 | "[5B-Pashta-21]" "<[" ">]" CLGE z2 | "[5B-Zaqef_Qatan-21]" "<[" ">]" GLED z2 |
+w: | וְהָאָ֗רֶץ | הָיְתָ֥ה | תֹ֙הוּ֙ | וָבֹ֔הוּ |
+ | "[5B-Tipcha-21]" "<[" ">]" DLE z2 | "[5B-Munnach-21_b4Atnch]" "<[" ">]" ELC z2 | "[5B-Atnach-21]" "<[" ">]" B,2 "<[" ">]" CLD z2 | "[5B-Munnach-21_b4Zqf_Qtn]" LEDG z2 |
+w: וְחֹ֖שֶׁךְ | עַל־פְּנֵ֣י | תְה֑וֹם | וְר֣וּחַ |
+ | "[5B-Zaqef_Qatan-21]" "<[" ">]" GLED z2 | "[5B-Tipcha-21]" "<[" ">]" DLE z2 | "[5B-Merkha-21]" "<[" ">]" B,LD z2 | "[5B-Sof_Pasuq-21]" "<[" ">]" D2 LE2 C2 z2 |
+w: אֱלֹהִ֔ים | מְרַחֶ֖פֶת | עַל־פְּנֵ֥י | הַמָּֽיִם׃ |
+P: Gen.1.3
+ | "[5B-Merkha-21]" "<[" ">]" B,LD z2 | "[5B-Tipcha-21]" "<[" ">]" DLE z2 | "[5B-Munnach-21_b4Atnch]" "<[" ">]" ELC z2 | "[5B-Atnach-21]" "<[" ">]" B,2 "<[" ">]" CLD z2 |
+w: | וַיֹּ֥אמֶר | אֱלֹהִ֖ים | יְהִ֣י | א֑וֹר |
+ | "[5B-Sof_Pasuq-21]" "<[" ">]" D2 LE2 C2 z2 |
+P: Josh.1.1
+ | [K:Cm]"[hf-Revia-21]" L"Key: [Cm]" F2 ECE C2 z2 | "[hf-Tevir-21]" "<[" ">]" F2  LCB,C  E2 z2 | "[hf-Merkha-21]" "<[" ">]" C2 LE2 z2 | "[hf-Tipcha-21]" "<[" ">]" E2 LF2 z2 |
+w: | וַֽיְהִ֗י | אַחֲרֵ֛י | מ֥וֹת | מֹשֶׁ֖ה |
+ | "[hf-Munnach-21_b4Atnch]" "<[" ">]" FLE"<[" ">]" C "<[" ">]" E2 z2 | "[hf-Atnach-21]" "<[" ">]" C"<[" ">]" E LG2 F2 z2 | "[hf-Mahpakh-21]" LF2 C2 z2 | "[hf-Pashta-21]" "<[" ">]" CLGF z2 |
+w: עֶ֣בֶד | יְהֹוָ֑ה | וַיֹּ֤אמֶר | יְהֹוָה֙ |
+ | "[hf-Munnach-21_b4Zqf_Qtn]" FCLA G2 z2 | "[hf-Zaqef_Qatan-21]" "<[" ">]" FLG E2 z2 | "[hf-Merkha-21]" "<[" ">]" C2 LE2 z2 | "[hf-Tipcha-21]" "<[" ">]" E2 LF2 z2 |
+w: אֶל־יְהוֹשֻׁ֣עַ | בִּן־נ֔וּן | מְשָׁרֵ֥ת | מֹשֶׁ֖ה |
+ | "[hf-Sof_Pasuq-21]" "<[" ">]" F2 LGE C2 z2 |
+w: לֵאמֹֽר׃ |
+P: Josh.1.2
+ | "[hf-Merkha-21]" "<[" ">]" C2 LE2 z2 | "[hf-Tipcha-21]" "<[" ">]" E2 LF2 z2 | "[hf-Atnach-21]" "<[" ">]" C"<[" ">]" E LG2 F2 z2 | "[hf-Telisha_Qetana-21]" LF2 ED C2 z2 |
+w: | מֹשֶׁ֥ה | עַבְדִּ֖י | מֵ֑ת | וְעַתָּה֩ |
+ | "[hf-Qadma-21]" "<[" ">]" C2 LF2 "<[" ">]" G2 z2 | "[hf-Geresh-21]" "<[" ">]" GLAGFB F2 z2 | "[hf-Munnach-21_b4Rv]" "<[" ">]" CLFE z2 | "[hf-Revia-21]" LF2 ECE C2 z2 |
+w: ק֨וּם | עֲבֹ֜ר | אֶת־הַיַּרְדֵּ֣ן | הַזֶּ֗ה |
+ | "[hf-Pashta-21]" "<[" ">]" CLGF z2 | "[hf-Munnach-21_b4Zqf_Qtn]" FCLA G2 z2 | "[hf-Zaqef_Qatan-21]" "<[" ">]" FLG E2 z2 | "[hf-Zaqef_Gadol-21]" "<[" ">]" F2 LB2 FCFE z2 |
+w: אַתָּה֙ | וְכׇל־הָעָ֣ם | הַזֶּ֔ה | אֶל־הָאָ֕רֶץ |
+ | "[hf-Darga-21]" "<[" ">]" FLBAG F2 z2 | "[hf-Tevir-21]" "<[" ">]" F2  LCB,C  E2 z2 | "[hf-Merkha-21]" "<[" ">]" C2 LE2 z2 | "[hf-Tipcha-21]" "<[" ">]" E2 LF2 z2 |
+w: אֲשֶׁ֧ר | אָנֹכִ֛י | נֹתֵ֥ן | לָהֶ֖ם |
+ | "[hf-Merkha-21]" "<[" ">]" C2 LE2 z2 | "[hf-Sof_Pasuq-21]" "<[" ">]" F2 LGE C2 z2 |
+w: לִבְנֵ֥י | יִשְׂרָאֵֽל׃ |
+P: Josh.1.3
+ | "[hf-Revia-21]" LF2 ECE C2 z2 | "[hf-Qadma-21]" "<[" ">]" C2 LF2 "<[" ">]" G2 z2 | "[hf-Darga-21]" "<[" ">]" FLBAG F2 z2 | "[hf-Tevir-21]" "<[" ">]" F2  LCB,C  E2 z2 |
+w: | כׇּל־מָק֗וֹם | אֲשֶׁ֨ר | תִּדְרֹ֧ךְ | כַּֽף־רַגְלְכֶ֛ם |
+ | "[hf-Tipcha-21]" "<[" ">]" E2 LF2 z2 | "[hf-Munnach-21_b4Atnch]" "<[" ">]" FLE"<[" ">]" C "<[" ">]" E2 z2 | "[hf-Atnach-21]" "<[" ">]" C"<[" ">]" E LG2 F2 z2 | "[hf-Merkha-21]" "<[" ">]" C2 LE2 z2 |
+w: בּ֖וֹ | לָכֶ֣ם | נְתַתִּ֑יו | כַּאֲשֶׁ֥ר |
+ | "[hf-Tipcha-21]" "<[" ">]" E2 LF2 z2 | "[hf-Sof_Pasuq-21]" "<[" ">]" F2 LGE C2 z2 |
+w: דִּבַּ֖רְתִּי | אֶל־מֹשֶֽׁה׃ |
+P: Ps.1.1
+ | [K:C]"[ps-Merkha-3]" "<[" ">]" "Key: [C]" B,2 LC2 z2 | "[ps-Revia-3]" "<[" ">]" C2 LFE DC B,2 z2 | "[ps-Mahpakh_Paseq-3]" "<[" ">]" C2 LEC G2 z2 | "[ps-Merkha-3]" "<[" ">]" B,2 LC2 z2 |
+w: | אַ֥שְֽׁרֵי | הָאִ֗ישׁ | אֲשֶׁ֤ר  ׀ | לֹ֥א |
+ | "[ps-Tsinnor-3]" "<[" ">]" CLEFED CD C2 z2 | "[ps-Atnach_Hafukh-3]" "<[" ">]" CLB,CD C2 z2 | "[ps-Ole_We_Yored-3]" "<[" ">]" CLEFGF E2 z2 | "[ps-Munnach-3]" "<[" ">]" D2 LE2 "<[" ">]" D2 z2 |
+w: הָלַךְ֮ | בַּעֲצַ֢ת | רְשָׁ֫עִ֥ים | וּבְדֶ֣רֶךְ |
+ | "[ps-Dechi-3]" "<[" ">]" CLFEF G2 z2 | "[ps-Merkha-3]" "<[" ">]" B,2 LC2 z2 | "[ps-Atnach-3]" "<[" ">]" CLEG F2 z2 | "[ps-Merkha-3]" "<[" ">]" B,2 LC2 z2 |
+w: חַ֭טָּאִים | לֹ֥א | עָמָ֑ד | וּבְמוֹשַׁ֥ב |
+ | "[ps-Revia_Mugrash-3]" "<[" ">]" CLGF E2 z2 | "[ps-Munnach-3]" "<[" ">]" D2 LE2 "<[" ">]" D2 z2 | "[ps-Sof_Pasuq-3]" "<[" ">]" C2 LE2 B,2 "<[" ">]" D2 C2 z2 |
+w: לֵ֝צִ֗ים | לֹ֣א | יָשָֽׁב׃ |
+P: Ps.1.2
+ | "[ps-Mahpakh-3]" "<[" ">]" C2 LE2 C2 z2 | "[ps-Merkha-3]" "<[" ">]" B,2 LC2 z2 | "[ps-Merkha-3]" "<[" ">]" B,2 LC2 z2 | "[ps-Revia_Qaton-3]" "<[" ">]" C2 LFED C2 z2 |
+w: | כִּ֤י | אִ֥ם | בְּתוֹרַ֥ת | יְהֹוָ֗ה |
+ | "[ps-Ole_We_Yored-3]" "<[" ">]" CLEFGF E2 z2 | "[ps-Merkha-3]" "<[" ">]" B,2 LC2 z2 | "[ps-Revia-3]" "<[" ">]" C2 LFE DC B,2 z2 | "[ps-Merkha-3]" "<[" ">]" B,2 LC2 z2 |
+w: חֶ֫פְצ֥וֹ | וּֽבְתוֹרָת֥וֹ | יֶהְגֶּ֗ה | יוֹמָ֥ם |
+ | "[ps-Sof_Pasuq-3]" "<[" ">]" C2 LE2 B,2 "<[" ">]" D2 C2 z2 |
+w: וָלָֽיְלָה׃ |
+P: Ps.1.3
+ | "[ps-Revia-3]" "<[" ">]" C2 LFE DC B,2 z2 | "[ps-Tsinnor-3]" "<[" ">]" CLEFED CD C2 z2 | "[ps-Atnach_Hafukh-3]" "<[" ">]" CLB,CD C2 z2 | "[ps-Ole_We_Yored-3]" "<[" ">]" CLEFGF E2 z2 |
+w: | וְֽהָיָ֗ה | כְּעֵץ֮ | שָׁת֢וּל | עַֽל־פַּלְגֵ֫י-מָ֥יִם |
+ | "[ps-Mahpakh-3]" "<[" ">]" C2 LE2 C2 z2 | "[ps-Qadma_Paseq-3]" "<[" ">]" B,"<[" ">]" LCE G2 z2 | "[ps-Illuy-3]" "<[" ">]" C2 LF2 z2 | "[ps-Revia-3]" "<[" ">]" C2 LFE DC B,2 z2 |
+w: אֲשֶׁ֤ר | פִּרְי֨וֹ  ׀ | יִתֵּ֬ן | בְּעִתּ֗וֹ |
+ | "[ps-Merkha-3]" "<[" ">]" B,2 LC2 z2 | "[ps-Atnach-3]" "<[" ">]" CLEG F2 z2 | "[ps-Tarcha_B4_Sof-3]" "<[" ">]" C2 LD2 z2 | "[ps-Munnach-3]" "<[" ">]" D2 LE2 "<[" ">]" D2 z2 |
+w: וְעָלֵ֥הוּ | לֹֽא־יִבּ֑וֹל | וְכֹ֖ל | אֲשֶׁר־יַעֲשֶׂ֣ה |
+ | "[ps-Sof_Pasuq-3]" "<[" ">]" C2 LE2 B,2 "<[" ">]" D2 C2 z2 |
+w: יַצְלִֽיחַ׃ |
+P: Prov.1.1
+ | "[pr-Dechi-3]" LcEG A2 z2 | "[pr-Munnach-3]" LD2 E2 z2 | "[pr-Atnach-3]" EA G2 z2 | "[pr-Revia_Mugrash-3]" LAGE A2 z2 |
+w: | מִ֭שְׁלֵי | שְׁלֹמֹ֣ה | בֶן־דָּוִ֑ד | מֶ֝֗לֶךְ |
+ | "[pr-Sof_Pasuq-3]" G2 EC D2 z2 |
+w: יִשְׂרָאֵֽל׃ |
+P: Prov.1.2
+ | "[pr-Munnach-3]" LD2 E2 z2 | "[pr-Munnach-3]" LD2 E2 z2 | "[pr-Atnach-3]" EA G2 z2 | "[pr-Revia_Mugrash-3]" LAGE A2 z2 |
+w: | לָדַ֣עַת | חׇכְמָ֣ה | וּמוּסָ֑ר | לְ֝הָבִ֗ין |
+ | "[pr-Merkha-3]" "<[" ">]" A,2 LC2 z2 | "[pr-Sof_Pasuq-3]" G2 EC D2 z2 |
+w: אִמְרֵ֥י | בִינָֽה׃ |
+P: Prov.1.3
+ | "[pr-Dechi-3]" LcEG A2 z2 | "[pr-Munnach-3]" LD2 E2 z2 | "[pr-Atnach-3]" EA G2 z2 | "[pr-Merkha-3]" "<[" ">]" A,2 LC2 z2 |
+w: | לָ֭קַחַת | מוּסַ֣ר | הַשְׂכֵּ֑ל | צֶ֥דֶק |
+ | "[pr-Revia_Mugrash-3]" LAGE A2 z2 | "[pr-Sof_Pasuq-3]" G2 EC D2 z2 |
+w: וּ֝מִשְׁפָּ֗ט | וּמֵשָׁרִֽים׃ |
+P: Prov.1.4
+ | "[pr-Munnach-3]" LD2 E2 z2 | "[pr-Munnach-3]" LD2 E2 z2 | "[pr-Atnach-3]" EA G2 z2 | "[pr-Revia_Mugrash-3]" LAGE A2 z2 |
+w: | לָתֵ֣ת | לִפְתָאיִ֣ם | עׇרְמָ֑ה | לְ֝נַ֗עַר |
+ | "[pr-Munnach-3]" LD2 E2 z2 | "[pr-Sof_Pasuq-3]" G2 EC D2 z2 |
+w: דַּ֣עַת | וּמְזִמָּֽה׃ |
+P: Job.3.2
+ | [K:C Phr =E]"[jb-Merkha-3]" "<[" ">]" "Key: [C Phr =E]" B,LC z2 | "[jb-Revia-3]" "<[" ">]" C2 LFE DC B,2 z2 | "[jb-Sof_Pasuq-3]" "<[" ">]" C2 LE2 D2 C2 z2 |
+w: | וַיַּ֥עַן | אִיּ֗וֹב | וַיֹּאמַֽר׃ |
+P: Job.3.3
+ | "[jb-Munnach-3]" "<[" ">]" DLE z2 | "[jb-Dechi-3]" "<[" ">]" CLFEF G2 z2 | "[jb-Munnach-3]" "<[" ">]" DLE z2 | "[jb-Atnach-3]" "<[" ">]" CLEG F2 z2 |
+w: | יֹ֣אבַד | י֭וֹם | אִוָּ֣לֶד | בּ֑וֹ |
+ | "[jb-Merkha-3]" "<[" ">]" B,LC z2 | "[jb-Revia_Mugrash-3]" "<[" ">]" CLGF E2 z2 | "[jb-Munnach-3]" "<[" ">]" DLE z2 | "[jb-Sof_Pasuq-3]" "<[" ">]" C2 LE2 D2 C2 z2 |
+w: וְהַלַּ֥יְלָה | אָ֝מַ֗ר | הֹ֣רָה | גָֽבֶר׃ |
+P: Job.3.4
+ | "[jb-Merkha-3]" "<[" ">]" B,LC z2 | "[jb-Revia_Qaton-3]" "<[" ">]" C2 LFEDC z2 | "[jb-Ole_We_Yored-3]" "<[" ">]" CLEFGF E2 z2 | "[jb-Munnach-3]" "<[" ">]" DLE z2 |
+w: | הַיּ֥וֹם | הַה֗וּא | יְֽהִ֫י-חֹ֥שֶׁךְ | אַֽל־יִדְרְשֵׁ֣הוּ |
+ | "[jb-Munnach-3]" "<[" ">]" DLE z2 | "[jb-Atnach-3]" "<[" ">]" CLEG F2 z2 | "[jb-Tarcha_B4_Sof-3]" "<[" ">]" CLD z2 | "[jb-Munnach-3]" "<[" ">]" DLE z2 |
+w: אֱל֣וֹהַּ | מִמַּ֑עַל | וְאַל־תּוֹפַ֖ע | עָלָ֣יו |
+ | "[jb-Sof_Pasuq-3]" "<[" ">]" C2 LE2 D2 C2 z2 |
+w: נְהָרָֽה׃ |

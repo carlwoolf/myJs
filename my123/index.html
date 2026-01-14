@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+
+    <title>123 To Pdf Via ABC</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+    <link href="abcjs-stuff.css" rel="stylesheet" type="text/css">
+    <link href="dynamic-css.css" rel="stylesheet" type="text/css">
+    <link href="parser/parse.css" rel="stylesheet" type="text/css">
+
+    <script src="js-lib/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+    <script type="module" src="js-lib/peggy-4.0.3-browser/peggy.min.js"></script>
+
+    <script src="abcjs-stuff.js" type="text/javascript"></script>
+    <script src="abcjs-basic.js" type="text/javascript"></script>
+
+    <script src="parser/runtimeGrammar.js" type="text/javascript"></script>
+    <script src="parser/runtimeParsing.js" type="text/javascript"></script>
+
+    <script src="dynamic-tones.js" type="text/javascript"></script>
+    <script src="dynamic-util.js" type="text/javascript"></script>
+    <script src="dynamic-data.js" type="text/javascript"></script>
+    <script src="dynamic-test.js" type="text/javascript"></script>
+    <script src="dynamic-parse.js" type="text/javascript"></script>
+    <script src="dynamic-play.js" type="text/javascript"></script>
+
+    <script src="macros.js" type="text/javascript"></script>
+
+    <script src="sugar-util.js" type="text/javascript"></script>
+    <script src="sugar-parseTo123.js" type="text/javascript"></script>
+    <script src="sugar-parseToAbc.js" type="text/javascript"></script>
+    <script src="sugar-test.js" type="text/javascript"></script>
+
+    <script src="oshb/misc2.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(async function () {
+            await setup();
+            await setup2();
+        });
+    </script>
+</head>
+<body>
+    <h3 class="biggg ms-4">Enter 123 to get PDF (etc.) via ABC</h3>
+
+    <button class="toggleInnerVisibleInnerDiv ms-4" id="button_about"  inner="about"  >About</button>
+    <button class="toggleInnerVisibleInnerDiv ms-4" id="button_setup"  inner="setup"  >Sample Songs</button>
+    <button class="toggleInnerVisibleInnerDiv ms-4" id="button_sheet"  inner="sheet"  >Sheet Music</button>
+    <button class="toggleInnerVisibleInnerDiv ms-4" id="button_rainbow" inner="rainbow">Rainbow Play</button>
+    <button class="toggleInnerVisibleInnerDiv ms-4" id="button_compose" inner="compose">Compose / Edit a 123 Song</button>
+    <div class="smallish ms-4 mt-1 blue_ish">
+        Click one of the above buttons to show/hide various sections.
+        The latest-shown section appears above any others</div>
+
+    <div id="tooLong" class="click-explanation ms-4 blink">
+        <div class="biggg" id="loading" style="display:none">
+            (... loading, please wait ...) <span id="progressNums"></span></div>
+        <div class="smallish"><br/>For large 123 data, such as the 'demo' sample,
+            or bible chapters sent from the
+            <a target="_blank" href="oshb">'Strong-Tasty' page</a>, we recommend using Firefox.
+            Even then, it may take a while, with 'delay' warnings
+        </div>
+    </div>
+    <div id="top"></div>
+
+    <div class="d-none toggleInner ms-4 about">
+        <div class="mt-4 mb-4">
+            <a target="_blank" href="whatIs123.html" class="biggg">What is 123 anyway?</a>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <a target="_blank" href="https://abcnotation.com/" class="biggg">What is ABC for that matter?</a>
+        </div>
+
+        <div><b>Version: January 2025</b> <span class="smallish">( Kudos to <a target="_blank"
+                          href="https://paulrosen.github.io/abcjs/audio/synthesized-sound.html">
+                            (prior version of) Paul Rosen's abcjs library</a> )</span>
+        </div>
+        <div class="ish">
+                (Tested on Chrome and Firefox, on Mac desktop. You may need to install more fonts if the song uses symbols for Segno or Coda)
+        </div>
+        <div>
+            <a href="" id="dynamicTest1">Test Scales / Keys</a>
+            <span class="smallish"> Note: Key signature may be incorrect for some Misheberach ('mish') keys, but scale notes should be (at least enharmonically) correct</span>
+        </div>
+        <div>
+            <a target="_blank" href="oshb">Try the Bible ('Strong-Tasty') page</a>
+        </div>
+        <div>
+            <a target="_blank" href="parser">(Experiment with the 123 parser)</a>
+        </div>
+    </div>
+
+    </div>
+    <div class="toggleInner ms-4 setup">
+        <label for="samples">Load Sample:</label>
+        <select class="red" id="samples"></select>
+        <div class="smallish">(The 'demo' sample attempts to illustrate our 123 features -- on the sheet,
+            notation in brackets (or sometimes surrounded by single-quotes) corresponds to the musical notation)</div>
+
+    </div>
+    <div class=" toggleInner ms-4 sheet">
+        <div>
+            <h2>Standard Notation / Playing</h2>
+
+            <div class=" container">
+                <div class="bibleOutputNote" id="bibleBrackets"></div>
+                <div id="playButtons" class="click-explanation">
+                    <span>Click a note or play the song to enable Download Button </span>
+                    <button class="download" style="display: none;">Download .wav for this song</button>
+                    <button id="printButton">Print this song</button>
+                    <button id="extractLyrics">Extract text</button>
+                    <br/><br/><label for="instrument-picker">
+                    Select instrument:
+                    <select id="instrument-picker">
+                        <option value="0" selected="selected">Acoustic Piano</option>
+                        <option value="4">Electric Piano</option>
+                        <option value="6">Harpsichord</option>
+                        <option value="7">Clavi</option>
+                        <option value="8">Celesta</option>
+                        <option value="23">Tango Accordion</option>
+                        <option value="24">Acoustic Guitar (nylon)</option>
+                        <option value="25">Acoustic Guitar (steel)</option>
+                        <option value="28">Electric Guitar (clean)</option>
+                        <option value="56">Trumpet</option>
+                        <option value="57">Trombone</option>
+                        <option value="58">Tuba</option>
+                        <option value="59">Muted Trumpet</option>
+                        <option value="60">French Horn</option>
+                    </select>
+                </label>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <span>&nbsp;&nbsp;</span>
+                    <label for="repeat-radio">Ad Hoc Repeats:
+                        <input class="radio-input-repeat" type="radio" id="repeat-radio" name="RadioGroupRepeat"
+                               value="true"/>
+                    </label>
+                    <span>&nbsp;&nbsp;</span>
+                    <label for="no-repeat-radio">Regular Play-Through:
+                        <input class="radio-input-repeat" type="radio" id="no-repeat-radio" name="RadioGroupRepeat"
+                               value="false"/>
+                    </label>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <button id="toggleChords">Toggle Chord-play</button>
+
+                    <div id="repeatPlayPlusExplanation">
+                        <div id="aboveRepeatButtons">Click notes in the below song to indicate start and end of desired
+                            repeat-section.
+                            (If a clicked note is within a printed repeat, we use its second occurrence)
+                        </div>
+                        <div id="repeatPlayingButtons">
+                            <button class="repeat-button begin-millis">Start repeat on just-clicked note</button>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <button class="repeat-button end-millis">End repeat on just-clicked note</button>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                            <button class="repeat-button activate-audio">Play Repeat</button>
+                            <button class="repeat-button stop-audio" style="display:none;">Stop Repeat</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="audioPlusExplanation">
+                    <br/>
+                    <div id="audio"></div>
+                    <div class="click-explanation">
+                        Adjust speed (100% might be too fast or too slow) using the box to the right in the player
+                        controls
+                        <br/>The above 'arrow circle' toggles whether to repeat the whole song.
+                        (You can also use the Ad Hoc Repeats feature to repeat a part of the song)
+
+
+                    </div>
+                </div>
+
+                <div class="songScroll mt-2">
+                    <div id="paper"></div>
+                </div>
+                <p class="beat"></p>
+                <pre class="clicked-info"></pre>
+            </div> <!-- container -->
+        </div> <!-- sheet music -->
+
+    </div>
+    <div class="d-none toggleInner ms-4 rainbow">
+        <div>
+            <div id="rainbow-radio-div" class="radio-div">
+                <h2>Rainbow Note-Play</h2>
+                <div id="overTheRainbow">
+                    <button id="toggleRainbow">Toggle Display of Rainbow Grid</button>
+                    <br/><br/>
+
+                    <button id="play">Play Song</button>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                    <button id="stop">Stop Play</button>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                    <label for="speed">Speed (<span id="currentSpeed"></span>)</label>
+                    <input type="range" id="speed" min="1" max="11">
+
+                    <br/>
+                    <button id="loop">Infinite Play</button>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                    <button id="shuffle">Shuffle 123</button>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                    <button id="loopShuffle">Infinite Play and Shuffle</button>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                    <br/>
+                    <label for="shuffleDurations">If shuffling notes, also shuffle durations
+                    <input type="checkbox" id="shuffleDurations" min="0" step="2" max="1">
+                    </label>
+                    <br/><br/>
+                    <label for="color-choices">How much 'bouncing color' during play: <span id="color-choices">
+                            <input name="color-radio" class="color-radio" type="radio" value="none" checked>Tiny</input>
+                        <input name="color-radio" class="color-radio" type="radio" value="some">Some</input>
+                        <input name="color-radio" class="color-radio" type="radio" value="full">Full</input>
+                        </span></label>
+
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <input type="checkbox" id="hoverPlay"> <label for="hoverPlay">Hover-Play</label>
+                    <div id="rainbowTableDiv" class="mt-2">
+                        <table id="rainbowTable"></table>
+                    </div>
+                </div> <!-- overTheRainbow  -->
+            </div> <!-- rainbow radio div -->
+        </div> <!--  rainbow pane -->
+
+    </div>
+    <div class="d-none toggleInner ms-4 compose">
+        <div>
+            <h2>Editing / Changing 123 Notation</h2>
+            <div> <!-- buttons / controls -->
+                <span>Default Mode: </span>
+                <select class="red" id="pickTonic" onchange="adjustTonic()">
+                </select>
+                <select class="red" id="pickMode" onchange="adjustBareMode()">
+                </select>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <button id="markMode" onclick="markMode()">Mark This Mode in 123</button>
+                <span class="click-explanation">Marking the mode keeps following notes in that mode even if you change the default mode</span>
+
+
+            </div> <!-- buttons / controls -->
+
+            <textarea id="buffer" style="display:none;"></textarea>
+
+            <div id="123-container">
+                <br/>
+                <button id="_123EntryClearButton">Clear 123</button>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                <button class="blue" id="save123Button" onclick="save123();">Store 123</button>
+
+                <button class="blue" id="restore123Button" onclick="restore123()">Restore 123</button>
+                &nbsp;&nbsp;
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+                <button id="extraLyrics" onclick="extraLyrics()">Starry extra Lyrics</button>
+
+                <br/>
+                <br/>
+                <button class="green" id="copy123Button" onclick="copy123()">Copy 123 to Clipboard</button>
+
+                <button class="green" id="paste123Button" onclick="paste123()">Paste 123 from Clipboard</button>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <button class="green" id="restoreFromLocalStorage" onclick="restoreFromLocalStorage(false)">(Re)Load
+                    (if any) 123 from browser storage
+                </button>
+
+                <br/>
+                <br/>
+
+                <textarea id="_123Entry"></textarea>
+                <div class="bold">123 content automagically updates the ABC and other content below
+                </div>
+                <div id="ExtraLyricsDiv">
+                    <hr>
+                    <button id="toggleDemoLine" onclick="toggleDemoLine()">Toggle Demo Lines</button>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <button id="toggleStarLine" onclick="toggleStarLine()">Toggle Star Lines</button>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <button class="orange" id="copyExtraLyrics" onclick="copy123Lyrics()">Save extra-lyrics to
+                        Clipboard
+                    </button>
+                    <button class="orange" id="useExtraLyrics" onclick="useExtraLyrics()">Copy extra-lyrics to 123
+                        area
+                    </button>
+                    <span class="click-explanation">(You might want to 'Store 123' first before clobbering it)</span>
+                    <br/>
+                    <textarea id="_123EntryLyrics">help!!</textarea>
+                </div> <!-- extra lyrics -->
+            </div> <!-- 123-container -->
+
+            <button id="toggleAbcContent">Show/Hide ABC Output</button>
+            <div class="d-none" id="abcContent">
+                <label class="bold">ABC content automagically updated whenever the above 123 content changes
+                    <div class="click-explanation">
+                        Or you can manually change the content, and then click anywhere outside this ABC box
+                    </div>
+                    <textarea id="abc" spellcheck="false"></textarea>
+                </label>
+            </div>
+
+            <div class="mt-3">
+                <button id="macrosDisplayButton">Toggle Macros Display</button>
+                <div id="macroClickDirectionsDiv">
+                    <div class="click-explanation" class="mb-2 mt-2">
+                        <button id="macroClipboardButton">Import/paste macros from clipboard into 'macro-system'</button>
+                        <span>&nbsp;&nbsp;</span>
+                        <span>&nbsp;&nbsp;</span>
+                        <button id="explicitMacros" onclick="explicitMacros()">Replace macro codes with notes</button>
+                    </div>
+                    <div class="mt-1">
+                        <button id="howImportSpan">How to import?</button>
+                    </div>
+                    <div id="howImport">Provide an array of desired macros.
+                        E.g. for my1 and m2, click the Import/paste button after copying something like
+                        <br/><br/>[ ["my1",  "110" ],
+                        <br/> ["my2",  "220" ] ]
+                        <br/><br/></div>
+                    <span>&nbsp;&nbsp;</span>
+                    <br/>
+                    <span class="click-explanation">Macro Display:</span>
+                    <span>&nbsp;&nbsp;</span>
+                    <label for="abbrev-radio">Only the macro-name in the 123
+                        <input type="radio" id="abbrev-radio" name="RadioGroupDirectAbbr"
+                               value="abbrev" checked/>
+                    </label>
+                    <span>&nbsp;&nbsp;</span>
+                    <label for="direct-radio">Expand macro in 123
+                        <input type="radio" id="direct-radio" name="RadioGroupDirectAbbr"
+                               value="direct"/>
+                    </label>
+                    <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                    <label for="check-label">Show macro name on the sheet
+                        <input type="checkbox" id="check-label"
+                               value="direct" checked/>
+                    </label>
+                    <span>&nbsp;&nbsp;</span>
+                    <label for="check-bar">Add bar-line on the sheet
+                        <input type="checkbox" id="check-bar"
+                               value="direct"/>
+                    </label>
+                    <br/>
+                    <div id="macrosDisplayDiv"></div>
+                </div> <!-- macroClickDirectionsDiv -->
+            </div>
+        </div> <!-- compose -->
+
+    </div>
+
+    <!-- special messages -->
+    <div id="result1"></div>
+    <button type="button" class="rtnBtn" id="rtnBtn" title="Go to top">Return to Top</button>
+    <button type="button" id="rtnBtn2" title="Info">Info</button>
+
+</body>
+</html>

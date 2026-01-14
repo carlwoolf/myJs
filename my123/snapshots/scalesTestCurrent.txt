@@ -1,0 +1,360 @@
+K:A
+P: K:A --------diatonic
+ | "A(1)"  ""  "Key: [A]" A2 "B(2)"  ""  B2 "c(3)"  "c♯"  c2 "d(4)"  ""  d2 "e(5)"  ""  e2 "f(6)"  "f♯"  f2 "g(7)"  "g♯"  g2 "a(1')"  ""  a2 ||
+K:B
+P: K:B --------diatonic
+ | "B(1)"  ""  "Key: [B]" B2 "c(2)"  "c♯"  c2 "d(3)"  "d♯"  d2 "e(4)"  ""  e2 "f(5)"  "f♯"  f2 "g(6)"  "g♯"  g2 "a(7)"  "a♯"  a2 "b(1')"  ""  b2 ||
+K:C
+P: K:C --------diatonic
+ | "C(1)"  ""  "Key: [C]" C2 "D(2)"  ""  D2 "E(3)"  ""  E2 "F(4)"  ""  F2 "G(5)"  ""  G2 "A(6)"  ""  A2 "B(7)"  ""  B2 "c(1')"  ""  c2 ||
+K:D
+P: K:D --------diatonic
+ | "D(1)"  ""  "Key: [D]" D2 "E(2)"  ""  E2 "F(3)"  "F♯"  F2 "G(4)"  ""  G2 "A(5)"  ""  A2 "B(6)"  ""  B2 "c(7)"  "c♯"  c2 "d(1')"  ""  d2 ||
+K:E
+P: K:E --------diatonic
+ | "E(1)"  ""  "Key: [E]" E2 "F(2)"  "F♯"  F2 "G(3)"  "G♯"  G2 "A(4)"  ""  A2 "B(5)"  ""  B2 "c(6)"  "c♯"  c2 "d(7)"  "d♯"  d2 "e(1')"  ""  e2 ||
+K:F
+P: K:F --------diatonic
+ | "F(1)"  ""  "Key: [F]" F2 "G(2)"  ""  G2 "A(3)"  ""  A2 "B(4)"  "B♭"  B2 "c(5)"  ""  c2 "d(6)"  ""  d2 "e(7)"  ""  e2 "f(1')"  ""  f2 ||
+K:G
+P: K:G --------diatonic
+ | "G(1)"  ""  "Key: [G]" G2 "A(2)"  ""  A2 "B(3)"  ""  B2 "c(4)"  ""  c2 "d(5)"  ""  d2 "e(6)"  ""  e2 "f(7)"  "f♯"  f2 "g(1')"  ""  g2 ||
+K:Ab
+P: K:Ab --------diatonic
+ | "A(1)"  "A♭"  "Key: [Ab]" A2 "B(2)"  "B♭"  B2 "c(3)"  ""  c2 "d(4)"  "d♭"  d2 "e(5)"  "e♭"  e2 "f(6)"  ""  f2 "g(7)"  ""  g2 "a(1')"  "a♭"  a2 ||
+K:Bb
+P: K:Bb --------diatonic
+ | "B(1)"  "B♭"  "Key: [Bb]" B2 "c(2)"  ""  c2 "d(3)"  ""  d2 "e(4)"  "e♭"  e2 "f(5)"  ""  f2 "g(6)"  ""  g2 "a(7)"  ""  a2 "b(1')"  "b♭"  b2 ||
+K:Db
+P: K:Db --------diatonic
+ | "D(1)"  "D♭"  "Key: [Db]" D2 "E(2)"  "E♭"  E2 "F(3)"  ""  F2 "G(4)"  "G♭"  G2 "A(5)"  "A♭"  A2 "B(6)"  "B♭"  B2 "c(7)"  ""  c2 "d(1')"  "d♭"  d2 ||
+K:Eb
+P: K:Eb --------diatonic
+ | "E(1)"  "E♭"  "Key: [Eb]" E2 "F(2)"  ""  F2 "G(3)"  ""  G2 "A(4)"  "A♭"  A2 "B(5)"  "B♭"  B2 "c(6)"  ""  c2 "d(7)"  ""  d2 "e(1')"  "e♭"  e2 ||
+K:Gb
+P: K:Gb --------diatonic
+ | "G(1)"  "G♭"  "Key: [Gb]" G2 "A(2)"  "A♭"  A2 "B(3)"  "B♭"  B2 "c(4)"  "c♭"  c2 "d(5)"  "d♭"  d2 "e(6)"  "e♭"  e2 "f(7)"  ""  f2 "g(1')"  "g♭"  g2 ||
+K:Am
+P: K:Am --------diatonic
+ | "A(1)"  ""  "Key: [Am]" A2 "B(2)"  ""  B2 "c(3)"  ""  c2 "d(4)"  ""  d2 "e(5)"  ""  e2 "f(6)"  ""  f2 "g(7)"  ""  g2 "a(1')"  ""  a2 ||
+K:Bm
+P: K:Bm --------diatonic
+ | "B(1)"  ""  "Key: [Bm]" B2 "c(2)"  "c♯"  c2 "d(3)"  ""  d2 "e(4)"  ""  e2 "f(5)"  "f♯"  f2 "g(6)"  ""  g2 "a(7)"  ""  a2 "b(1')"  ""  b2 ||
+K:Cm
+P: K:Cm --------diatonic
+ | "C(1)"  ""  "Key: [Cm]" C2 "D(2)"  ""  D2 "E(3)"  "E♭"  E2 "F(4)"  ""  F2 "G(5)"  ""  G2 "A(6)"  "A♭"  A2 "B(7)"  "B♭"  B2 "c(1')"  ""  c2 ||
+K:Dm
+P: K:Dm --------diatonic
+ | "D(1)"  ""  "Key: [Dm]" D2 "E(2)"  ""  E2 "F(3)"  ""  F2 "G(4)"  ""  G2 "A(5)"  ""  A2 "B(6)"  "B♭"  B2 "c(7)"  ""  c2 "d(1')"  ""  d2 ||
+K:Em
+P: K:Em --------diatonic
+ | "E(1)"  ""  "Key: [Em]" E2 "F(2)"  "F♯"  F2 "G(3)"  ""  G2 "A(4)"  ""  A2 "B(5)"  ""  B2 "c(6)"  ""  c2 "d(7)"  ""  d2 "e(1')"  ""  e2 ||
+K:Fm
+P: K:Fm --------diatonic
+ | "F(1)"  ""  "Key: [Fm]" F2 "G(2)"  ""  G2 "A(3)"  "A♭"  A2 "B(4)"  "B♭"  B2 "c(5)"  ""  c2 "d(6)"  "d♭"  d2 "e(7)"  "e♭"  e2 "f(1')"  ""  f2 ||
+K:Gm
+P: K:Gm --------diatonic
+ | "G(1)"  ""  "Key: [Gm]" G2 "A(2)"  ""  A2 "B(3)"  "B♭"  B2 "c(4)"  ""  c2 "d(5)"  ""  d2 "e(6)"  "e♭"  e2 "f(7)"  ""  f2 "g(1')"  ""  g2 ||
+K:C#m
+P: K:C#m --------diatonic
+ | "C(1)"  "C♯"  "Key: [C#m]" C2 "D(2)"  "D♯"  D2 "E(3)"  ""  E2 "F(4)"  "F♯"  F2 "G(5)"  "G♯"  G2 "A(6)"  ""  A2 "B(7)"  ""  B2 "c(1')"  "c♯"  c2 ||
+K:F#m
+P: K:F#m --------diatonic
+ | "F(1)"  "F♯"  "Key: [F#m]" F2 "G(2)"  "G♯"  G2 "A(3)"  ""  A2 "B(4)"  ""  B2 "c(5)"  "c♯"  c2 "d(6)"  ""  d2 "e(7)"  ""  e2 "f(1')"  "f♯"  f2 ||
+K:G#m
+P: K:G#m --------diatonic
+ | "G(1)"  "G♯"  "Key: [G#m]" G2 "A(2)"  "A♯"  A2 "B(3)"  ""  B2 "c(4)"  "c♯"  c2 "d(5)"  "d♯"  d2 "e(6)"  ""  e2 "f(7)"  "f♯"  f2 "g(1')"  "g♯"  g2 ||
+K:Bbm
+P: K:Bbm --------diatonic
+ | "B(1)"  "B♭"  "Key: [Bbm]" B2 "c(2)"  ""  c2 "d(3)"  "d♭"  d2 "e(4)"  "e♭"  e2 "f(5)"  ""  f2 "g(6)"  "g♭"  g2 "a(7)"  "a♭"  a2 "b(1')"  "b♭"  b2 ||
+K:Ebm
+P: K:Ebm --------diatonic
+ | "E(1)"  "E♭"  "Key: [Ebm]" E2 "F(2)"  ""  F2 "G(3)"  "G♭"  G2 "A(4)"  "A♭"  A2 "B(5)"  "B♭"  B2 "c(6)"  "c♭"  c2 "d(7)"  "d♭"  d2 "e(1')"  "e♭"  e2 ||
+K:F# Phr ^A
+P: K:F# frey --------diatonic
+ | "F(1)"  "F♯"  "Key: [F# Phr ^A]" F2 "G(2)"  ""  G2 "A(3)"  "A♯"  A2 "B(4)"  ""  B2 "c(5)"  "c♯"  c2 "d(6)"  ""  d2 "e(7)"  ""  e2 "f(1')"  "f♯"  f2 ||
+K:G# Phr ^B
+P: K:G# frey --------diatonic
+ | "G(1)"  "G♯"  "Key: [G# Phr ^B]" G2 "A(2)"  ""  A2 "B(3)"  "B♯"  B2 "c(4)"  "c♯"  c2 "d(5)"  "d♯"  d2 "e(6)"  ""  e2 "f(7)"  "f♯"  f2 "g(1')"  "g♯"  g2 ||
+K:A Phr ^C
+P: K:A frey --------diatonic
+ | "A(1)"  ""  "Key: [A Phr ^C]" A2 "B(2)"  "B♭"  B2 "c(3)"  "c♯"  c2 "d(4)"  ""  d2 "e(5)"  ""  e2 "f(6)"  ""  f2 "g(7)"  ""  g2 "a(1')"  ""  a2 ||
+K:B Phr ^D
+P: K:B frey --------diatonic
+ | "B(1)"  ""  "Key: [B Phr ^D]" B2 "c(2)"  ""  c2 "d(3)"  "d♯"  d2 "e(4)"  ""  e2 "f(5)"  "f♯"  f2 "g(6)"  ""  g2 "a(7)"  ""  a2 "b(1')"  ""  b2 ||
+K:C# Phr ^E
+P: K:C# frey --------diatonic
+ | "C(1)"  "C♯"  "Key: [C# Phr ^E]" C2 "D(2)"  ""  D2 "E(3)"  "E♯"  E2 "F(4)"  "F♯"  F2 "G(5)"  "G♯"  G2 "A(6)"  ""  A2 "B(7)"  ""  B2 "c(1')"  "c♯"  c2 ||
+K:D Phr ^F
+P: K:D frey --------diatonic
+ | "D(1)"  ""  "Key: [D Phr ^F]" D2 "E(2)"  "E♭"  E2 "F(3)"  "F♯"  F2 "G(4)"  ""  G2 "A(5)"  ""  A2 "B(6)"  "B♭"  B2 "c(7)"  ""  c2 "d(1')"  ""  d2 ||
+K:E Phr ^G
+P: K:E frey --------diatonic
+ | "E(1)"  ""  "Key: [E Phr ^G]" E2 "F(2)"  ""  F2 "G(3)"  "G♯"  G2 "A(4)"  ""  A2 "B(5)"  ""  B2 "c(6)"  ""  c2 "d(7)"  ""  d2 "e(1')"  ""  e2 ||
+K:F Phr =A
+P: K:F frey --------diatonic
+ | "F(1)"  ""  "Key: [F Phr =A]" F2 "G(2)"  "G♭"  G2 "A(3)"  ""  A2 "B(4)"  "B♭"  B2 "c(5)"  ""  c2 "d(6)"  "d♭"  d2 "e(7)"  "e♭"  e2 "f(1')"  ""  f2 ||
+K:G Phr =B
+P: K:G frey --------diatonic
+ | "G(1)"  ""  "Key: [G Phr =B]" G2 "A(2)"  "A♭"  A2 "B(3)"  ""  B2 "c(4)"  ""  c2 "d(5)"  ""  d2 "e(6)"  "e♭"  e2 "f(7)"  ""  f2 "g(1')"  ""  g2 ||
+K:Bb Phr =D
+P: K:Bb frey --------diatonic
+ | "B(1)"  "B♭"  "Key: [Bb Phr =D]" B2 "c(2)"  "c♭"  c2 "d(3)"  ""  d2 "e(4)"  "e♭"  e2 "f(5)"  ""  f2 "g(6)"  "g♭"  g2 "a(7)"  "a♭"  a2 "b(1')"  "b♭"  b2 ||
+K:C Phr =E
+P: K:C frey --------diatonic
+ | "C(1)"  ""  "Key: [C Phr =E]" C2 "D(2)"  "D♭"  D2 "E(3)"  ""  E2 "F(4)"  ""  F2 "G(5)"  ""  G2 "A(6)"  "A♭"  A2 "B(7)"  "B♭"  B2 "c(1')"  ""  c2 ||
+K:Eb Phr =G
+P: K:Eb frey --------diatonic
+ | "E(1)"  "E♭"  "Key: [Eb Phr =G]" E2 "F(2)"  "F♭"  F2 "G(3)"  ""  G2 "A(4)"  "A♭"  A2 "B(5)"  "B♭"  B2 "c(6)"  "c♭"  c2 "d(7)"  "d♭"  d2 "e(1')"  "e♭"  e2 ||
+K:F# Dor ^B
+P: K:F# mish --------diatonic
+ | "F(1)"  "F♯"  "Key: [F# Dor ^B]" F2 "G(2)"  "G♯"  G2 "A(3)"  ""  A2 "B(4)"  "B♯"  B2 "c(5)"  "c♯"  c2 "d(6)"  "d♯"  d2 "e(7)"  ""  e2 "f(1')"  "f♯"  f2 ||
+K:G# Dor ^^C
+P: K:G# mish --------diatonic
+ | "G(1)"  "G♯"  "Key: [G# Dor ^^C]" G2 "A(2)"  "A♯"  A2 "B(3)"  ""  B2 "d♮(4)"  ""  =d2 "d♯(5)"  ""  ^d2 "e(6)"  "e♯"  e2 "f(7)"  "f♯"  f2 "g(1')"  "g♯"  g2 ||
+K:A Dor ^D
+P: K:A mish --------diatonic
+ | "A(1)"  ""  "Key: [A Dor ^D]" A2 "B(2)"  ""  B2 "c(3)"  ""  c2 "d(4)"  "d♯"  d2 "e(5)"  ""  e2 "f(6)"  "f♯"  f2 "g(7)"  ""  g2 "a(1')"  ""  a2 ||
+K:B Dor ^E
+P: K:B mish --------diatonic
+ | "B(1)"  ""  "Key: [B Dor ^E]" B2 "c(2)"  "c♯"  c2 "d(3)"  ""  d2 "e(4)"  "e♯"  e2 "f(5)"  "f♯"  f2 "g(6)"  "g♯"  g2 "a(7)"  ""  a2 "b(1')"  ""  b2 ||
+K:C# Dor ^^F
+P: K:C# mish --------diatonic
+ | "C(1)"  "C♯"  "Key: [C# Dor ^^F]" C2 "D(2)"  "D♯"  D2 "E(3)"  ""  E2 "G♮(4)"  ""  =G2 "G♯(5)"  ""  ^G2 "A(6)"  "A♯"  A2 "B(7)"  ""  B2 "c(1')"  "c♯"  c2 ||
+K:D Dor ^G
+P: K:D mish --------diatonic
+ | "D(1)"  ""  "Key: [D Dor ^G]" D2 "E(2)"  ""  E2 "F(3)"  ""  F2 "G(4)"  "G♯"  G2 "A(5)"  ""  A2 "B(6)"  ""  B2 "c(7)"  ""  c2 "d(1')"  ""  d2 ||
+K:E Dor ^A
+P: K:E mish --------diatonic
+ | "E(1)"  ""  "Key: [E Dor ^A]" E2 "F(2)"  "F♯"  F2 "G(3)"  ""  G2 "A(4)"  "A♯"  A2 "B(5)"  ""  B2 "c(6)"  "c♯"  c2 "d(7)"  ""  d2 "e(1')"  ""  e2 ||
+K:F Dor =B
+P: K:F mish --------diatonic
+ | "F(1)"  ""  "Key: [F Dor =B]" F2 "G(2)"  ""  G2 "A(3)"  "A♭"  A2 "B(4)"  ""  B2 "c(5)"  ""  c2 "d(6)"  ""  d2 "e(7)"  "e♭"  e2 "f(1')"  ""  f2 ||
+K:G Dor ^C
+P: K:G mish --------diatonic
+ | "G(1)"  ""  "Key: [G Dor ^C]" G2 "A(2)"  ""  A2 "B(3)"  "B♭"  B2 "c(4)"  "c♯"  c2 "d(5)"  ""  d2 "e(6)"  ""  e2 "f(7)"  ""  f2 "g(1')"  ""  g2 ||
+K:Bb Dor =E
+P: K:Bb mish --------diatonic
+ | "B(1)"  "B♭"  "Key: [Bb Dor =E]" B2 "c(2)"  ""  c2 "d(3)"  "d♭"  d2 "e(4)"  ""  e2 "f(5)"  ""  f2 "g(6)"  ""  g2 "a(7)"  "a♭"  a2 "b(1')"  "b♭"  b2 ||
+K:C Dor ^F
+P: K:C mish --------diatonic
+ | "C(1)"  ""  "Key: [C Dor ^F]" C2 "D(2)"  ""  D2 "E(3)"  "E♭"  E2 "F(4)"  "F♯"  F2 "G(5)"  ""  G2 "A(6)"  ""  A2 "B(7)"  "B♭"  B2 "c(1')"  ""  c2 ||
+K:Eb Dor =A
+P: K:Eb mish --------diatonic
+ | "E(1)"  "E♭"  "Key: [Eb Dor =A]" E2 "F(2)"  ""  F2 "G(3)"  "G♭"  G2 "A(4)"  ""  A2 "B(5)"  "B♭"  B2 "c(6)"  ""  c2 "d(7)"  "d♭"  d2 "e(1')"  "e♭"  e2 ||
+K:A
+P: K:A chromatic--flats
+ | "A(1)"  ""  "Key: [A]" A2 "B♭(_2)"  ""  _B2 "B♮(2)"  ""  =B2 "c♮(_3)"  ""  =c2 "c♯(3)"  ""  ^c2 "d(4)"  ""  d2 "e♭(_5)"  ""  _e2 "e♮(5)"  ""  =e2 "f♮(_6)"  ""  =f2 "f♯(6)"  ""  ^f2 "g♮(_7)"  ""  =g2 "g♯(7)"  ""  ^g2 "a(1')"  ""  a2 ||
+K:B
+P: K:B chromatic--flats
+ | "B(1)"  ""  "Key: [B]" B2 "c♮(_2)"  ""  =c2 "c♯(2)"  ""  ^c2 "d♮(_3)"  ""  =d2 "d♯(3)"  ""  ^d2 "e(4)"  ""  e2 "f♮(_5)"  ""  =f2 "f♯(5)"  ""  ^f2 "g♮(_6)"  ""  =g2 "g♯(6)"  ""  ^g2 "a♮(_7)"  ""  =a2 "a♯(7)"  ""  ^a2 "b(1')"  ""  b2 ||
+K:C
+P: K:C chromatic--flats
+ | "C(1)"  ""  "Key: [C]" C2 "D♭(_2)"  ""  _D2 "D♮(2)"  ""  =D2 "E♭(_3)"  ""  _E2 "E♮(3)"  ""  =E2 "F(4)"  ""  F2 "G♭(_5)"  ""  _G2 "G♮(5)"  ""  =G2 "A♭(_6)"  ""  _A2 "A♮(6)"  ""  =A2 "B♭(_7)"  ""  _B2 "B♮(7)"  ""  =B2 "c(1')"  ""  c2 ||
+K:D
+P: K:D chromatic--flats
+ | "D(1)"  ""  "Key: [D]" D2 "E♭(_2)"  ""  _E2 "E♮(2)"  ""  =E2 "F♮(_3)"  ""  =F2 "F♯(3)"  ""  ^F2 "G(4)"  ""  G2 "A♭(_5)"  ""  _A2 "A♮(5)"  ""  =A2 "B♭(_6)"  ""  _B2 "B♮(6)"  ""  =B2 "c♮(_7)"  ""  =c2 "c♯(7)"  ""  ^c2 "d(1')"  ""  d2 ||
+K:E
+P: K:E chromatic--flats
+ | "E(1)"  ""  "Key: [E]" E2 "F♮(_2)"  ""  =F2 "F♯(2)"  ""  ^F2 "G♮(_3)"  ""  =G2 "G♯(3)"  ""  ^G2 "A(4)"  ""  A2 "B♭(_5)"  ""  _B2 "B♮(5)"  ""  =B2 "c♮(_6)"  ""  =c2 "c♯(6)"  ""  ^c2 "d♮(_7)"  ""  =d2 "d♯(7)"  ""  ^d2 "e(1')"  ""  e2 ||
+K:F
+P: K:F chromatic--flats
+ | "F(1)"  ""  "Key: [F]" F2 "G♭(_2)"  ""  _G2 "G♮(2)"  ""  =G2 "A♭(_3)"  ""  _A2 "A♮(3)"  ""  =A2 "B(4)"  "B♭"  B2 "B♮(_5)"  ""  =B2 "c(5)"  ""  c2 "d♭(_6)"  ""  _d2 "d♮(6)"  ""  =d2 "e♭(_7)"  ""  _e2 "e♮(7)"  ""  =e2 "f(1')"  ""  f2 ||
+K:G
+P: K:G chromatic--flats
+ | "G(1)"  ""  "Key: [G]" G2 "A♭(_2)"  ""  _A2 "A♮(2)"  ""  =A2 "B♭(_3)"  ""  _B2 "B♮(3)"  ""  =B2 "c(4)"  ""  c2 "d♭(_5)"  ""  _d2 "d♮(5)"  ""  =d2 "e♭(_6)"  ""  _e2 "e♮(6)"  ""  =e2 "f♮(_7)"  ""  =f2 "f♯(7)"  ""  ^f2 "g(1')"  ""  g2 ||
+K:Ab
+P: K:Ab chromatic--flats
+ | "A(1)"  "A♭"  "Key: [Ab]" A2 "A♮(_2)"  ""  =A2 "B(2)"  "B♭"  B2 "B♮(_3)"  ""  =B2 "c(3)"  ""  c2 "d(4)"  "d♭"  d2 "d♮(_5)"  ""  =d2 "e(5)"  "e♭"  e2 "e♮(_6)"  ""  =e2 "f(6)"  ""  f2 "g♭(_7)"  ""  _g2 "g♮(7)"  ""  =g2 "a(1')"  "a♭"  a2 ||
+K:Bb
+P: K:Bb chromatic--flats
+ | "B♭(1)"  ""  "Key: [Bb]" B2 "B♮(_2)"  ""  =B2 "c(2)"  ""  c2 "d♭(_3)"  ""  _d2 "d♮(3)"  ""  =d2 "e♭(4)"  ""  e2 "e♮(_5)"  ""  =e2 "f(5)"  ""  f2 "g♭(_6)"  ""  _g2 "g♮(6)"  ""  =g2 "a♭(_7)"  ""  _a2 "a♮(7)"  ""  =a2 "b(1')"  "b♭"  b2 ||
+K:Db
+P: K:Db chromatic--flats
+ | "D(1)"  "D♭"  "Key: [Db]" D2 "D♮(_2)"  ""  =D2 "E(2)"  "E♭"  E2 "E♮(_3)"  ""  =E2 "F(3)"  ""  F2 "G(4)"  "G♭"  G2 "G♮(_5)"  ""  =G2 "A♭(5)"  ""  A2 "A♮(_6)"  ""  =A2 "B♭(6)"  ""  B2 "B♮(_7)"  ""  =B2 "c(7)"  ""  c2 "d(1')"  "d♭"  d2 ||
+K:Eb
+P: K:Eb chromatic--flats
+ | "E♭(1)"  ""  "Key: [Eb]" E2 "E♮(_2)"  ""  =E2 "F(2)"  ""  F2 "G♭(_3)"  ""  _G2 "G♮(3)"  ""  =G2 "A♭(4)"  ""  A2 "A♮(_5)"  ""  =A2 "B♭(5)"  ""  B2 "B♮(_6)"  ""  =B2 "c(6)"  ""  c2 "d♭(_7)"  ""  _d2 "d♮(7)"  ""  =d2 "e♭(1')"  ""  e2 ||
+K:Gb
+P: K:Gb chromatic--flats
+ | "G(1)"  "G♭"  "Key: [Gb]" G2 "G♮(_2)"  ""  =G2 "A♭(2)"  ""  A2 "A♮(_3)"  ""  =A2 "B♭(3)"  ""  B2 "c(4)"  "c♭"  c2 "c♮(_5)"  ""  =c2 "d(5)"  "d♭"  d2 "d♮(_6)"  ""  =d2 "e(6)"  "e♭"  e2 "e♮(_7)"  ""  =e2 "f(7)"  ""  f2 "g(1')"  "g♭"  g2 ||
+K:Am
+P: K:Am chromatic--flats
+ | "A(1)"  ""  "Key: [Am]" A2 "B♭(_2)"  ""  _B2 "B♮(2)"  ""  =B2 "c(3)"  ""  c2 "d♭(_4)"  ""  _d2 "d♮(4)"  ""  =d2 "e♭(_5)"  ""  _e2 "e♮(5)"  ""  =e2 "f(6)"  ""  f2 "g♭(_7)"  ""  _g2 "g♮(7)"  ""  =g2 "a♭(_1')"  ""  _a2 "a♮(1')"  ""  =a2 ||
+K:Bm
+P: K:Bm chromatic--flats
+ | "B(1)"  ""  "Key: [Bm]" B2 "c♮(_2)"  ""  =c2 "c♯(2)"  ""  ^c2 "d(3)"  ""  d2 "e♭(_4)"  ""  _e2 "e♮(4)"  ""  =e2 "f♮(_5)"  ""  =f2 "f♯(5)"  ""  ^f2 "g(6)"  ""  g2 "a♭(_7)"  ""  _a2 "a♮(7)"  ""  =a2 "b♭(_1')"  ""  _b2 "b♮(1')"  ""  =b2 ||
+K:Cm
+P: K:Cm chromatic--flats
+ | "C(1)"  ""  "Key: [Cm]" C2 "D♭(_2)"  ""  _D2 "D♮(2)"  ""  =D2 "E♭(3)"  ""  E2 "E♮(_4)"  ""  =E2 "F(4)"  ""  F2 "G♭(_5)"  ""  _G2 "G♮(5)"  ""  =G2 "A(6)"  "A♭"  A2 "A♮(_7)"  ""  =A2 "B(7)"  "B♭"  B2 "B♮(_1')"  ""  =B2 "c(1')"  ""  c2 ||
+K:Dm
+P: K:Dm chromatic--flats
+ | "D(1)"  ""  "Key: [Dm]" D2 "E♭(_2)"  ""  _E2 "E♮(2)"  ""  =E2 "F(3)"  ""  F2 "G♭(_4)"  ""  _G2 "G♮(4)"  ""  =G2 "A♭(_5)"  ""  _A2 "A♮(5)"  ""  =A2 "B♭(6)"  ""  B2 "B♮(_7)"  ""  =B2 "c(7)"  ""  c2 "d♭(_1')"  ""  _d2 "d♮(1')"  ""  =d2 ||
+K:Em
+P: K:Em chromatic--flats
+ | "E(1)"  ""  "Key: [Em]" E2 "F♮(_2)"  ""  =F2 "F♯(2)"  ""  ^F2 "G(3)"  ""  G2 "A♭(_4)"  ""  _A2 "A♮(4)"  ""  =A2 "B♭(_5)"  ""  _B2 "B♮(5)"  ""  =B2 "c(6)"  ""  c2 "d♭(_7)"  ""  _d2 "d♮(7)"  ""  =d2 "e♭(_1')"  ""  _e2 "e♮(1')"  ""  =e2 ||
+K:Fm
+P: K:Fm chromatic--flats
+ | "F(1)"  ""  "Key: [Fm]" F2 "G♭(_2)"  ""  _G2 "G♮(2)"  ""  =G2 "A(3)"  "A♭"  A2 "A♮(_4)"  ""  =A2 "B(4)"  "B♭"  B2 "B♮(_5)"  ""  =B2 "c(5)"  ""  c2 "d(6)"  "d♭"  d2 "d♮(_7)"  ""  =d2 "e(7)"  "e♭"  e2 "e♮(_1')"  ""  =e2 "f(1')"  ""  f2 ||
+K:Gm
+P: K:Gm chromatic--flats
+ | "G(1)"  ""  "Key: [Gm]" G2 "A♭(_2)"  ""  _A2 "A♮(2)"  ""  =A2 "B♭(3)"  ""  B2 "B♮(_4)"  ""  =B2 "c(4)"  ""  c2 "d♭(_5)"  ""  _d2 "d♮(5)"  ""  =d2 "e♭(6)"  ""  e2 "e♮(_7)"  ""  =e2 "f(7)"  ""  f2 "g♭(_1')"  ""  _g2 "g♮(1')"  ""  =g2 ||
+K:C#m
+P: K:C#m chromatic--flats
+ | "C(1)"  "C♯"  "Key: [C#m]" C2 "D♮(_2)"  ""  =D2 "D♯(2)"  ""  ^D2 "E(3)"  ""  E2 "F♮(_4)"  ""  =F2 "F♯(4)"  ""  ^F2 "G♮(_5)"  ""  =G2 "G♯(5)"  ""  ^G2 "A(6)"  ""  A2 "B♭(_7)"  ""  _B2 "B♮(7)"  ""  =B2 "c♮(_1')"  ""  =c2 "c♯(1')"  ""  ^c2 ||
+K:F#m
+P: K:F#m chromatic--flats
+ | "F(1)"  "F♯"  "Key: [F#m]" F2 "G♮(_2)"  ""  =G2 "G♯(2)"  ""  ^G2 "A(3)"  ""  A2 "B♭(_4)"  ""  _B2 "B♮(4)"  ""  =B2 "c♮(_5)"  ""  =c2 "c♯(5)"  ""  ^c2 "d(6)"  ""  d2 "e♭(_7)"  ""  _e2 "e♮(7)"  ""  =e2 "f♮(_1')"  ""  =f2 "f♯(1')"  ""  ^f2 ||
+K:G#m
+P: K:G#m chromatic--flats
+ | "G(1)"  "G♯"  "Key: [G#m]" G2 "A♮(_2)"  ""  =A2 "A♯(2)"  ""  ^A2 "B(3)"  ""  B2 "c♮(_4)"  ""  =c2 "c♯(4)"  ""  ^c2 "d♮(_5)"  ""  =d2 "d♯(5)"  ""  ^d2 "e(6)"  ""  e2 "f♮(_7)"  ""  =f2 "f♯(7)"  ""  ^f2 "g♮(_1')"  ""  =g2 "g♯(1')"  ""  ^g2 ||
+K:Bbm
+P: K:Bbm chromatic--flats
+ | "B(1)"  "B♭"  "Key: [Bbm]" B2 "B♮(_2)"  ""  =B2 "c(2)"  ""  c2 "d(3)"  "d♭"  d2 "d♮(_4)"  ""  =d2 "e(4)"  "e♭"  e2 "e♮(_5)"  ""  =e2 "f(5)"  ""  f2 "g(6)"  "g♭"  g2 "g♮(_7)"  ""  =g2 "a(7)"  "a♭"  a2 "a♮(_1')"  ""  =a2 "b(1')"  "b♭"  b2 ||
+K:Ebm
+P: K:Ebm chromatic--flats
+ | "E(1)"  "E♭"  "Key: [Ebm]" E2 "E♮(_2)"  ""  =E2 "F(2)"  ""  F2 "G(3)"  "G♭"  G2 "G♮(_4)"  ""  =G2 "A(4)"  "A♭"  A2 "A♮(_5)"  ""  =A2 "B♭(5)"  ""  B2 "c(6)"  "c♭"  c2 "c♮(_7)"  ""  =c2 "d♭(7)"  ""  d2 "d♮(_1')"  ""  =d2 "e♭(1')"  ""  e2 ||
+K:A
+P: K:A chromatic-sharps
+ | "A(1)"  ""  "Key: [A]" A2 "A♯(^1)"  ""  ^A2 "B(2)"  ""  B2 "c♮(^2)"  ""  =c2 "c♯(3)"  ""  ^c2 "d(4)"  ""  d2 "d♯(^4)"  ""  ^d2 "e(5)"  ""  e2 "f♮(^5)"  ""  =f2 "f♯(6)"  ""  ^f2 "g♮(^6)"  ""  =g2 "g♯(7)"  ""  ^g2 "a(1')"  ""  a2 ||
+K:B
+P: K:B chromatic-sharps
+ | "B(1)"  ""  "Key: [B]" B2 "c♮(^1)"  ""  =c2 "c♯(2)"  ""  ^c2 "d♮(^2)"  ""  =d2 "d♯(3)"  ""  ^d2 "e(4)"  ""  e2 "f♮(^4)"  ""  =f2 "f♯(5)"  ""  ^f2 "g♮(^5)"  ""  =g2 "g♯(6)"  ""  ^g2 "a♮(^6)"  ""  =a2 "a♯(7)"  ""  ^a2 "b(1')"  ""  b2 ||
+K:C
+P: K:C chromatic-sharps
+ | "C(1)"  ""  "Key: [C]" C2 "C♯(^1)"  ""  ^C2 "D(2)"  ""  D2 "D♯(^2)"  ""  ^D2 "E(3)"  ""  E2 "F(4)"  ""  F2 "F♯(^4)"  ""  ^F2 "G(5)"  ""  G2 "G♯(^5)"  ""  ^G2 "A♮(6)"  ""  A2 "A♯(^6)"  ""  ^A2 "B(7)"  ""  B2 "c(1')"  ""  c2 ||
+K:D
+P: K:D chromatic-sharps
+ | "D♮(1)"  ""  "Key: [D]" D2 "D♯(^1)"  ""  ^D2 "E(2)"  ""  E2 "F♮(^2)"  ""  =F2 "F♯(3)"  ""  ^F2 "G♮(4)"  ""  G2 "G♯(^4)"  ""  ^G2 "A♮(5)"  ""  A2 "A♯(^5)"  ""  ^A2 "B(6)"  ""  B2 "c♮(^6)"  ""  =c2 "c♯(7)"  ""  ^c2 "d(1')"  ""  d2 ||
+K:E
+P: K:E chromatic-sharps
+ | "E(1)"  ""  "Key: [E]" E2 "F♮(^1)"  ""  =F2 "F♯(2)"  ""  ^F2 "G♮(^2)"  ""  =G2 "G♯(3)"  ""  ^G2 "A♮(4)"  ""  A2 "A♯(^4)"  ""  ^A2 "B(5)"  ""  B2 "c♮(^5)"  ""  =c2 "c♯(6)"  ""  ^c2 "d♮(^6)"  ""  =d2 "d♯(7)"  ""  ^d2 "e(1')"  ""  e2 ||
+K:F
+P: K:F chromatic-sharps
+ | "F(1)"  ""  "Key: [F]" F2 "F♯(^1)"  ""  ^F2 "G(2)"  ""  G2 "G♯(^2)"  ""  ^G2 "A♮(3)"  ""  A2 "B(4)"  "B♭"  B2 "B♮(^4)"  ""  =B2 "c(5)"  ""  c2 "c♯(^5)"  ""  ^c2 "d(6)"  ""  d2 "d♯(^6)"  ""  ^d2 "e(7)"  ""  e2 "f(1')"  ""  f2 ||
+K:G
+P: K:G chromatic-sharps
+ | "G♮(1)"  ""  "Key: [G]" G2 "G♯(^1)"  ""  ^G2 "A(2)"  ""  A2 "A♯(^2)"  ""  ^A2 "B(3)"  ""  B2 "c♮(4)"  ""  c2 "c♯(^4)"  ""  ^c2 "d♮(5)"  ""  d2 "d♯(^5)"  ""  ^d2 "e(6)"  ""  e2 "f♮(^6)"  ""  =f2 "f♯(7)"  ""  ^f2 "g(1')"  ""  g2 ||
+K:Ab
+P: K:Ab chromatic-sharps
+ | "A♭(1)"  ""  "Key: [Ab]" A2 "A♮(^1)"  ""  =A2 "B(2)"  "B♭"  B2 "B♮(^2)"  ""  =B2 "c♮(3)"  ""  c2 "d♭(4)"  ""  d2 "d♮(^4)"  ""  =d2 "e(5)"  "e♭"  e2 "e♮(^5)"  ""  =e2 "f(6)"  ""  f2 "f♯(^6)"  ""  ^f2 "g(7)"  ""  g2 "a(1')"  "a♭"  a2 ||
+K:Bb
+P: K:Bb chromatic-sharps
+ | "B♭(1)"  ""  "Key: [Bb]" B2 "B♮(^1)"  ""  =B2 "c(2)"  ""  c2 "c♯(^2)"  ""  ^c2 "d(3)"  ""  d2 "e♭(4)"  ""  e2 "e♮(^4)"  ""  =e2 "f♮(5)"  ""  f2 "f♯(^5)"  ""  ^f2 "g(6)"  ""  g2 "g♯(^6)"  ""  ^g2 "a(7)"  ""  a2 "b(1')"  "b♭"  b2 ||
+K:Db
+P: K:Db chromatic-sharps
+ | "D♭(1)"  ""  "Key: [Db]" D2 "D♮(^1)"  ""  =D2 "E(2)"  "E♭"  E2 "E♮(^2)"  ""  =E2 "F♮(3)"  ""  F2 "G♭(4)"  ""  G2 "G♮(^4)"  ""  =G2 "A♭(5)"  ""  A2 "A♮(^5)"  ""  =A2 "B♭(6)"  ""  B2 "B♮(^6)"  ""  =B2 "c♮(7)"  ""  c2 "d(1')"  "d♭"  d2 ||
+K:Eb
+P: K:Eb chromatic-sharps
+ | "E♭(1)"  ""  "Key: [Eb]" E2 "E♮(^1)"  ""  =E2 "F(2)"  ""  F2 "F♯(^2)"  ""  ^F2 "G(3)"  ""  G2 "A♭(4)"  ""  A2 "A♮(^4)"  ""  =A2 "B♭(5)"  ""  B2 "B♮(^5)"  ""  =B2 "c(6)"  ""  c2 "c♯(^6)"  ""  ^c2 "d(7)"  ""  d2 "e♭(1')"  ""  e2 ||
+K:Gb
+P: K:Gb chromatic-sharps
+ | "G(1)"  "G♭"  "Key: [Gb]" G2 "G♮(^1)"  ""  =G2 "A♭(2)"  ""  A2 "A♮(^2)"  ""  =A2 "B♭(3)"  ""  B2 "c♭(4)"  ""  c2 "c♮(^4)"  ""  =c2 "d(5)"  "d♭"  d2 "d♮(^5)"  ""  =d2 "e(6)"  "e♭"  e2 "e♮(^6)"  ""  =e2 "f♮(7)"  ""  f2 "g♭(1')"  ""  g2 ||
+K:Am
+P: K:Am chromatic-sharps
+ | "A(1)"  ""  "Key: [Am]" A2 "A♯(^1)"  ""  ^A2 "B(2)"  ""  B2 "c(3)"  ""  c2 "c♯(^3)"  ""  ^c2 "d(4)"  ""  d2 "d♯(^4)"  ""  ^d2 "e(5)"  ""  e2 "f(6)"  ""  f2 "f♯(^6)"  ""  ^f2 "g(7)"  ""  g2 "g♯(^7)"  ""  ^g2 "a(1')"  ""  a2 ||
+K:Bm
+P: K:Bm chromatic-sharps
+ | "B(1)"  ""  "Key: [Bm]" B2 "c♮(^1)"  ""  =c2 "c♯(2)"  ""  ^c2 "d♮(3)"  ""  d2 "d♯(^3)"  ""  ^d2 "e(4)"  ""  e2 "f♮(^4)"  ""  =f2 "f♯(5)"  ""  ^f2 "g♮(6)"  ""  g2 "g♯(^6)"  ""  ^g2 "a(7)"  ""  a2 "a♯(^7)"  ""  ^a2 "b(1')"  ""  b2 ||
+K:Cm
+P: K:Cm chromatic-sharps
+ | "C♮(1)"  ""  "Key: [Cm]" C2 "C♯(^1)"  ""  ^C2 "D(2)"  ""  D2 "E♭(3)"  ""  E2 "E♮(^3)"  ""  =E2 "F♮(4)"  ""  F2 "F♯(^4)"  ""  ^F2 "G(5)"  ""  G2 "A♭(6)"  ""  A2 "A♮(^6)"  ""  =A2 "B(7)"  "B♭"  B2 "B♮(^7)"  ""  =B2 "c(1')"  ""  c2 ||
+K:Dm
+P: K:Dm chromatic-sharps
+ | "D(1)"  ""  "Key: [Dm]" D2 "D♯(^1)"  ""  ^D2 "E(2)"  ""  E2 "F♮(3)"  ""  F2 "F♯(^3)"  ""  ^F2 "G(4)"  ""  G2 "G♯(^4)"  ""  ^G2 "A(5)"  ""  A2 "B♭(6)"  ""  B2 "B♮(^6)"  ""  =B2 "c(7)"  ""  c2 "c♯(^7)"  ""  ^c2 "d♮(1')"  ""  d2 ||
+K:Em
+P: K:Em chromatic-sharps
+ | "E(1)"  ""  "Key: [Em]" E2 "F♮(^1)"  ""  =F2 "F♯(2)"  ""  ^F2 "G♮(3)"  ""  G2 "G♯(^3)"  ""  ^G2 "A(4)"  ""  A2 "A♯(^4)"  ""  ^A2 "B(5)"  ""  B2 "c♮(6)"  ""  c2 "c♯(^6)"  ""  ^c2 "d(7)"  ""  d2 "d♯(^7)"  ""  ^d2 "e(1')"  ""  e2 ||
+K:Fm
+P: K:Fm chromatic-sharps
+ | "F(1)"  ""  "Key: [Fm]" F2 "F♯(^1)"  ""  ^F2 "G♮(2)"  ""  G2 "A♭(3)"  ""  A2 "A♮(^3)"  ""  =A2 "B(4)"  "B♭"  B2 "B♮(^4)"  ""  =B2 "c♮(5)"  ""  c2 "d♭(6)"  ""  d2 "d♮(^6)"  ""  =d2 "e(7)"  "e♭"  e2 "e♮(^7)"  ""  =e2 "f(1')"  ""  f2 ||
+K:Gm
+P: K:Gm chromatic-sharps
+ | "G(1)"  ""  "Key: [Gm]" G2 "G♯(^1)"  ""  ^G2 "A(2)"  ""  A2 "B♭(3)"  ""  B2 "B♮(^3)"  ""  =B2 "c(4)"  ""  c2 "c♯(^4)"  ""  ^c2 "d(5)"  ""  d2 "e♭(6)"  ""  e2 "e♮(^6)"  ""  =e2 "f(7)"  ""  f2 "f♯(^7)"  ""  ^f2 "g♮(1')"  ""  g2 ||
+K:C#m
+P: K:C#m chromatic-sharps
+ | "C♯(1)"  ""  "Key: [C#m]" C2 "D♮(^1)"  ""  =D2 "D♯(2)"  ""  ^D2 "E(3)"  ""  E2 "F♮(^3)"  ""  =F2 "F♯(4)"  ""  ^F2 "G♮(^4)"  ""  =G2 "G♯(5)"  ""  ^G2 "A(6)"  ""  A2 "A♯(^6)"  ""  ^A2 "B(7)"  ""  B2 "c♮(^7)"  ""  =c2 "c♯(1')"  ""  ^c2 ||
+K:F#m
+P: K:F#m chromatic-sharps
+ | "F(1)"  "F♯"  "Key: [F#m]" F2 "G♮(^1)"  ""  =G2 "G♯(2)"  ""  ^G2 "A♮(3)"  ""  A2 "A♯(^3)"  ""  ^A2 "B(4)"  ""  B2 "c♮(^4)"  ""  =c2 "c♯(5)"  ""  ^c2 "d(6)"  ""  d2 "d♯(^6)"  ""  ^d2 "e(7)"  ""  e2 "f♮(^7)"  ""  =f2 "f♯(1')"  ""  ^f2 ||
+K:G#m
+P: K:G#m chromatic-sharps
+ | "G(1)"  "G♯"  "Key: [G#m]" G2 "A♮(^1)"  ""  =A2 "A♯(2)"  ""  ^A2 "B(3)"  ""  B2 "c♮(^3)"  ""  =c2 "c♯(4)"  ""  ^c2 "d♮(^4)"  ""  =d2 "d♯(5)"  ""  ^d2 "e(6)"  ""  e2 "f♮(^6)"  ""  =f2 "f♯(7)"  ""  ^f2 "g♮(^7)"  ""  =g2 "g♯(1')"  ""  ^g2 ||
+K:Bbm
+P: K:Bbm chromatic-sharps
+ | "B(1)"  "B♭"  "Key: [Bbm]" B2 "B♮(^1)"  ""  =B2 "c(2)"  ""  c2 "d(3)"  "d♭"  d2 "d♮(^3)"  ""  =d2 "e(4)"  "e♭"  e2 "e♮(^4)"  ""  =e2 "f(5)"  ""  f2 "g(6)"  "g♭"  g2 "g♮(^6)"  ""  =g2 "a♭(7)"  ""  a2 "a♮(^7)"  ""  =a2 "b(1')"  "b♭"  b2 ||
+K:Ebm
+P: K:Ebm chromatic-sharps
+ | "E(1)"  "E♭"  "Key: [Ebm]" E2 "E♮(^1)"  ""  =E2 "F(2)"  ""  F2 "G(3)"  "G♭"  G2 "G♮(^3)"  ""  =G2 "A(4)"  "A♭"  A2 "A♮(^4)"  ""  =A2 "B♭(5)"  ""  B2 "c(6)"  "c♭"  c2 "c♮(^6)"  ""  =c2 "d♭(7)"  ""  d2 "d♮(^7)"  ""  =d2 "e♭(1')"  ""  e2 ||
+K:A
+P: K:A chromatic-double
+ | "B(^^1)"  ""  "Key: [A]" B2 "A(__2)"  ""  A2 ||
+K:B
+P: K:B chromatic-double
+ | "c♯(^^1)"  ""  "Key: [B]" c2 "B(__2)"  ""  B2 ||
+K:C
+P: K:C chromatic-double
+ | "D(^^1)"  ""  "Key: [C]" D2 "C(__2)"  ""  C2 ||
+K:D
+P: K:D chromatic-double
+ | "E(^^1)"  ""  "Key: [D]" E2 "D(__2)"  ""  D2 ||
+K:E
+P: K:E chromatic-double
+ | "F(^^1)"  "F♯"  "Key: [E]" F2 "E(__2)"  ""  E2 ||
+K:F
+P: K:F chromatic-double
+ | "G(^^1)"  ""  "Key: [F]" G2 "F(__2)"  ""  F2 ||
+K:G
+P: K:G chromatic-double
+ | "A(^^1)"  ""  "Key: [G]" A2 "G(__2)"  ""  G2 ||
+K:Ab
+P: K:Ab chromatic-double
+ | "B(^^1)"  "B♭"  "Key: [Ab]" B2 "A(__2)"  "A♭"  A2 ||
+K:Bb
+P: K:Bb chromatic-double
+ | "c(^^1)"  ""  "Key: [Bb]" c2 "B(__2)"  "B♭"  B2 ||
+K:Db
+P: K:Db chromatic-double
+ | "E(^^1)"  "E♭"  "Key: [Db]" E2 "D(__2)"  "D♭"  D2 ||
+K:Eb
+P: K:Eb chromatic-double
+ | "F(^^1)"  ""  "Key: [Eb]" F2 "E(__2)"  "E♭"  E2 ||
+K:Gb
+P: K:Gb chromatic-double
+ | "A(^^1)"  "A♭"  "Key: [Gb]" A2 "G(__2)"  "G♭"  G2 ||
+K:Am
+P: K:Am chromatic-double
+ | "B(^^1)"  ""  "Key: [Am]" B2 "A(__2)"  ""  A2 ||
+K:Bm
+P: K:Bm chromatic-double
+ | "c(^^1)"  "c♯"  "Key: [Bm]" c2 "B(__2)"  ""  B2 ||
+K:Cm
+P: K:Cm chromatic-double
+ | "D(^^1)"  ""  "Key: [Cm]" D2 "C(__2)"  ""  C2 ||
+K:Dm
+P: K:Dm chromatic-double
+ | "E(^^1)"  ""  "Key: [Dm]" E2 "D(__2)"  ""  D2 ||
+K:Em
+P: K:Em chromatic-double
+ | "F(^^1)"  "F♯"  "Key: [Em]" F2 "E(__2)"  ""  E2 ||
+K:Fm
+P: K:Fm chromatic-double
+ | "G(^^1)"  ""  "Key: [Fm]" G2 "F(__2)"  ""  F2 ||
+K:Gm
+P: K:Gm chromatic-double
+ | "A(^^1)"  ""  "Key: [Gm]" A2 "G(__2)"  ""  G2 ||
+K:C#m
+P: K:C#m chromatic-double
+ | "D(^^1)"  "D♯"  "Key: [C#m]" D2 "C(__2)"  "C♯"  C2 ||
+K:F#m
+P: K:F#m chromatic-double
+ | "G(^^1)"  "G♯"  "Key: [F#m]" G2 "F(__2)"  "F♯"  F2 ||
+K:G#m
+P: K:G#m chromatic-double
+ | "A(^^1)"  "A♯"  "Key: [G#m]" A2 "G(__2)"  "G♯"  G2 ||
+K:Bbm
+P: K:Bbm chromatic-double
+ | "c(^^1)"  ""  "Key: [Bbm]" c2 "B(__2)"  "B♭"  B2 ||
+K:Ebm
+P: K:Ebm chromatic-double
+ | "F(^^1)"  ""  "Key: [Ebm]" F2 "E(__2)"  "E♭"  E2 ||

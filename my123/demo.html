@@ -1,0 +1,151 @@
+Q:1/4 = 100
+T:Demo Features         %% (optional)                      title of the song
+T: T: lines (like this one) show up centered above the song
+T: See the ABC Standard for more details about various headers, such as T: C: L: etc.
+T:
+C: Mozart               %% (optional)                      composer of the song
+M:4/4                   %% (optional. default is 4/4)      meter
+L:1/8                   %% (optional. default is eighth)   unit -- meter of isolated note
+%%                      %% (optional)                      'comment', rest of line ignored when parsing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+T:    T:     title of the song
+T:    C:     composer of the song
+T:    K:   (default is C major) key
+T:    M:   (default is 4/4)      meter
+T:    L:   (default is eighth)   unit
+T:    P:    part title, (the following line should probably be notes)
+T:    \%    'comment', rest of line ignored when parsing
+T:
+T: Some examples:
+T:
+T:T:Demo Features
+T:C:Mozart
+T:K:Am
+T:M:4/4
+T:L:1/8
+T:P:Main Theme
+W:
+W: This is the end... or is it only the... No, it's the end
+W:
+%
+"Zero indicates a rest [0] "                                             0                              |
+"W: fields show up below the song (q.v.)! 'This is the end...'"          0                              |
+"w: lyrics under previous (notes) line! [1111] 'he-llo...' "             1111                           |
+w: he-llo he-llo                                                                                        |
+"regular \ home octave simply uses digits [12]"                          12                             |
+"low octave uses commas [1,2,]"                                          1,2,                           |
+"a higher octaves uses tick or plus [1'2'] [+1+2]"                       1'2' +1+2                      |
+"transpose down an octave with [1,2, is @- 12]  "                        1,2, @- 12                     |
+"transpose (back) with @+ up [@+ 12 is 12]"                              @+ 12 12                       |
+"only go up so far [@+@+@+@+@+ 12]"                                      @+@+@+@+@+ 12    @@            |
+"reset octaves [@+@+@+@+@+ @@ 11]"                                       @+@+@+@+@+ @@ 11               |
+"similarly, only go down so far [@-@-@-@-@- 12]"                         @-@-@-@-@- 12                  |
+"only go up so far with pluses or ticks [1'''''''''''' +++++++++++2]"    @@ 1'''''''''''' +++++++++++2  |
+"transpose down just one note [1,-1  -1'1]"                              @@ -11, -1'1                   |
+"only go down so far with minuses [----2]"                               @@ ----2                       |
+"sharp [^2]"                                                             ^2                             |
+"flat [_3]"                                                              _3                             |
+"natural irrespective of scale [!courtesy!=3 3 =3]"                      !courtesy!=3 3  =3             |
+K:D
+"natural irrespective of scale [!courtesy!=3 3 =3] (cf  D major)"        !courtesy!=3  3  =3            |
+K:C
+%
+"Length: Isolated notes / rests are 2 units (default 1/4) [ 1 ]"        1                               |
+P: Notes in a cluster are 1 unit each (default 1/8)[ 12 ]
+12                              |
+P: An isolated dotted or slashed note is treated as one unit [ .1 1/ ]
+.1 1/                           |
+"four 16s [.1234]"                                                      .1234                           |
+"dots keep halving [.12.3456]"                                          .12.3456                        |
+"o reverses dot [.12o3]"                                                .12o3                           |
+"duration modifiers: [1a 1(lowercase B) 1c]"                            1a 1b 1c                        |
+P: More modifiers: slashes [ 1/ 1// 11/ 11//  ]
+1/ 1//  11/ 11//                                                        |
+%
+P: 'angle' abbreviations
+"short (16th in 4\4) - long  [ 1<2 ]"                                   1<2                             |
+M:6/8
+"short (8th in 6\8) - long  [ 1<2 ]"                                    1<2                             |
+M:4/4
+"long (dotted-eighth in 4\4) - short  [ 1>2 ]"                          1>2                             |
+M:6/8
+"long (quarter in 6\8) - short  [ 1>2 ]"                                1>2                             |
+P:Angle-slash to use 4/4 values even in triplet time  [ 1>/2  3</4 ]"
+1>/2  3</4                                                                                              |
+M:4/4
+"short long short [1<2>3]"                                              | 1<2>3                         |
+P: tuples: 4 (D), 7 (G), 3 (C) -- [(D 1234 (G 1234567 (C 123]
+| (D 1234 (G 1234567 (C 123     |
+"single quote after space dot or o repeats note [ 1 ' .'o' ]"           1 ' .'o'                        |
+"also immediately after another one [ 1.''  '.'2 ]"                     1.''   '.'2                     |
+"auto-slur for single quote after space [ 1 ' 2 'b 3 'a ] "             1 ' 2 'b 3 'a                             |
+"back-tick instead of quote omits auto-slur [ 1 ' 2 ` ] "               1 ' 2 `                         |
+"works even with 'angle sugar' [ 1<' 0 2>' 0 3<'>' ] "                            1<' 0 2>' 0 3<'>'               |
+"more sugar: 2' equals 9 [ 2'9 ]"                                                  2'9                             |
+"more sugar: 1' equals 8 [ 1'8 ]"                                                  1'8                             |
+" Brackets make the first tick an octave, vs repeated note [1{1'}' ]"   1{1'}'                          |
+P:Bang-enclosed items from the ABC standard DS, eg -- [ !D.S.! 1 !segno! 2]
+!D.S.! 1 !segno! 2   |
+P:Bangs are not parsed in 123, but simply 'handed' to ABC. Another one:
+"[!trill!] 3 ]"                                             !trill! 3  |
+P:Beware of ABC pass-thru's (PDF bug: 'b' in AaBbCc can show as flat)
+"Eg, [1 meat is raw 1 B's: AaBbCc]" " -- some letters show up as notes on the music sheet"   1 meat is raw 1 B's: AaBbCc        |
+"Can escape \"quotes\" yeah ((but for some reason not regular / forward slashes))"    0                               |
+
+P: But can use slashes // / in P: directives
+"(This is a) quote beginning with '(', vs a digit 1-7 (so, a non-chord)"           1 | 2                           |
+K:C
+"1 (arabic 1) at beginning of quote (\"1...\") becomes C in key of C"              1 | 23                           |
+" 1 (arabic 1) at beginning of quote (\" 1...\") (leading whitespace is ignored)"                         1 | 23                           |
+"I (roman I) at beginning of quote (\"I...\") becomes C at beginning of quote in key of C"               1 | 23                           |
+"Im (Im) at beginning of quote (\"Im...\") with added 'm' after arabic or capital roman to get minor"           1 | 23                           |
+"i (lowercase 'i', no 'm') at beginning of quote (\"i...\") in C becomes Cm"                             1 | 23
+P:Sharp or flat keys with K directive -- say eg K:D#, not K:^D. K:Db, not K:_D
+0
+K:C#m
+" eg, K:C#m [\"i\" 1] should say '\"C#m\"' over a C#"                  0 "i" 1
+K:Ab
+" K:Ab [\"1\" 1] should say '\"A♭\"' over an A♭"                       0 "1" 1
+K:C
+"Part directives ( 'P:...' ) -- should be followed by 'notes' line"   0                   |
+"-- If multiple P: in succession, only the last shows. E.g., no Part B here, but it's in the 123"   0                   |
+P: Part B
+P: Part C
+"Endings, eg 1st and 2nd '[1 23 | 0 [2 34 ]'"                             0 0 0 [1   23 | 0  [2 34 ]       ||
+P:Scales can be major, minor, frey (freygish) or mish (misheberakh)
+K:Cm
+" K:Cm .1234 .5432 1   "                                                .1234 .5432 1                   |
+P:Note: frey and mish get transformed into ABC's Phr(ygian) and Dor(ian)
+K:C frey =E
+" K:C frey =E  .1234 .5432 1"                                         .1234 .5432 1                   |
+K:C mish
+" K:C mish  .1234 .5432 1"                                         .1234 .5432 1                   |
+K:C frey
+" K:C frey (no thirds mentioned in 123)  .1234 .5432 1"                  .1234 .5432 1                   |
+K:C
+P: Multi stops (or spelled-out chords): '[58]d    [58]/  [468]c'
+[58]d      [58]/    [468]c            |
+" (does not recognize 'isolated') [468] but can say '[468]b' "            [468] [468]b                    ||
+" And first duration prevails if inside the bracket '[4d6a8]'"  [4d68] ||
+"A note following (no space) a chord gets absorbed, its duration prevails '[123]8c'"  [123]8c ||
+P:FYI, the infinite shuffle-play separately shuffles between the double bars:
+|| 135 || .1234 .5678 || 316 ||
+P: Some T'amim / Trup macros
+"(double colon macros)" ::5B-Mahpakh-21:: |  ::5B-Pashta-21:: |  ::5B-Munnach-21_b4Zqf_Qtn:: |  ::5B-Zaqef_Qatan-21:: |
+"(single colon macros)" :5B-Mahpakh-21: |  :5B-Pashta-21: |  :5B-Munnach-21_b4Zqf_Qtn: |  :5B-Zaqef_Qatan-21:    |
+"Brackets are used in macros, but you can use them anywhere [p1d] [p1]"                    p1d p1                            ||
+"Comment centered before a note [q\"1st one\"2 0 | q\"2nd one\" 2 0]"        q"1st one"2 0 | q"2nd one" 2 0  |
+P: Some macros for spelled-out chords
+K:C
+::sys-1Chord:: ::sys-2Chord:: "with added 2 [3Chord::2]" ::sys-3Chord::2
+::sys-4Chord:: ::sys-5Chord:: ::sys-6Chord:: ::sys-7Chord::
+K:B
+::sys-1Chord:: ::sys-2Chord:: "with added 2" ::sys-3Chord::2
+::sys-4Chord:: ::sys-5Chord:: ::sys-6Chord:: ::sys-7Chord::
+K:C
+"Shorthand: qXX for courtesies. ♮, ♯, ♭: [qNN 1 qSS 2 qFF 3]"           qNN 1 qSS 2 qFF 3               ||
+P: Inline key-changes (starting from key of C)
+K:C
+"(1234)" 1234 [K:C frey] "C frey" "(1234)" 1234 [K:Dm] "(1234)" 1234 [K:D mish] "D mish" "(1234)" 1234         |
+[K:C#m] "(1234)" 1234 [K:Ebm] "(1234)" 1234                                     |
+"End of demo..."                                                        1 8 1                           ||

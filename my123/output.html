@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="../js-lib/jquery-3.6.0.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(restoreFromLocalStorage);
+
+        function restoreFromLocalStorage() {
+            let storedContent = localStorage.getItem("extractedText");
+            if (storedContent) {
+                $('#text').html(storedContent);
+            }
+        }
+    </script>
+    <style>
+        #text {
+            height: 300px;
+            width: 300px;
+        }
+    </style>
+</head>
+<body>
+
+<textarea id="text"></textarea>
+</body>
+</html>

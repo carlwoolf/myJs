@@ -1,0 +1,280 @@
+body {
+    font-family: "Arial Hebrew Scholar";
+    /*border: cyan 4px solid;*/
+    margin: 20px;
+
+}
+.tocAnchor {
+    margin: 10px;
+}
+.chapter-select {
+    margin-right: 20px;
+}
+.anchorsDiv {
+    margin: 10px;
+    width: 80%;
+    overflow-wrap: break-word;
+}
+.titleAnchor {
+    margin-top: 20px;
+    margin-left: 50%;
+    font-size: small;
+}
+#complaints {
+    margin-left: 10%;
+    background-color: khaki;
+    font-weight: bold;
+    font-size: large;
+}
+.biggg {
+    font-weight: bolder;
+    font-size: xx-large;
+}
+.bigg {
+    font-weight: bolder;
+    font-size: x-large;
+    color: darkgreen;
+    border: darkgreen .5px solid;
+    padding: 1px;
+}
+.big {
+    font-weight: bold;
+    font-size: large;
+}
+.small-ish {
+    font-size: 15px !important;
+    color: darkred;
+    font-weight: lighter;
+}
+.medium {
+    font-weight: normal;
+    font-size: small;
+}
+.normal {
+    font-weight: normal;
+    font-size: initial;
+}
+#threeVs21 {
+    margin-bottom: 20px;
+}
+.oCb {
+    margin-right: 5px;
+}
+.hebrewLook {
+    font-family: "SBL Hebrew", "Ezra SIL SR", "Ezra SIL", Cardo, "Times New Roman", David, serif;
+    font-size: 22px;
+    font-weight: 600;
+}
+.quiet-explanation {
+    color: darkred;
+    font-size: 14px;
+}
+#loading {
+    display:none;
+    margin-left: 40px;
+}
+.word-annotations {
+    font-size: small;
+}
+.ms1 {
+    margin-left: 20px;
+}
+.ms2 {
+    margin-left: 40px;
+}
+#rtnBtnR {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 70px; /* Place the button at the bottom of the page */
+    right: 400px !important; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #ccc; /* Set a background color */
+    color: black; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+}
+#toggleAllDetails {
+    position: fixed; /* Fixed/sticky position */
+    bottom: 70px; /* Place the button at the bottom of the page */
+    right: 100px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #ccc; /* Set a background color */
+    color: black; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+}
+#detailFloating {
+
+}
+#mainDisplay {
+    margin-right: 20px;
+}
+.inl {
+    display: block;
+}
+h4 {
+    font-weight: normal !important;
+}
+.bold {
+    font-weight: bold;
+}
+.oshbRef {
+    text-decoration: none;
+}
+.anchorBookTitles {
+    margin-left: 20px;
+}
+.right {
+    max-width: fit-content;
+    margin-left: auto;
+}
+.center {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+.currentBookTitles {
+    font-weight: bold;
+    font-size: large;
+    display: none;
+}
+#bookTitleAnchors {
+    overflow-x: auto !important;
+    width: 1000px !important;
+}
+.bookTitleSpan {
+    font-size: large;
+    font-weight: bold;
+}
+.noName {
+    background-color: lightblue;
+}
+.dupKeys {
+    background-color: cyan;
+}
+.synthName, .naughtyTrupName {
+    background-color: khaki;
+}
+.ktiv {
+    background-color: lightgray;
+}
+.ktivSof {
+    background-color: gray;
+}
+.wrongDiv {
+    background-color: orange;
+}
+.pairFlip {
+    background-color: lightgreen;
+}
+
+.manualEditDiv, .naughtyTrupUnicode {
+    background-color: pink;
+}
+.manualEditMugrash {
+    background-color: lightcoral;
+}
+.manualEditMisc {
+    background-color: lightpink;
+}
+.manualEditAntiPashta {
+    background-color: magenta;
+}
+.manualEditUpDown {
+    background-color: lightseagreen;
+}
+.gluePaseq {
+    background-color: coral;
+}
+.manualEditLeg {
+    background-color: cyan;
+}
+
+.hideSpan {
+    background-color: black;
+    color: white;
+}
+
+.specialComment {
+    background-color: darkmagenta;
+    color: white;
+    padding: 2px;
+    font-weight: bold;
+}
+
+.commentsDiv {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.introDiv {
+    margin-bottom: 20px;
+}
+.commentKey {
+    margin: 10px 5px 15px 5px;
+    overflow-x: auto !important;
+    width: 1000px !important;
+}
+.titleMapm {
+    /*margin-top: 10px;*/
+}
+.goRight {
+    float: right;
+}
+textarea {
+    resize: both !important;
+}
+.checkForTitle {
+    color: green;
+    font-size: 18px;
+}
+.secondaryDropdowns {
+    overflow-x: auto !important;
+    /*border: darkgreen 2px solid;*/
+    width: 600px !important;
+    height: inherit;
+}
+td.w25 {
+    width: 300px !important;
+}
+td.w35 {
+    width: 500px !important;
+}
+.w1100 {
+    width: 100% !important;
+}
+span {
+    white-space: pre;
+}
+.absoluteTop {
+    position: absolute;
+    left:    0;
+    top:   0;
+}
+.absoluteTopL20 {
+    position: absolute;
+    left:  38px;
+    top:   0;
+}
+.rounders {
+    border-radius: 50px;
+    font-weight: bold;
+    background-color: #9bfdff;
+}
+.chapsDropdown {
+    position: relative;
+}
+.versesSelectButtonDiv {
+    position: relative;
+}
+.font11 {
+    font-size: 11px;
+}
+.rtlVerse {
+    word-wrap: break-word;
+}

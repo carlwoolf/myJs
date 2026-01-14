@@ -1,0 +1,175 @@
+textarea {
+	width: 90%;
+	height: 175px;
+	spellcheck: false;
+	padding: 5px;
+}
+#_123EntryLyrics {
+	border: 1px solid black;
+	padding: 5px;
+	width: 90%;
+	height: 175px;
+	overflow: auto;
+	resize: both;
+}
+.biggg {
+	font-weight: bolder;
+	font-size: x-large;
+}
+.bibleOutputNote {
+	font-weight: bolder;
+	font-size: x-large;
+	margin-bottom: 40px;
+}
+.bibleOutputNote span {
+	background-color: cyan;
+}
+.big {
+	font-weight: bold;
+	font-size: large;
+}
+#abc {
+	height: 350px;
+}
+#abcResult {
+	height: 350px;
+}
+.abcjs-part tspan {
+	font-family: "American Typewriter", sans-serif;
+	color: green;
+}
+.abcjs-part-order {
+	color: green;
+	font-weight: bold;
+	font-size: small;
+}
+
+#rainbowTableDiv {
+	margin-bottom: 10px;
+	overflow-x: auto !important;
+	overflow-y: auto !important;
+	white-space: nowrap;
+}
+.songScroll {
+	max-height: 800px !important;
+	overflow-x: auto !important;
+	overflow-y: auto !important;
+	border: darkgreen 2px solid;}
+#rainbowTable {
+	width: 100%;
+}
+.rainbowBlock {
+	//width: 7px;
+	height: 6px;
+	font-size: small;
+	font-weight: bold;
+	text-align: center;
+}
+.shy {
+	font-size: xx-small;
+}
+.bottom-line {
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	border-left: 1px solid black;
+}
+.top-line {
+	border-top: 1px solid black;
+}
+.bold {
+	font-weight: bolder;
+}
+#macroClickDirectionsDiv {
+	margin-top: 5px;
+}
+.red {
+	font-weight: bold;
+	color: darkmagenta;
+}
+.blue {
+	font-weight: bold;
+	color: blue;
+}
+.green {
+	font-weight: bold;
+	color: forestgreen;
+}
+.orange {
+	font-weight: bold;
+	color: orangered;
+}
+.toggleInner {
+	border: blue 1px solid;
+	margin: 6px;
+	padding: 14px;
+}
+.blue_ish {
+	color: #0d6efd;
+}
+.toggleInnerVisibleInnerDiv {
+	background-color: #9bfdff;
+}
+.xxsmall {
+	font-size: xx-small;
+}
+.small {
+	font-size: x-small;
+}
+.smallish {
+	font-size: small;
+}
+textarea {
+	resize: both !important;
+}
+#rtnBtn, .rtnBtn {
+	display: none; /* Hidden by default */
+	position: fixed; /* Fixed/sticky position */
+	bottom: 5px; /* Place the button at the bottom of the page */
+	left: 5px; /* Place the button 30px from the right */
+	z-index: 99; /* Make sure it does not overlap */
+	border: none; /* Remove borders */
+	outline: none; /* Remove outline */
+	background-color: #ccc; /* Set a background color */
+	color: black; /* Text color */
+	cursor: pointer; /* Add a mouse pointer on hover */
+	padding: 15px; /* Some padding */
+	border-radius: 10px; /* Rounded corners */
+}
+#rtnBtn2 {
+	/*display: block; */
+	display: none;
+
+	position: fixed; /* Fixed/sticky position */
+	top: 50px; /* Place the button at the bottom of the page */
+	right: 40px; /* Place the button 30px from the right */
+	z-index: 99; /* Make sure it does not overlap */
+	border: none; /* Remove borders */
+	outline: none; /* Remove outline */
+	background-color: #ccc; /* Set a background color */
+	color: black; /* Text color */
+	cursor: pointer; /* Add a mouse pointer on hover */
+	padding: 15px; /* Some padding */
+	border-radius: 10px; /* Rounded corners */
+	width: 40%;
+}
+#howImportSpan, #howImport {
+	background-color: aquamarine;
+}
+#howImport {
+	display: none;
+	width: 40%;
+}
+#tooLong {
+	position: relative;
+}
+#loading {
+	position: absolute;
+	top: 5px;
+	left: 600px;
+	background-color: lightpink;
+}
+button.macroKey {
+	font-size: x-small;
+	font-weight: bold;
+	background-color: wheat;
+}

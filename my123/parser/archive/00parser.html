@@ -1,0 +1,32 @@
+<html>
+<head>
+
+  <title>Peggy0</title>
+  <!--  see: http://lab.antlr.org/-->
+  <!-- META -->
+  <!-- LinkedIn meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="../js-lib/jquery-3.6.0.min.js" type="text/javascript"></script>
+  <script type="module" src="./grammar.js"></script>
+  <script type="module" type="text/javascript">
+    import {parse, SyntaxError} from "./grammar.js";
+    $(document).ready(function() {
+      let input = '"ljl \\"  "';
+      try {
+        console.log("Input: ", input);
+        let parsed = parse(input);
+        console.log(`Parsed: '${parsed}'`);
+        $('#content').html(`String "${input}" parses to "${parsed}"`);
+      }
+      catch (e) {
+        console.log(e.toString());
+      }
+    });
+  </script>
+</head>
+<body>
+<div id="content"></div>
+</body>
+</html>
+

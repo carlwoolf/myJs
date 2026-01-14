@@ -1,0 +1,12 @@
+#parseButton {
+    margin-left: 5px;
+}
+.inputOutputDiv {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+}
+.parseText {
+    height: 150px;
+    width: 50%;
+}

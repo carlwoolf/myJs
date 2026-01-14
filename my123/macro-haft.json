@@ -1,0 +1,87 @@
+{
+"prefix":"hf",
+"name":"macro-haft",
+  "tonic": "E",
+  "mode": "minor",
+  "pairs":[
+
+    ["scope",                        "K:Em" ],
+    ["Munnach_Paseq-21_b4Mhpkh",     "p1L434 5 0 0 " ],
+    ["Munnach-21_b4Mhpkh",           "p1L43 0 " ],
+    ["Mahpakh-21",                   "L4 1 0 " ],
+    ["Mahpakh_Paseq-21",             "L4 1 0 0 " ],
+    ["Pashta-21",                    "p1L54 0 " ],
+    ["Munnach-21_b4Zqf_Qtn",         "41L6 5 0 " ],
+    ["Munnach_Paseq-21_b4Zqf_Qtn",   "41L6 5 0 0 " ],
+    ["Zaqef_Qatan-21",               "p4L5 3 0 " ],
+
+    ["Munnach-21_b4Mrkh",            "p1L43 0 " ],
+    ["Merkha-21",                    "p1 L3 0 " ],
+    ["Merkha_Paseq-21",              "p1 L3 0 0 " ],
+    ["Tipcha-21",                    "p3 L4 0 " ],
+    ["Mëayla-21",                    "p3 L4 0 " ],
+    ["Tipcha_Paseq-21",              "p3 L4 0 0 " ],
+    ["Munnach-21_b4Atnch",           "p4L3p1 p3 0 " ],
+    ["Munnach_Paseq-21_b4Atnch",     "p4 L3 p1 p3 0 0 " ],
+    ["Atnach-21",                    "p1p3 L5 4 0 " ],
+
+    ["Munnach-21_b4Drg",             "p1L43 0 " ],
+    ["Munnach-21_b4Drg_Psq",         "p1L43 0 " ],
+    ["Munnach_Paseq-21_b4Drg",       "p1L434 5 0 0 " ],
+    ["Darga-21",                     "p4L765 4 0 " ],
+    ["Darga_Paseq-21",               "p4L765 4 0 0 " ],
+    ["Tevir-21",                     "p4 @- L878  @@ 3 0 " ],
+
+    ["Munnach-21_b4Tlsh_Qtn",        "p1L43 0 " ],
+    ["Telisha_Qetana-21",            "L4  32 1  0 " ],
+    ["Munnach-21_b4Tlsh_Gdl",        "p1L43 0 " ],
+    ["Munnach_Paseq-21_b4Tlsh_Gdl",  "p1L43 0 0 " ],
+    ["Telisha_Gedola-21",            "L12345 4 0 " ],
+
+    ["Munnach-21_b4Glgl",            "p1L43 0 " ],
+    ["Galgal-21",                    "p1L3212 3 0 " ],
+    ["Qarney_Para-21",               "p1L45658765 7 4 0 " ],
+
+    ["Munnach-21_b4Pzr",             "p1L43 0 " ],
+    ["Munnach_Paseq-21_b4Pzr",       "p1L434 5 0 0 " ],
+    ["Pazer-21",                     "p1L45658765 4  0 " ],
+    ["Shalshelet-21",                "p1L4565 4565 8765 4 0 " ],
+
+    ["Munnach-21_b4Zrq",             "p1L43 0 " ],
+    ["Munnach_Paseq-21_b4Zrq",       "p1L434 5 0 0 " ],
+    ["Zarqa-21",                     "p1 L4565 4  0 " ],
+    ["Munnach-21_b4Sgl",             "p1L43 0 " ],
+    ["Munnach_Paseq-21_b4Sgl",       "p1L434 5 0 0 " ],
+    ["Segol-21",                      "p1321-7 1 0 " ],
+
+    ["Munnach_Paseq-21_b4Qdm",       "p1L434 5 0 0 " ],
+    ["Qadma-21",                     "p1 L4 p5 0 " ],
+    ["Qadma_Paseq-21",               "p1 L4 p5 0 0 " ],
+    ["Munnach-21_b4Grsh",            "p1L43 0 " ],
+    ["Geresh-21",                    "p5L6547 4 0 " ],
+
+    ["Munnach-21_b4Rv",              "p1L43 0 " ],
+    ["Legarmeh-21",                  "p1L434 5 0 " ],
+    ["Revia-21",                     "L4 313  1 0 " ],
+
+    ["Munnach-21_b4Grshym",          "p1L43 0 " ],
+    ["Gershayim-21",                 "p1L323 4 0 " ],
+
+    ["Zaqef_Gadol-21",               "p4 L7 4143 0 " ],
+
+    ["Merkha_Khefula-21",            "L5 4323453 -7 0 " ],
+    ["Yetiv-21",                     "p1 L6 5 0 " ],
+    ["Sof_Pasuq-21",                 "p4 L53 1 0 " ],
+
+    ["Tipcha-21_b4SofPrSf-21",       "L6 3 0 " ],
+    ["Sof_Pereq-21",                 "L6543 43 0 " ],
+    ["Sof_Sefer-21",                 "L456 7 6 0 " ],
+
+    ["Ktiv",                         "0 0 " ]
+
+
+
+
+
+]
+}

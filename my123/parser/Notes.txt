@@ -1,0 +1,5 @@
+
+Handle lyrics
+
+Just 2 octaves of 123's: comma and regular. High end limits enforced on derived abc indexes
+

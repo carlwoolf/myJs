@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <!-- META -->
+  <!-- LinkedIn meta -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+
+  <link href="./parse.css" rel="stylesheet" type="text/css">
+  <link href="../dynamic-css.css" rel="stylesheet" type="text/css">
+
+  <script src="../js-lib/jquery-3.6.0.min.js" type="text/javascript"></script>
+  <script type="module" src="../js-lib/peggy-4.0.3-browser/peggy.min.js"></script>
+
+  <script src="./runtimeParsing.js"></script>
+  <script src="./runtimeGrammar.js"></script>
+
+<!--  from 123 page-->
+  <script src="../abcjs-stuff.js" type="text/javascript"></script>
+  <script src="../abcjs-basic.js" type="text/javascript"></script>
+
+  <script src="../dynamic-tones.js" type="text/javascript"></script>
+  <script src="../dynamic-util.js"  type="text/javascript"></script>
+  <script src="../dynamic-data.js"  type="text/javascript"></script>
+  <script src="../dynamic-test.js"  type="text/javascript"></script>
+  <script src="../dynamic-parse.js" type="text/javascript"></script>
+  <script src="../dynamic-play.js"  type="text/javascript"></script>
+  <script src="../macros.js"       type="text/javascript"></script>
+
+  <script src="../sugar-util.js"       type="text/javascript"></script>
+  <script src="../sugar-parseTo123.js" type="text/javascript"></script>
+  <script src="../sugar-parseToAbc.js" type="text/javascript"></script>
+  <script src="../sugar-test.js"       type="text/javascript"></script>
+  <script src="../oshb/misc2.js"        type="text/javascript"></script>
+  <!--  from 123 page-->
+
+  <script type="text/javascript">
+       $(document).ready(runtimeParse);
+  </script>
+  <title>Peggy</title>
+</head>
+<body>
+<h1><a href="..">To 123 page</a></h1>
+<div class="inputOutputDiv">
+  <textarea id="_123Entry" class="parseText"></textarea>
+  <button id="parseButton"> Parse!</button>&nbsp;
+  <button id="reloadPrevious"> Load last-parsed</button>&nbsp;
+  <button id="clearInput"> Clear input</button>
+  <button id="toggleVerbose"> Toggle Verbose</button>
+</div>
+<div class="inputOutputDiv">
+  <textarea id="parseOutput" class="parseText"></textarea>
+</div>
+<div id="postOutput"></div>
+<button type="button" class="rtnBtn" id="rtnBtn" title="Go to top">Return to Top</button>
+
+</body>
+</html>
+

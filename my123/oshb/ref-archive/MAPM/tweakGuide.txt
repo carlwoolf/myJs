@@ -1,0 +1,23 @@
+## egrep "<seg.*" MAPM.xml | perl -pe 's/.*?(<seg.*?>).*/$1/' | sort -u > t1
+## egrep "<seg.*<seg" MAPM.xml | perl -pe 's/.*?(<seg.*?>).*?(<seg.*?>).*/$1 $2/' | sort -u > t2
+## egrep "<seg.*<seg.*<seg" MAPM.xml | perl -pe 's/.*?(<seg.*?>).*?(<seg.*?>).*?(<seg.*?>).*/$1 $2 $3/' | sort -u > t3
+### egrep "<seg.*<seg.*<seg.*<seg" MAPM.xml | perl -pe 's/.*?(<seg.*?>).*?(<seg.*?>).*?(<seg.*?>).*?(<seg.*?>).*/$1 $2 $3 $4/' | sort -u > t4
+
+<seg type="x-big">          // save inner content --> NO space
+<seg type="x-small">        // save inner content --> NO space
+<seg type="x-suspended">    // save inner content --> NO space
+
+<seg type="x-paseq">        // save inner content --> underscore connects to word
+<seg type="x-ketiv">        // save inner content in parens --> space
+
+<seg type="x-symbol">       // whole thing --> space
+<cell>                      // start / end tags only --> space
+
+after processing above, scream if stragglers!
+
+// not in verse
+<seg type="x-reversednun">
+<seg type="x-space">
+<row>
+<lb/>  // samekh/peh, open line
+<l level="\d">

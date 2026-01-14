@@ -1,0 +1,151 @@
+K:C %% "(auto-declared key: 'C')"
+Q: 1/4 = 100
+T: Demo Features         %% (optional)                      title of the song
+T: T: lines (like this one) show up centered above the song
+T: See the ABC Standard for more details about various headers, such as T: C: L: etc.
+T:
+C: Mozart               %% (optional)                      composer of the song
+M:4/4                   %% (optional. default is 4/4)      meter
+L:1/8                   %% (optional. default is eighth)   unit -- meter of isolated note
+%%                      %% (optional)                      'comment', rest of line ignored when parsing
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+T: T:     title of the song
+T: C:     composer of the song
+T: K:   (default is C major) key
+T: M:   (default is 4/4)      meter
+T: L:   (default is eighth)   unit
+T: P:    part title, (the following line should probably be notes)
+T: \%    'comment', rest of line ignored when parsing
+T:
+T: Some examples:
+T:
+T: T:Demo Features
+T: C:Mozart
+T: K:Am
+T: M:4/4
+T: L:1/8
+T: P:Main Theme
+W:
+W: This is the end... or is it only the... No, it's the end
+W:
+%
+ "Zero indicates a rest [0] "  "Key: [C]" z2 |
+ "W: fields show up below the song (q.v.)! 'This is the end...'"  z2 |
+ "w: lyrics under previous (notes) line! [1111] 'he-llo...' "  CCCC |
+w: he-llo he-llo                                                                                        |
+ "regular \ home octave simply uses digits [12]"  CD |
+ "low octave uses commas [1,2,]"  C,D, |
+ "a higher octaves uses tick or plus [1'2'] [+1+2]"  cd cd |
+ "transpose down an octave with [1,2, is @- 12]  "  C,D,  C,D, |
+ "transpose (back) with @+ up [@+ 12 is 12]"   cd cd |
+ "only go up so far [@+@+@+@+@+ 12]"       c'''d''  |
+ "reset octaves [@+@+@+@+@+ @@ 11]"        CC |
+ "similarly, only go down so far [@-@-@-@-@- 12]"       C,D, |
+ "only go up so far with pluses or ticks [1'''''''''''' +++++++++++2]"   c'''2 d''2 |
+ "transpose down just one note [1,-1  -1'1]"   C,C, CC |
+ "only go down so far with minuses [----2]"   D,2 |
+ "sharp [^2]"  ^D2 |
+ "flat [_3]"  _E2 |
+ "natural irrespective of scale [!courtesy!=3 3 =3]"  !courtesy!=E2 E2 =E2 |
+K:D
+ "natural irrespective of scale [!courtesy!=3 3 =3] (cf  D major)"  "Key: [D]" !courtesy!=F2 ^F2 =F2 |
+K:C
+%
+ "Length: Isolated notes / rests are 2 units (default 1/4) [ 1 ]"  "Key: [C]" C2 |
+P: Notes in a cluster are 1 unit each (default 1/8)[ 12 ]
+ CD |
+P: An isolated dotted or slashed note is treated as one unit [ .1 1/ ]
+ C C |
+ "four 16s [.1234]"  C/D/E/F/ |
+ "dots keep halving [.12.3456]"  C/D/E//F//G//A// |
+ "o reverses dot [.12o3]"  C/D/E |
+ "duration modifiers: [1a 1(lowercase B) 1c]"  C1 C2 C3 |
+P: More modifiers: slashes [ 1/ 1// 11/ 11//  ]
+ C C/ CC/ CC// |
+%
+P: 'angle' abbreviations
+ "short (16th in 4\4) - long  [ 1<2 ]"  C1/D3/2 |
+M:6/8
+ "short (8th in 6\8) - long  [ 1<2 ]"  C1D2 |
+M:4/4
+ "long (dotted-eighth in 4\4) - short  [ 1>2 ]"  C3/2D1/ |
+M:6/8
+ "long (quarter in 6\8) - short  [ 1>2 ]"  C2D1 |
+P: Angle-slash to use 4/4 values even in triplet time  [ 1>/2  3</4 ]"
+ C>D E<F |
+M:4/4
+ "short long short [1<2>3]"  | C/D1E/ |
+P: tuples: 4 (D), 7 (G), 3 (C) -- [(D 1234 (G 1234567 (C 123]
+ | (4 CDEF (7 CDEFGAB (3 CDE |
+ "single quote after space dot or o repeats note [ 1 ' .'o' ]"  (C2 (C2) C/)C |
+ "also immediately after another one [ 1.''  '.'2 ]"  CC/(C/ C)C/D/ |
+ "auto-slur for single quote after space [ 1 ' 2 'b 3 'a ] "  (C2 C2) (D2 D2) (E2 E1) |
+ "back-tick instead of quote omits auto-slur [ 1 ' 2 ` ] "  (C2 C2) D2 D2 |
+ "works even with 'angle sugar' [ 1<' 0 2>' 0 3<'>' ] "  C1/C3/2 z2 D3/2D1/ z2 E/E1E/ |
+ "more sugar: 2' equals 9 [ 2'9 ]"  dd |
+ "more sugar: 1' equals 8 [ 1'8 ]"  cc |
+ " Brackets make the first tick an octave, vs repeated note [1{1'}' ]"  Ccc |
+P: Bang-enclosed items from the ABC standard DS, eg -- [ !D.S.! 1 !segno! 2]
+ !D.S.! C2 !segno! D2 |
+P: Bangs are not parsed in 123, but simply 'handed' to ABC. Another one:
+ "[!trill!] 3 ]"  !trill! E2 |
+P: Beware of ABC pass-thru's (PDF bug: 'b' in AaBbCc can show as flat)
+ "Eg, [1 meat is raw 1 B's: AaBbCc]"  " -- some letters show up as notes on the music sheet"  C2 meat is raw C2 B's: AaBbCc |
+ "Can escape \"quotes\" yeah ((but for some reason not regular / forward slashes))"  z2 |
+P: But can use slashes // / in P: directives
+ "(This is a) quote beginning with '(', vs a digit 1-7 (so, a non-chord)"  C2 | D2 |
+K:C
+ "C (arabic 1) at beginning of quote (\"1...\") becomes C in key of C" "Key: [C]" C2 | DE |
+ "C (arabic 1) at beginning of quote (\" 1...\") (leading whitespace is ignored)" C2 | DE |
+ "C (roman I) at beginning of quote (\"I...\") becomes C at beginning of quote in key of C" C2 | DE |
+ "Cm (Im) at beginning of quote (\"Im...\") with added 'm' after arabic or capital roman to get minor" C2 | DE |
+ "Cm (lowercase 'i', no 'm') at beginning of quote (\"i...\") in C becomes Cm" C2 | DE
+P: Sharp or flat keys with K directive -- say eg K:D#, not K:^D. K:Db, not K:_D
+ z2
+K:C#m
+ " eg, K:C#m [\"i\" 1] should say '\"C#m\"' over a C#"  "Key: [C#m]" z2 "C♯m" C2
+K:Ab
+ " K:Ab [\"1\" 1] should say '\"A♭\"' over an A♭"  "Key: [Ab]" z2 "A♭" A2
+K:C
+ "Part directives ( 'P:...' ) -- should be followed by 'notes' line"  "Key: [C]" z2 |
+ "-- If multiple P: in succession, only the last shows. E.g., no Part B here, but it's in the 123"  z2 |
+P: Part B
+P: Part C
+ "Endings, eg 1st and 2nd '[1 23 | 0 [2 34 ]'"  z2 z2 z2 [1 DE | z2 [2 EF ] ||
+P: Scales can be major, minor, frey (freygish) or mish (misheberakh)
+K:Cm
+ " K:Cm .1234 .5432 1   "  "Key: [Cm]" C/D/E/F/ G/F/E/D/ C2 |
+P: Note: frey and mish get transformed into ABC's Phr(ygian) and Dor(ian)
+K:C Phr =E =E
+ " K:C frey =E  .1234 .5432 1"  "Key: [C Phr =E]" C/D/E/F/ G/F/E/D/ C2 |
+K:C Dor ^F
+ " K:C mish  .1234 .5432 1"  "Key: [C Dor ^F]" C/D/E/F/ G/F/E/D/ C2 |
+K:C Phr =E
+ " K:C frey (no thirds mentioned in 123)  .1234 .5432 1"  "Key: [C Phr =E]" C/D/E/F/ G/F/E/D/ C2 |
+K:C
+P: Multi stops (or spelled-out chords): '[58]d    [58]/  [468]c'
+ "Key: [C]" [Gc]4 [Gc]/ [FAc]3 |
+ " (does not recognize 'isolated') [468] but can say '[468]b' "  [FAc] [FAc]2 ||
+ " And first duration prevails if inside the bracket '[4d6a8]'"  [F4Ac] ||
+ "A note following (no space) a chord gets absorbed, its duration prevails '[123]8c'"  [C3DEc3] ||
+P: FYI, the infinite shuffle-play separately shuffles between the double bars:
+ || CEG || C/D/E/F/ G/A/B/c/ || ECA ||
+P: Some T'amim / Trup macros
+ "(double colon macros)"  "[5B-Mahpakh-21]" LGC z2 | "[5B-Pashta-21]" "<[" ">]" CLGE z2 | "[5B-Munnach-21_b4Zqf_Qtn]" LEDG z2 | "[5B-Zaqef_Qatan-21]" "<[" ">]" GLED z2 |
+ "(single colon macros)"   LGC z2 |  "<[" ">]" CLGE z2 |  LEDG z2 |  "<[" ">]" GLED z2 |
+ "Brackets are used in macros, but you can use them anywhere [p1d] [p1]"  "<[" ">]" C4 "<[" ">]" C2 ||
+ "Comment centered before a note [q\"1st one\"2 0 | q\"2nd one\" 2 0]"  "<1st one" D2 z2 | "<2nd one" D2 z2 |
+P: Some macros for spelled-out chords
+K:C
+ "[sys-1Chord]" "Key: [C]" [E,G,C,] "[sys-2Chord]" [F,A,D,] "with added 2 [3Chord::2]"  "[sys-3Chord]" [G,B,E,D]
+ "[sys-4Chord]" [A,C,F,] "[sys-5Chord]" [B,D,G,] "[sys-6Chord]" [C,E,A,] "[sys-7Chord]" [D,F,B,]
+K:B
+ "[sys-1Chord]" "Key: [B]" [D,F,B,] "[sys-2Chord]" [E,G,C] "with added 2"  "[sys-3Chord]" [F,A,Dc]
+ "[sys-4Chord]" [G,B,E] "[sys-5Chord]" [A,C,F] "[sys-6Chord]" [B,D,G] "[sys-7Chord]" [C,E,A]
+K:C
+ "Shorthand: qXX for courtesies. ♮, ♯, ♭: [qNN 1 qSS 2 qFF 3]"  "<(♮)" "Key: [C]" C2 "<(♯)" D2 "<(♭)" E2 ||
+P: Inline key-changes (starting from key of C)
+K:C
+ "(1234)"  "Key: [C]" CDEF[K:C Phr =E]  "C frey"  "(1234)"  "Key: [C Phr =E]" CDEF [K:Dm]  "(1234)"  "Key: [Dm]" DEFG [K:D Dor ^G]  "D mish"  "(1234)"  "Key: [D Dor ^G]" DEFG |
+[K:C#m]  "(1234)"  "Key: [C#m]" CDEF [K:Ebm]  "(1234)"  "Key: [Ebm]" EFGA |
+ "End of demo..."  E2 e2 E2 ||

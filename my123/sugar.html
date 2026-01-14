@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <link href="dynamic-css.css" rel="stylesheet" type="text/css">
+
+    <!--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>-->
+    <script src="js-lib/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript" src="dynamic-tones.js"></script>
+    <script type="text/javascript" src="dynamic-util.js"></script>
+    <script type="text/javascript" src="dynamic-data.js"></script>
+    <script type="text/javascript" src="dynamic-test.js"></script>
+    <script type="text/javascript" src="dynamic-parse.js"></script>
+    <script type="text/javascript" src="dynamic-play.js"></script>
+
+    <script type="text/javascript" src="sugar-util.js"></script>
+    <script type="text/javascript" src="sugar-parseTo123.js"></script>
+    <script type="text/javascript" src="sugar-parseToAbc.js"></script>
+    <script type="text/javascript" src="sugar-test.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            setup();
+            setup2();
+
+            $('.clearOutput').on("click", function() {tst.clearTheClass('output')});
+            $('.clearComplaint').on("click", function() {tst.clearTheClass('oopsie')});
+
+            tst.suite();
+        });
+    </script>
+
+</head>
+
+
+<body>
+<div>
+    <div class="output" id="output"></div>
+
+    <hr/>
+    <div><button class="clearOutput">Clear Output</button></div>
+    <div class="oopsie" id="oops"></div>
+    <div><button class="clearComplaint">Clear Oopsies</button></div>
+</div> <!-- mainDiv -->
+</body>
+</html>
