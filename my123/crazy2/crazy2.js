@@ -8,7 +8,8 @@ async function setupCrazy2() {
     storageKeys();
     clearStorage();
 
-    setupWinners();
+    // if using ck.priorMacs instead of winners
+    //setupWinners();
     resetTooltips();
 
     collectMacros();

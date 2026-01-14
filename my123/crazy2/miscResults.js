@@ -14,7 +14,10 @@
 msc.sample = {};
 
 function collectMacros() {
-    ck.macs = [
+    ck.macs = ck.priorMacs;
+    // if using ck.priorMacs instead of winners
+        /****
+        [
         { "x": 1, "seq": "R,-F,-F,-R,-F,-F",         "label": "_sf_ks180_hs120" },
         { "x": 1, "seq": "R,-U,-U,-R,-U,-U",         "label": "_sw_ks180_hs120" },
         { "x": 2, "seq": "F,R,U",                    "label": "__sr90_6c180" },
@@ -34,6 +37,7 @@ function collectMacros() {
     ];
     areInitialsAlsoWinners();
     winnerQueries(ck.macs);
+         *****/
 }
 
 msc.applies = [
@@ -259,10 +263,6 @@ function setupMscWinners() {
                         .concat(_wins_Oy)
                         .concat(_wins_Go);
     }
-    // msc.winners.forEach((winner,index) => {
-    //     winner.r.score = winner.score;
-    //     winner.r.seq = winner.seq;
-    // })
 }
 function applyFilters(options) {
     if (typeof options === 'function') {
