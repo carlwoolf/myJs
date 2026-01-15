@@ -54,7 +54,7 @@ function showBoolsStatus() {
 }
 async function reset(e) {
     resetRuf();
-    clearRuf2hues();
+    //clearRuf2hues();
 
     resetBooleans()
 
@@ -136,25 +136,33 @@ function setupButtons() {
             unfreeze();
         }
     });
-    $('#macro, #macroXtra').on('change', async function(e) {
-
-        let val = $(e.target).val();
-        let minus = false; // cannot detect shift during onChange()
-
-        if ($('#eagerMacro').is(':checked')) {
-            if (frozen()) return;
-            freeze();
-            //appendInput(val);
-            //let label = reduceMaybeNegifyLabel(val, minus);
-            await loadAndDoMovesIfThere(val, minus);
-            unfreeze();
-        }
-        else {
-            appendInput(val);
-        }
-    });
+    $('#macro').on('change', macroChange);
 
     boldHfToggle();
+    $('#solveWithMacro').click();
+}
+async function macroChange(e) {
+    let val = $(e.target).val();
+    let minus = false; // cannot detect shift during onChange()
+
+    if ($('#eagerMacro').is(':checked')) {
+        if (frozen()) return;
+        freeze();
+        //appendInput(val);
+        //let label = reduceMaybeNegifyLabel(val, minus);
+        await loadAndDoMovesIfThere(val, minus);
+        unfreeze();
+    }
+    else if ($('#solveWithMacro').is(':checked')) {
+        setInput(val);
+        $('#hueVariantsButton').click();
+    }
+    else {
+        appendInput(val);
+    }
+}
+function setInput(val) {
+    $('#moveSequence').val(val);
 }
 function moveSequenceChanged(e) {
    let newVal = $('#moveSequence').val();

@@ -74,10 +74,10 @@
                         <button class="p-0" id="clearHistory">History</button>
                         <button class="p-0" id="clearMoves">Input</button>
                         <button class="p-0" id="clearArrays">Graphs</button>
+                        <button id="resetButton" > ( All 4 )</button><br/>
                     </span>
                 </div>
 
-                <button id="resetButton" >Reset</button><br/>
                 <button class="mt-1 ms-4" id="toggleRufInput"
                          data-toggle="tooltip" data-placement="left"
                         title="Toggle between displaying colors (gy) and directions (r)"
@@ -103,10 +103,14 @@
                         custom-class="tooltip">DoMac</button>
                 <input type="checkbox" id="eagerMacro"
                         data-toggle="tooltip" data-placement="left"
-                       title="Checkmark to perform as soon as item is selected"/>
+                       title="Check to perform as soon as item is selected"/>
                 <select id="macro">
                     <option disabled="true" selected>Macro</option>
-                </select><br/>
+                </select>
+                <input type="checkbox" id="solveWithMacro"
+                       data-toggle="tooltip" data-placement="left"
+                       title="Check to display macro and hues"/>
+                <br/>
 <!--                <button class="mt-1 pe-1" for="macroXtra" id="lMacroXtra"-->
 <!--                        data-toggle="tooltip" data-placement="left"-->
 <!--                        title="Shift-click to reverse the macro sequence. Alt-click to add macro to input field.-->
@@ -121,7 +125,7 @@
                         custom-class="tooltip">DoHist</button>
                 <input type="checkbox" id="eagerHistory"
                         data-toggle="tooltip" data-placement="left"
-                       title="Checkmark to perform as soon as item is selected"/>
+                       title="Check to perform as soon as item is selected"/>
                 <select id="history">
                     <option disabled="true" value="placeholder" selected>history</option>
                     <!--            <option value="clearHistory">Clear History</option>-->

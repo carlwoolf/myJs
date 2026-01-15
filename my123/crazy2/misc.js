@@ -213,7 +213,11 @@ function rufSeqToAllHues(rufSeq) {
     let target = $('#ruf2hues');
     let shortSeqStr = rufSeq.replace(/\[.*?]/g,'');
     let currentRuf = $('#whichRuf').val();
-    target.append($(`<div>Current RUF: ${rufSeq}</div>`));
+    let currentRufDiv = $(`<div>Current RUF: ${rufSeq}</div>`);
+    let clearCurrentRufs = $('<button id="currentRufHues"> Clear</button>');
+    currentRufDiv.append(clearCurrentRufs);
+    clearCurrentRufs.on('click', function() {target.empty();})
+    target.append(currentRufDiv);
     for (let hue of [
         "GyGoOy",
         "GyOyGo",
@@ -226,14 +230,11 @@ function rufSeqToAllHues(rufSeq) {
         let hueSeq = ruf2hue(shortSeqStr);
         let oneRufVariant = $(`<div class="hueVariant"
             data-toggle="tooltip" data-placement="left"
-            title="Click to perform a given sequence. Shift for minus. Meta to replace input. Alt to append to input field"
+            title="Click to display a given sequence. Shift for inverse sequence. Alt to append to input field"
             custom-class="tooltip">${hue}: ${hueSeq}</div>`);
         oneRufVariant.on('click', function(e) {
             let localHueSeq = hueSeq;
             ck.hueVsRuf = true;
-            if (e.metaKey) {
-                $('#moveSequence').val('');
-            }
             if (e.shiftKey) {
                 localHueSeq = minusifySeqStr(localHueSeq);
             }
@@ -241,7 +242,7 @@ function rufSeqToAllHues(rufSeq) {
                 appendInput(localHueSeq);
             }
             else {
-                performAndHistorizeSequence(localHueSeq, e.shiftKey, true);
+                setInput(localHueSeq);
             }
             $('.hueVariant').removeClass('big');
             oneRufVariant.addClass('big');

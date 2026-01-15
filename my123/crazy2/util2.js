@@ -127,12 +127,12 @@ function ruf2hue(input) {
 }
 function appendInput(val) {
     val = useHueVsRuf(val);
-    $('#moveSequence').val($('#moveSequence').val() + ' ' + val);
+    setInput($('#moveSequence').val() + ' ' + val);
     //showHueVariants();
 }
 function loadInput(val) {
     val = useHueVsRuf(val);
-    $('#moveSequence').val(val);
+    setInput(val);
     showHueVariants();
 }
 function boldHfToggle() {
