@@ -8,8 +8,8 @@ async function setupCrazy2() {
     storageKeys();
     clearStorage();
 
-    // if using ck.priorMacs instead of winners
-    //setupWinners();
+    // using ck.priorMacs instead of winners
+    setupWinners();
     resetTooltips();
 
     collectMacros();
@@ -154,7 +154,8 @@ async function macroChange(e) {
         unfreeze();
     }
     else if ($('#solveWithMacro').is(':checked')) {
-        setInput(val);
+        let val4hue = $(e.target).find(':selected').html().replace(/.* /,'');
+        setInput(val4hue);
         $('#hueVariantsButton').click();
     }
     else {

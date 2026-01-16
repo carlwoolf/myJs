@@ -20,12 +20,12 @@ function collectMacros() {
         [
         { "x": 1, "seq": "R,-F,-F,-R,-F,-F",         "label": "_sf_ks180_hs120" },
         { "x": 1, "seq": "R,-U,-U,-R,-U,-U",         "label": "_sw_ks180_hs120" },
-        { "x": 2, "seq": "F,R,U",                    "label": "__sr90_6c180" },
-        { "x": 4, "seq": "F,R,U",                    "label": "__sr180" },
-        { "x": 1, "seq": "R,U,F,F,U,-R,-F,-U,-U,-F", "label": "f2_h15_vp" },
-        { "x": 1, "seq": "R,F,U,U,F,-R,-U,-F,-F,-U", "label": "f2_h15_zp" },
-        { "x": 1, "seq": "R,R,U,R,R,-F,-F,-U,-F,-F", "label": "f2_h17_vw" },
-        { "x": 1, "seq": "R,U,R,R,-F,-F,-U,-F,-F,R", "label": "f2_h17_zw" },
+        { "x": 2, "seq": "F,R,U",                    "label": "__s90_6c180" },
+        { "x": 4, "seq": "F,R,U",                    "label": "__s180" },
+        // ??? // { "x": 1, "seq": "R,U,F,F,U,-R,-F,-U,-U,-F", "label": "f2_h15_vp" },
+        // ??? // { "x": 1, "seq": "R,F,U,U,F,-R,-U,-F,-F,-U", "label": "f2_h15_zp" },
+        // ??? // { "x": 1, "seq": "R,R,U,R,R,-F,-F,-U,-F,-F", "label": "f2_h17_vw" },
+        // ??? // { "x": 1, "seq": "R,U,R,R,-F,-F,-U,-F,-F,R", "label": "f2_h17_zw" },
         //{ "x": 2, "seq": "R,-U,-R,U",                "label": "f0_8c180" },
         //{ "x": 1, "seq": "R,U,R,-U,-R,-R,-U,-R,U,R", "label": "f2_h13_vf" },
         //{ "x": 1, "seq": "R,R,U,R,-U,-R,-R,-U,-R,U", "label": "f2_h13_zf" },
@@ -36,8 +36,8 @@ function collectMacros() {
         //{ "x": 1, "seq": "R,-U,R,-U,R,-U,-F,-U,R,F", "label": "f2_h4s_RL_vz" },
     ];
     areInitialsAlsoWinners();
-    winnerQueries(ck.macs);
          *****/
+    winnerQueries(ck.macs);
 }
 
 msc.applies = [
@@ -97,13 +97,9 @@ msc.applies = [
            ));
     },
     // no hits for 12, but 4 and 8 are good
-    function __s4_180(w) {
+    function __hs_180(w) {
         return w.r.score == 4 && w.r.nsR==4 && w.r.rBreakdown[180]
                 && w.r.rBreakdown[180].includes('TTr') && w.r.rBreakdown[180].includes('Dgw');
-    },
-    function __s8_180(w) {
-        return w.r.score == 8 && w.r.nsR==8 && w.r.rBreakdown[180]
-                && w.r.rBreakdown[180].includes('TTw') && w.r.rBreakdown[180].includes('TTb');
     },
     // no hits
     function __s12_180(w) {
@@ -116,20 +112,20 @@ msc.applies = [
     function __k8_180(w) {
         return w.r.score == 8 && w.r.nkR==8 && w.r.rBreakdown[180];
     },
-    function __sr240(w) {
-        return (
-            w.r.score == 8 && w.r.nsR == 8 && w.r.rBreakdown[-120] &&
-            w.r.rBreakdown[-120].includes('Dow') &&
-            w.r.rBreakdown[-120].includes('Dbo') &&
-            w.r.rBreakdown[-120].includes('TTw') &&
-            w.r.rBreakdown[-120].includes('TTb')
-        );
-    },
-    function __sr120(w) {
-        return w.score==8 && w.r.nsR==8;
-    },
+    // function __s240(w) {
+    //     return (
+    //         w.r.score == 8 && w.r.nsR == 8 && w.r.rBreakdown[-120] &&
+    //         w.r.rBreakdown[-120].includes('Dow') &&
+    //         w.r.rBreakdown[-120].includes('Dbo') &&
+    //         w.r.rBreakdown[-120].includes('TTw') &&
+    //         w.r.rBreakdown[-120].includes('TTb')
+    //     );
+    // },
+    // function __s120(w) {
+    //     return w.score==8 && w.r.nsR==8;
+    // },
     // ad hoc version is fewer moves
-    // function __sr180(w) {
+    // function __s180(w) {
     //     return (
     //         w.r.score == 8 && w.r.nsR == 8 && w.r.rBreakdown[180] &&
     //         w.r.rBreakdown[180].includes('Dow') &&
@@ -240,7 +236,8 @@ function winnerQueries(collector) {
     for (f of msc.applies) {
         let name = f.name;
         window[name] = f;
-        applyFilters({collector: collector, filters: f, label: name});
+        // using ck.priors
+        //applyFilters({collector: collector, filters: f, label: name});
     }
 }
 
@@ -389,7 +386,7 @@ function sortAndPresentMacros() {
         }
 
         let [optDisplay, optVal, label] = macroToOptValAndMap(macro);
-        let whichSelect = label[0] == 'x' ? $('#macroXtra') : $('#macro');
+        let whichSelect = $('#macro');
         if (!macro.hide) {
             addOption(whichSelect, optDisplay, optVal);
         }
@@ -402,14 +399,6 @@ function sortAndPresentMacros() {
     //     let displayDiv = $('#whichMacro');
     //     displayDiv.html($(e.target).find('option:selected').html().replace(/].*/, "]"));
     // });
-
-    selectXtra.prepend($('<option class="placeholder" disabled="true">extra macro</option>'));
-    selectXtra.find('.placeholder').attr('selected', true);
-    // selectXtra.on('change', function(e) {
-    //     let displayDiv = $('#whichMacroXtra');
-    //     displayDiv.html($(e.target).find('option:selected').html().replace(/].*/, "]"));
-    // });
-
 }
 function addOption(target, display, val) {
     let option = $(`<option value="${val}">${display}</option>`);

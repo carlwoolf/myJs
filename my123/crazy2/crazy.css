@@ -59,7 +59,7 @@ button {
 #lMacro, #lSequence {
     background-color: #9bfdff;
 }
-#macro, #macroXtra, #history, #whichRuf {
+#macro, #history, #whichRuf {
     width: 50% !important;
 }
 #moveSequence {

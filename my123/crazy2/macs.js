@@ -17,32 +17,27 @@ ck.priorMacs = [
     {
         "x": "2",
         "seq": "R,-F,U,-R,F,-U",
-        "label": "__s4_180"
+        "label": "__hs_180"
     },
-    {
-        "x": "2",
-        "seq": "R,-F,-R,U,-F,-R,U,-R",
-        "label": "__s8_180"
-    },
-    {
-        "x": "1",
-        "seq": "R,-F,-F,-F,-F,R,R,R",
-        "label": "__sr120"
-    },
+    // {
+    //     "x": "1",
+    //     "seq": "R,-F,-F,-F,-F,R,R,R",
+    //     "label": "__s120"
+    // },
     {
         "x": 4,
         "seq": "F,R,U",
-        "label": "__sr180"
+        "label": "__s180"
     },
-    {
-        "x": "1",
-        "seq": "R,-F,-F,-F,-F,-R,F,F,F,F",
-        "label": "__sr240"
-    },
+    // {
+    //     "x": "1",
+    //     "seq": "R,-F,-F,-F,-F,-R,F,F,F,F",
+    //     "label": "__s240"
+    // },
     {
         "x": 2,
         "seq": "F,R,U",
-        "label": "__sr90_6c180"
+        "label": "__s90_6c180"
     },
     {
         "x": "3",
@@ -79,24 +74,24 @@ ck.priorMacs = [
         "seq": "R,-U,-U,-R,-U,-U",
         "label": "_sw_ks180_hs120"
     },
-    {
-        "x": 1,
-        "seq": "R,U,F,F,U,-R,-F,-U,-U,-F",
-        "label": "f2_h15_vp"
-    },
-    {
-        "x": 1,
-        "seq": "R,F,U,U,F,-R,-U,-F,-F,-U",
-        "label": "f2_h15_zp"
-    },
-    {
-        "x": 1,
-        "seq": "R,R,U,R,R,-F,-F,-U,-F,-F",
-        "label": "f2_h17_vw"
-    },
-    {
-        "x": 1,
-        "seq": "R,U,R,R,-F,-F,-U,-F,-F,R",
-        "label": "f2_h17_zw"
-    }
+    // {
+    //     "x": 1,
+    //     "seq": "R,U,F,F,U,-R,-F,-U,-U,-F",
+    //     "label": "f2_h15_vp"
+    // },
+    // {
+    //     "x": 1,
+    //     "seq": "R,F,U,U,F,-R,-U,-F,-F,-U",
+    //     "label": "f2_h15_zp"
+    // },
+    // {
+    //     "x": 1,
+    //     "seq": "R,R,U,R,R,-F,-F,-U,-F,-F",
+    //     "label": "f2_h17_vw"
+    // },
+    // {
+    //     "x": 1,
+    //     "seq": "R,U,R,R,-F,-F,-U,-F,-F,R",
+    //     "label": "f2_h17_zw"
+    // }
 ];
