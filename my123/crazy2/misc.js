@@ -211,9 +211,9 @@ async function debugTrySequence(seqStr) {
 function rufSeqToAllHues(rufSeq) {
     clearRuf2hues();
     let target = $('#ruf2hues');
-    let shortSeqStr = rufSeq.replace(/\[.*?]/g,'');
+    let shortSeqStr = rufSeq; // .replace(/\[.*?]/g,'');
     let currentRuf = $('#whichRuf').val();
-    let timesPrefix = rufSeq.replace(/ .*/,'');
+    let timesPrefix = ''; // rufSeq.replace(/ .*/,'');
     let currentRufDiv = $(`<div>Current RUF: ${rufSeq}</div>`);
     let clearCurrentRufs = $('<button id="currentRufHues"> Clear</button>');
     currentRufDiv.append(clearCurrentRufs);

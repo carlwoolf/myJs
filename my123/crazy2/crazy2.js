@@ -154,7 +154,7 @@ async function macroChange(e) {
         unfreeze();
     }
     else if ($('#solveWithMacro').is(':checked')) {
-        let val4hue = $(e.target).find(':selected').html().replace(/.* /,'');
+        let val4hue = $(e.target).find(':selected').html().replace(/([\d+]x):(.*)/, "$2 [$1]"); // .replace(/.* /,'');
         setInput(val4hue);
         $('#hueVariantsButton').click();
     }

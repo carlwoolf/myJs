@@ -419,9 +419,10 @@ function showHueVariants() {
     let result = $('#moveSequence').val();
     if (result) {
         result = result
-            .replace(/.*? /, '')
-            .replace(/(\d+x):/, "[$1] ")
-            .replace(/,/g, ' ');
+            .replace(/\.\d+m/, '');
+        //     .replace(/.*? /, '')
+        //     .replace(/(\d+x):/, "[$1] ")
+        //     .replace(/,/g, ' ');
 
         showHueVariantsHelper(result);
     }
