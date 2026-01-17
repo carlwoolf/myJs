@@ -24,11 +24,11 @@
 <!--    <script src="gptRubik.js" type="text/javascript"></script>-->
     <script src="matrix.js" type="text/javascript"></script>
     <script src="matrixAngles.js" type="text/javascript"></script>
-    <script src="../crazy2data/wins_Go.js" type="text/javascript"></script>
-    <script src="../crazy2data/wins_Oy.js" type="text/javascript"></script>
-    <script src="../crazy2data/winsGo.js" type="text/javascript"></script>
-    <script src="../crazy2data/winsGy.js" type="text/javascript"></script>
-    <script src="../crazy2data/winsOy.js" type="text/javascript"></script>
+<!--    <script src="../crazy2data/wins_Go.js" type="text/javascript"></script>-->
+<!--    <script src="../crazy2data/wins_Oy.js" type="text/javascript"></script>-->
+<!--    <script src="../crazy2data/winsGo.js" type="text/javascript"></script>-->
+<!--    <script src="../crazy2data/winsGy.js" type="text/javascript"></script>-->
+<!--    <script src="../crazy2data/winsOy.js" type="text/javascript"></script>-->
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -39,10 +39,80 @@
 </head>
 <body>
     <div class="container" id="mainContainer">
-        <div class="ms-1 mt-1 mb-0 me-0 solved row">
-            <div class="svgDisplay2 col-3 p-0" id="svg_gySolved"></div>
-            <div class="svgDisplay2 col-3 p-0" id="svg_oySolved"></div>
-            <div class="svgDisplay2 col-3 p-0" id="svg_goSolved"></div>
+        <div class="row">
+            <div class=" mt-4       col-10 p-0 xtraControls">
+                <div id="ruf2hues"></div>
+                <div id="clearButtons">Clear:
+                <span id="clearButtonsSpan">
+                        <button class="p-0" id="resetTrackingButton">Tracks</button>
+                        <button class="p-0" id="clearHistory">History</button>
+                        <button class="p-0" id="clearMoves">Input</button>
+                        <button class="p-0" id="clearArrays">Graphs</button>
+                        <button id="resetButton" > ( All 4 )</button><br/>
+                    </span>
+            </div>
+
+            <button class="mt-1 ms-4" id="toggleRufInput"
+                    data-toggle="tooltip" data-placement="left"
+                    title="Toggle between displaying colors (gy) and directions (r)"
+                    custom-class="tooltip">
+                <span class="tFH" id="tRuf">R</span>/<span class="tFH" id="tHue">gy</span></button>
+            <button class="mt-1" for="moveSequence" id="lSequence"
+                    data-toggle="tooltip" data-placement="left"
+                    title="Shift-click to reverse the move sequence">Go!</button>
+            <button class="mt-1" id="hueVariantsButton"
+                    data-toggle="tooltip" data-placement="left"
+                    title="Click to load concise hued display of selected macro">HueVariants</button><br/>
+            <input class="mt-1 w-75" type="text" id="moveSequence"
+                   data-toggle="tooltip" data-placement="left"
+                   autocomplete="off"
+                   title="Alt-click to popup full content"
+                   custom-class="tooltip"
+                   placeholder="Eg: 'r' or 'gy,-go'" />
+            <br/>
+            <button class="mt-1" for="macro" id="lMacro"
+                    data-toggle="tooltip" data-placement="left"
+                    title="Shift-click to reverse the macro sequence. Alt-click to add macro to input field.
+                                Meta-click to show macro as one move"
+                    custom-class="tooltip">DoMac</button>
+            <input type="checkbox" id="eagerMacro"
+                   data-toggle="tooltip" data-placement="left"
+                   title="Check to perform as soon as item is selected"/>
+            <select id="macro">
+                <option disabled="true" selected>Macro</option>
+            </select>
+            <input type="checkbox" id="solveWithMacro"
+                   data-toggle="tooltip" data-placement="left"
+                   title="Check to display macro and hues"/>
+            <br/>
+            <!--                <button class="mt-1 pe-1" for="macroXtra" id="lMacroXtra"-->
+            <!--                        data-toggle="tooltip" data-placement="left"-->
+            <!--                        title="Shift-click to reverse the macro sequence. Alt-click to add macro to input field.-->
+            <!--                                Meta-click to show macro as one move"-->
+            <!--                        custom-class="tooltip">DoExtraMac</button>-->
+            <!--                <select id="macroXtra">-->
+            <!--                    <option disabled="true" selected>Extra Macro</option>-->
+            <!--                </select><br/>-->
+            <button class="mt-1" for="history" id="lHistory"
+                    data-toggle="tooltip" data-placement="left"
+                    title="Shift-click to reverse the move sequence"
+                    custom-class="tooltip">DoHist</button>
+            <input type="checkbox" id="eagerHistory"
+                   data-toggle="tooltip" data-placement="left"
+                   title="Check to perform as soon as item is selected"/>
+            <select id="history">
+                <option disabled="true" value="placeholder" selected>history</option>
+                <!--            <option value="clearHistory">Clear History</option>-->
+            </select>
+            <div class="mt-1"><span id="reportDiffs"></span></div>
+        </div>
+        </div>
+        <hr/>
+        <div class="ms-1 mt-0 mb-0 me-0 current row">
+            <!-- in bs5 'col-3' means 25%. simple col as last works around bug of "4x3 < 12"-->
+            <div class="svgDisplay2 col-3 p-0" id="svg_gy"></div>
+            <div class="svgDisplay2 col-3 p-0" id="svg_oy"></div>
+            <div class="svgDisplay2 col-3 p-0" id="svg_go"></div>
             <div class="            col mt-2 p-0 xtraControls">
                 <button id="toggleMovesDiffBtn">    +/- MoveDiffs</button>  <span id="moveDiffsBool"></span><br/>
                 <button id="toggleBothDiffBtn">   +/- BothDiffs</button> <span id="bothDiffsBool"></span><br/>
@@ -58,80 +128,12 @@
                     <option value="GyOyGo">         GyOyGo</option>
                 </select><br>
                 <div class="hfBold" id="rufRLcurrent"></div>
-                <br/>
-                <div id="ruf2hues"></div>
             </div>
         </div>
-        <div class="ms-1 mt-0 mb-0 me-0 current row">
-            <!-- in bs5 'col-3' means 25%. simple col as last works around bug of "4x3 < 12"-->
-            <div class="svgDisplay2 col-3 p-0" id="svg_gy"></div>
-            <div class="svgDisplay2 col-3 p-0" id="svg_oy"></div>
-            <div class="svgDisplay2 col-3 p-0" id="svg_go"></div>
-            <div class=" mt-4       col p-0 xtraControls">
-                <div id="clearButtons">Clear:
-                    <span id="clearButtonsSpan">
-                        <button class="p-0" id="resetTrackingButton">Tracks</button>
-                        <button class="p-0" id="clearHistory">History</button>
-                        <button class="p-0" id="clearMoves">Input</button>
-                        <button class="p-0" id="clearArrays">Graphs</button>
-                        <button id="resetButton" > ( All 4 )</button><br/>
-                    </span>
-                </div>
-
-                <button class="mt-1 ms-4" id="toggleRufInput"
-                         data-toggle="tooltip" data-placement="left"
-                        title="Toggle between displaying colors (gy) and directions (r)"
-                        custom-class="tooltip">
-                    <span class="tFH" id="tRuf">R</span>/<span class="tFH" id="tHue">gy</span></button>
-                <button class="mt-1" for="moveSequence" id="lSequence"
-                        data-toggle="tooltip" data-placement="left"
-                        title="Shift-click to reverse the move sequence">Go!</button>
-                <button class="mt-1" id="hueVariantsButton"
-                         data-toggle="tooltip" data-placement="left"
-                        title="Click to load concise hued display of selected macro">HueVariants</button><br/>
-                <input class="mt-1 w-100" type="text" id="moveSequence"
-                       data-toggle="tooltip" data-placement="left"
-                       autocomplete="off"
-                       title="Alt-click to popup full content"
-                       custom-class="tooltip"
-                       placeholder="Eg: 'r' or 'gy,-go'" />
-                <br/>
-                <button class="mt-1" for="macro" id="lMacro"
-                         data-toggle="tooltip" data-placement="left"
-                        title="Shift-click to reverse the macro sequence. Alt-click to add macro to input field.
-                                Meta-click to show macro as one move"
-                        custom-class="tooltip">DoMac</button>
-                <input type="checkbox" id="eagerMacro"
-                        data-toggle="tooltip" data-placement="left"
-                       title="Check to perform as soon as item is selected"/>
-                <select id="macro">
-                    <option disabled="true" selected>Macro</option>
-                </select>
-                <input type="checkbox" id="solveWithMacro"
-                       data-toggle="tooltip" data-placement="left"
-                       title="Check to display macro and hues"/>
-                <br/>
-<!--                <button class="mt-1 pe-1" for="macroXtra" id="lMacroXtra"-->
-<!--                        data-toggle="tooltip" data-placement="left"-->
-<!--                        title="Shift-click to reverse the macro sequence. Alt-click to add macro to input field.-->
-<!--                                Meta-click to show macro as one move"-->
-<!--                        custom-class="tooltip">DoExtraMac</button>-->
-<!--                <select id="macroXtra">-->
-<!--                    <option disabled="true" selected>Extra Macro</option>-->
-<!--                </select><br/>-->
-                <button class="mt-1" for="history" id="lHistory"
-                         data-toggle="tooltip" data-placement="left"
-                        title="Shift-click to reverse the move sequence"
-                        custom-class="tooltip">DoHist</button>
-                <input type="checkbox" id="eagerHistory"
-                        data-toggle="tooltip" data-placement="left"
-                       title="Check to perform as soon as item is selected"/>
-                <select id="history">
-                    <option disabled="true" value="placeholder" selected>history</option>
-                    <!--            <option value="clearHistory">Clear History</option>-->
-                </select>
-                <div class="mt-1"><span id="reportDiffs"></span></div>
-            </div>
+        <div class="ms-1 mt-1 mb-0 me-0 solved row">
+            <div class="svgDisplay2 col-3 p-0" id="svg_gySolved"></div>
+            <div class="svgDisplay2 col-3 p-0" id="svg_oySolved"></div>
+            <div class="svgDisplay2 col-3 p-0" id="svg_goSolved"></div>
         </div>
         <div class="ms-4"><span class = "footnote">Click cross for clockwise move. . . Shift-click for minus move. . . Alt-click to toggle tracking</span></div>
 

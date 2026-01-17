@@ -243,12 +243,13 @@ function winnerQueries(collector) {
 
 function areInitialsAlsoWinners() {
     setupMscWinners();
-    for (let initial of ck.macs) {
-        if ( msc.winners.filter(w => w.x == initial.x && w.seq == ruf2hue(initial.seq)).length) {
-            console.log('----------- Dup of a winner. Attempted cheater? ', JSON.stringify(initial));
-        }
-        else {
-            console.log('+++++++++++ Legitimate pseudo-winner: ', JSON.stringify(initial));
+    if (msc.winners) {
+        for (let initial of ck.macs) {
+            if (msc.winners.filter(w => w.x == initial.x && w.seq == ruf2hue(initial.seq)).length) {
+                console.log('----------- Dup of a winner. Attempted cheater? ', JSON.stringify(initial));
+            } else {
+                console.log('+++++++++++ Legitimate pseudo-winner: ', JSON.stringify(initial));
+            }
         }
     }
 }
@@ -278,8 +279,8 @@ function applyFilters(options) {
         filters = [ filters ];
     }
     let filterResult = [];
-    if (filters && filters.length) {
-        setupMscWinners();
+    setupMscWinners();
+    if (filters && filters.length && msc.winners) {
         filterResult = msc.winners;
         for (let myFilter of filters) {
             filterResult = filterResult.filter(myFilter);

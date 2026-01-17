@@ -211,9 +211,7 @@ async function debugTrySequence(seqStr) {
 function rufSeqToAllHues(rufSeq) {
     clearRuf2hues();
     let target = $('#ruf2hues');
-    let shortSeqStr = rufSeq; // .replace(/\[.*?]/g,'');
     let currentRuf = $('#whichRuf').val();
-    let timesPrefix = ''; // rufSeq.replace(/ .*/,'');
     let currentRufDiv = $(`<div>Current RUF: ${rufSeq}</div>`);
     let clearCurrentRufs = $('<button id="currentRufHues"> Clear</button>');
     currentRufDiv.append(clearCurrentRufs);
@@ -228,11 +226,13 @@ function rufSeqToAllHues(rufSeq) {
         "OyGoGy",
     ]) {
         adjustRufHelper(hue);
-        let hueSeq = ruf2hue(shortSeqStr);
+        let hueSeq = ruf2hue(rufSeq);
+        let hs1 = hueSeq.replace(/(.*]).*/, "$1");
+        let hs2 = hueSeq.replace(/.*]\s*/, '');
         let oneRufVariant = $(`<div class="hueVariant"
             data-toggle="tooltip" data-placement="left"
             title="Click to display a given sequence. Shift for inverse sequence. Alt to append to input field"
-            custom-class="tooltip">${hue}: ${timesPrefix} ${hueSeq}</div>`);
+            custom-class="tooltip">${hue}:${hs1}<br/>${hs2}</div>`);
         oneRufVariant.on('click', function(e) {
             let localHueSeq = hueSeq;
             ck.hueVsRuf = true;

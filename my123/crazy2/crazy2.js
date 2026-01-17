@@ -21,11 +21,11 @@ async function setupCrazy2() {
 }
 function setupWinners() {
     msc.winnersBySecond = {};
-    if (_winsGy ) msc.winnersBySecond['gy']  = _winsGy ;
-    if (_winsGo ) msc.winnersBySecond['go']  = _winsGo ;
-    if (_wins_Go) msc.winnersBySecond['-go'] = _wins_Go;
-    if (_winsOy ) msc.winnersBySecond['oy']  = _winsOy ;
-    if (_wins_Oy) msc.winnersBySecond['-oy'] = _wins_Oy;
+    if (typeof _winsGy  != 'undefined') msc.winnersBySecond['gy']  = _winsGy ;
+    if (typeof _winsGo  != 'undefined') msc.winnersBySecond['go']  = _winsGo ;
+    if (typeof _wins_Go != 'undefined') msc.winnersBySecond['-go'] = _wins_Go;
+    if (typeof _winsOy  != 'undefined') msc.winnersBySecond['oy']  = _winsOy ;
+    if (typeof _wins_Oy != 'undefined') msc.winnersBySecond['-oy'] = _wins_Oy;
 }
 function deriveUnderWinners() {
    _winsGy  = msc.winnersBySecond['gy'] ;
@@ -154,7 +154,7 @@ async function macroChange(e) {
         unfreeze();
     }
     else if ($('#solveWithMacro').is(':checked')) {
-        let val4hue = $(e.target).find(':selected').html().replace(/([\d+]x):(.*)/, "$2 [$1]"); // .replace(/.* /,'');
+        let val4hue = $(e.target).find(':selected').html().replace(/([\d+]x):/, "[$1] "); // .replace(/.* /,'');
         setInput(val4hue);
         $('#hueVariantsButton').click();
     }
