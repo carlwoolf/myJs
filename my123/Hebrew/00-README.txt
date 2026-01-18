@@ -10,5 +10,5 @@ eg:
     split -l 30 t.csv o30_
 
 and then, eg:
-    source generateJs o30_aa o30_ab rebWords-24nov.csv    ## aa for test, aa+ab for study, rebWords-24nov.csv for full-study
+    (18 jan '26) source generateJs o30_aa o30_ab rebWords-24nov.csv    ## aa for test, aa+ab for study, rebWords-24nov.csv for full-study
 
