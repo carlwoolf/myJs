@@ -1,3 +1,6 @@
+function common_setup(target) {
+    $('body').prepend($(`<div class="produced ms-3 mt-2">Produced ${new Date()}</div>`));
+}
 function unmissing(word) {
     let result = null;
     let data = un_data.filter(d => d.word.replace(/[*][*]/g,"") == `${word}`);

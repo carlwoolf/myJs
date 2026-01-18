@@ -1,5 +1,6 @@
 function setup() {
     let target = $('#mainDiv');
+    common_setup();
     let i=0;
     let headerRow = $(`    
          <div class="header row solution">
