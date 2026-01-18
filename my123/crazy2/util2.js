@@ -6,6 +6,9 @@ function mySleep(ms) {
 function setupUtilData()
 {
     setupModel2();
+    ck.showXsSmMdHideOthers = "d-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none";
+    ck.hideXsSmMdShowOthers = "d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block";
+
     ck.scale = .65;
     ck.hueVsRuf = false;
 

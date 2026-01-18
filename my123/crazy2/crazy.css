@@ -65,7 +65,7 @@ button {
 #moveSequence {
     width: 75%;
     margin-top: -3px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
 }
 .bord {
@@ -89,9 +89,6 @@ g:focus {
 #eagerHistory, #eagerMacro {
     display: inline-block;
     vertical-align: middle;
-}
-.big {
-    font-size: 24px;
 }
 /*#uiOverlay {*/
 /*    position: fixed;*/
@@ -137,4 +134,8 @@ g:focus {
     font-weight: bold;
     color: darkblue;
     font-size: 12px;
+}
+.big {
+    font-size: 19px;
+    color: #146c43;
 }

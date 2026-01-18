@@ -232,7 +232,7 @@ function rufSeqToAllHues(rufSeq) {
         let oneRufVariant = $(`<div class="hueVariant"
             data-toggle="tooltip" data-placement="left"
             title="Click to display a given sequence. Shift for inverse sequence. Alt to append to input field"
-            custom-class="tooltip">${hue}:${hs1}<br/>${hs2}</div>`);
+            custom-class="tooltip">${hue}:${hs1}<br class="hueBreak d-none"/>${hs2}</div>`);
         oneRufVariant.on('click', function(e) {
             let localHueSeq = hueSeq;
             ck.hueVsRuf = true;
@@ -247,6 +247,8 @@ function rufSeqToAllHues(rufSeq) {
             }
             $('.hueVariant').removeClass('big');
             oneRufVariant.addClass('big');
+            $('.hueBreak').addClass('d-none');
+            oneRufVariant.find('.hueBreak').removeClass('d-none');
         })
         target.append(oneRufVariant);
     }
