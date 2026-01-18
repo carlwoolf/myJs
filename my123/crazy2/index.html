@@ -131,24 +131,25 @@
     <hr/>
     <div class="ms-1 mt-0 mb-0 me-0 w-100 current row">
         <!-- in bs5 'col-3' means 25%. simple col as last works around bug of "4x3 < 12"-->
-        <div class="svgDisplay2 col-4 p-0" id="svg_gy"></div>
-        <div class="svgDisplay2 col-4 p-0" id="svg_oy"></div>
-        <div class="svgDisplay2 col-4 p-0" id="svg_go"></div>
+        <div class="svgDisplay2 col-6 p-0 m-0 justify-content-start"  id="svg_gy"></div>
+        <div class="svgDisplay2 col-6  m-0 p-0 d-flex justify-content-start solved"  id="svg_gySolved"></div>
     </div>
+    <hr/><hr/>
     <div class="ms-1 mt-1 mb-0 me-0 w-100 solved row">
-        <div class="svgDisplay2 col-4 p-0" id="svg_gySolved"></div>
-        <div class="svgDisplay2 col-4 p-0" id="svg_oySolved"></div>
-        <div class="svgDisplay2 col-4 p-0" id="svg_goSolved"></div>
+        <div class="svgDisplay2 col-3 m-0 p-0 justify-content-center" id="svg_oy"></div>
+        <div class="svgDisplay2 col-3 m-0 p-0 d-flex justify-content-center solved" id="svg_oySolved"></div>
+        <div class="svgDisplay2 col-3 m-0 p-0 justify-content-end"    id="svg_go"></div>
+        <div class="svgDisplay2 col-3 m-0 p-0 d-flex justify-content-end solved"    id="svg_goSolved"></div>
     </div>
     <div class="ms-4"><span class="footnote">Click cross for clockwise move. . . Shift-click for minus move. . . Alt-click to toggle tracking</span>
     </div>
 
-    <div id="archtypeDiv" class="m-2">
+    <div id="archtypeDiv" class="w-100">
         <!-- https://editor.method.ac/ -->
         <svg id="archtypeSvg"
              xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 250 250"
-             class="d-none">
+             class="d-none w-100">
             <defs>
                 <g id="Cx" class="d-none Cx">
                     <ellipse fill="rgb(225,225,225)" cx="16" cy="16" rx="16" ry="16"></ellipse>
