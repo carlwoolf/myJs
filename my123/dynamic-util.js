@@ -26,7 +26,7 @@ let naturalSign = "!courtesy!=";
 let weightedDurations =         ['/', '///', '///', '////', '//', '////'];
 let shuffleDurations = false;
 
-let samplesNames = ['kids', 'demo', 'trupSystems', 'bro', 'davqah', 'almei', 'adon', 'nigun-23-12', 'scales', 'twelve'];
+let samplesNames = ['adon', 'almei', 'bro', 'davqah',  'demo', 'kids', 'nigun-23-12', 'scales', 'trupSystems', 'twelve', 'voicing'];
 
 function getGCMode() {
     if (!globalCurrentMode) globalCurrentMode = scalesMap.C.major;
@@ -209,7 +209,7 @@ async function setup2(prefix) {
     }
     else {
         let select = $('#samples');
-        select.val('kids');
+        select.val('songs/kids');
         select.change();
     }
 
@@ -284,7 +284,7 @@ function setupSamples() {
     for (let i=0; i<samplesNames.length; i++) {
         let sampleName = samplesNames[i];
 
-        let option = $(`<option name="${sampleName}" value="${sampleName}">${sampleName}</option>`);
+        let option = $(`<option name="${sampleName}" value="songs/${sampleName}">${sampleName}</option>`);
         select.append(option);
     }
 }
