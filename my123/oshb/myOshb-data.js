@@ -65,6 +65,16 @@ myO.booksMetadata = {
 let accentCatalog = {
     "prose": {
         "disjunctive": {
+            // does oshb code call these paseq-y guys conjunctive !?
+            "\u05C0": {"name": "Paseq", "rank": "4"},
+            "\u05A5\u05A3\u05C0": {"name": "Merkha and Munnach with Paseq", "rank": "4"},
+            "\u05A3\u05C0": {"name": "Munnach with Paseq", "rank": "4"},
+            "\u05A4\u05C0": {"name": "Mahpakh with Paseq", "rank": "4"},
+            "\u05A5\u05C0": {"name": "Merkha with Paseq", "rank": "4"},
+            "\u05A7\u05C0": {"name": "Darga with Paseq", "rank": "4"},
+            "\u05A8\u05C0": {"name": "Qadma with Paseq", "rank": "4"},
+            "\u05A8\u05A5\u05C0": {"name": "Qadma and Merkha with Paseq", "rank": "4"},
+
             "\u05C3": {"name": "Sof Pasuq", "rank": "0", "final": "true"},
             "\u0596\u05C3": {"name": "Mëayla with Sof Pasuq", "rank": "0", "final": "true"},
             "\u05A5\u05C3": {"name": "Merkha with Sof Pasuq", "rank": "0", "final": "true"},
@@ -112,13 +122,6 @@ let accentCatalog = {
             "": {"name": "None", "rank": "5"}
         },
         "conjunctive": {
-            "\u05C0": {"name": "Paseq", "rank": "4"},
-            "\u05A5\u05A3\u05C0": {"name": "Merkha and Munnach with Paseq", "rank": "4"},
-            "\u05A4\u05C0": {"name": "Mahpakh with Paseq", "rank": "4"},
-            "\u05A5\u05C0": {"name": "Merkha with Paseq", "rank": "4"},
-            "\u05A7\u05C0": {"name": "Darga with Paseq", "rank": "4"},
-            "\u05A8\u05C0": {"name": "Qadma with Paseq", "rank": "4"},
-            "\u05A8\u05A5\u05C0": {"name": "Qadma and Merkha with Paseq", "rank": "4"},
             "\u05A9\u05C0": {"name": "Telisha Qetana with Paseq", "rank": "4"},
             "\u05A3": {"name": "Munnach", "rank": "4"},
             "\u05A3\u05A3": {"name": "Munnach with Munnach", "rank": "4"},

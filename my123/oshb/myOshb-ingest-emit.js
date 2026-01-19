@@ -219,7 +219,8 @@ function ingestMapmBookXml(xmlDoc, bookShortName) {
             // split or 'higher' might add "" words
             words = words.filter(w => w.length > 0);
 
-            let wordTuples = words.map(w => ingestMapmWord(w, osisID));
+            let wordTuples = words.filter(w => w != "_") // weird data error
+                .map(w => ingestMapmWord(w, osisID));
             if (myO.aggressive) {
                 wordTuples = tuplesPostProcess(wordTuples);
             }
@@ -230,6 +231,7 @@ function ingestMapmBookXml(xmlDoc, bookShortName) {
     });
 }
 function ingestMapmWord(wordInput, osisID) {
+
     let trupName = "";
     let unicode = "";
     let scope = getScope(osisID); // using oshb logic
