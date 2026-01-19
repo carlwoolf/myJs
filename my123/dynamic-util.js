@@ -26,7 +26,8 @@ let naturalSign = "!courtesy!=";
 let weightedDurations =         ['/', '///', '///', '////', '//', '////'];
 let shuffleDurations = false;
 
-let samplesNames = ['adon', 'almei', 'bro', 'davqah',  'demo', 'kids', 'nigun-23-12', 'scales', 'trupSystems', 'twelve', 'voicing'];
+let samplesNames = ['adon', 'almei', 'bro', 'davqah',  'demo', 'kids', 'nigun-23-12', 'scales', 'trupSystems', 'twelve', 'voicing',
+                    'shir1', 'shir2', 'shir3', 'shir4', 'shir5', 'shir6', 'shir7', 'shir8', ];
 
 function getGCMode() {
     if (!globalCurrentMode) globalCurrentMode = scalesMap.C.major;

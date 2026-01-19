@@ -60,5 +60,5 @@ let data = [
 {word:"כולי עלמא",meaning:"Everyone (in the conversation)",phrase:"כולי עלמא לא פליגי דאסור",phraseMeaning:"Everyone agrees that it is forbidden"},
 {word:"הוה אמינא",meaning:"I would have said",phrase:"הוה אמינא דאפילו בדיעבד נמי לא",phraseMeaning:"I would have said that even after the fact it is also not [permitted]"},
 {word:"פלפול",meaning:"Sharp argumentation",phrase:"פלפול בתורה מחדד את השכל",phraseMeaning:"Sharp argumentation in Torah sharpens the intellect"},
-{word:"שכ״כ",meaning:"(שכל כך) that (it is) so much",phrase:"אם בחול אסור שכ״כ בשבת",phraseMeaning:"If it is forbidden on weekdays"}
+{word:"שכ״כ",meaning:"(שכל כך) that (it is) so much",phrase:"שכל כך חשוב הוא",phraseMeaning:"That it is so important"}
 ];

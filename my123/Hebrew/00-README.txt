@@ -1,4 +1,4 @@
-Latest csv in sheet-form, at https://docs.google.com/spreadsheets/d/1WSW147ickCoUujw-ETp43baSbPxpDEt6O9qk2cAc4pY/edit?gid=2013393131#gid=2013393131
+Latest csv in sheet-form, at https://docs.google.com/spreadsheets/d/1WSW147ickCoUujw-ETp43baSbPxpDEt6O9qk2cAc4pY/edit?gid=2013393131#gid=2013393131 . d/l as csv
 
 Save as csv, eg foo.csv and then: source generateJs foo.csv
 

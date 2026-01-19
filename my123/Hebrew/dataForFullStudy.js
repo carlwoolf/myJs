@@ -164,7 +164,7 @@ let data = [
 {word:"שאני",meaning:"It is different",phrase:"שאני התם דכתיב קרא",phraseMeaning:"That case is different because a verse is written"},
 {word:"שאני הכא",meaning:"This case is different",phrase:"שאני הכא דאיכא למימר",phraseMeaning:"This case is different because there is to say"},
 {word:"שכינה",meaning:"Divine Presence",phrase:"שכינה שורה על עשרה היושבים ועוסקים בתורה",phraseMeaning:"The Divine Presence rests upon ten who sit and occupy themselves with Torah"},
-{word:"שכ״כ",meaning:"(שכל כך) that (it is) so much",phrase:"אם בחול אסור שכ״כ בשבת",phraseMeaning:"If it is forbidden on weekdays"},
+{word:"שכ״כ",meaning:"(שכל כך) that (it is) so much",phrase:"שכל כך חשוב הוא",phraseMeaning:"That it is so important"},
 {word:"שכתב",meaning:"As he wrote",phrase:"שכתב הרמב״ם בהלכות תשובה",phraseMeaning:"As the Rambam wrote in the Laws of Repentance"},
 {word:"שמא",meaning:"Lest perhaps",phrase:" שמא יאמר אדם",phraseMeaning:"Lest a person say"},
 {word:"שמע מנה",meaning:"Hear from this infer from this",phrase:" שמע מנה תלת",phraseMeaning:"Learn three things from this"},

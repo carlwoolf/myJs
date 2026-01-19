@@ -1,4 +1,4 @@
-function common_setup(target) {
+function common_setup() {
     $('body').prepend($(`<div class="produced ms-3 mt-2">Produced ${new Date()}</div>`));
 }
 function unmissing(word) {
