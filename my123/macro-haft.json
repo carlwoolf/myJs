@@ -18,9 +18,15 @@
     ["Munnach-21_b4Mrkh",            "p1L43 0 " ],
     ["Merkha-21",                    "p1 L3 0 " ],
     ["Merkha_Paseq-21",              "p1 L3 0 0 " ],
+
     ["Tipcha-21",                    "p3 L4 0 " ],
-    ["Mëayla-21",                    "p3 L4 0 " ],
     ["Tipcha_Paseq-21",              "p3 L4 0 0 " ],
+    ["Mëayla-21",                    "p3 L4 0 " ],
+    ["Tipcha_B4_Atnach-21",          "p3 L4 0 " ],
+    ["Tipcha_B4_Sof-21",             "p3 L4 0 " ],
+    ["Tipcha_Paseq_B4_Sof-21",       "p3 L4 0 " ],
+    ["Tipcha_Paseq_B4_Atnach-21",    "p3 L4 0 0 " ],
+
     ["Munnach-21_b4Atnch",           "p4L3p1 p3 0 " ],
     ["Munnach_Paseq-21_b4Atnch",     "p4 L3 p1 p3 0 0 " ],
     ["Atnach-21",                    "p1p3 L5 4 0 " ],
@@ -73,15 +79,10 @@
     ["Yetiv-21",                     "p1 L6 5 0 " ],
     ["Sof_Pasuq-21",                 "p4 L53 1 0 " ],
 
-    ["Tipcha-21_b4SofPrSf-21",       "L6 3 0 " ],
     ["Sof_Pereq-21",                 "L6543 43 0 " ],
     ["Sof_Sefer-21",                 "L456 7 6 0 " ],
 
-    ["Ktiv",                         "0 0 " ]
-
-
-
-
-
-]
+    ["Ktiv",                         "0 0 " ],
+    ["Tipcha-21_b4SofPrSf-21",       "L6 3 0 " ]
+  ]
 }

@@ -225,6 +225,13 @@ function processOneTupleMacro(verse, i, eoChapter, lastChapter, its123, shortSco
             } else {
                 tupleTrup = tupleTrup.replace(/Tarcha/, "Tarcha_B4_Sof");
             }
+        } else if (tupleTrup.match(/Tipcha/)) {
+            let firstMatch = firstUpcomingMatch(verse.wordTuples, i, /(Atnach)|(Munnach)|(Sof_)|(Merkha)/);
+            if (firstMatch.match(/(Atnach)|(Munnach)/)) {
+                tupleTrup = tupleTrup.replace(/-21/, "_B4_Atnach-21");
+            } else if (firstMatch.match(/(Sof_)|(Merkha)/)) {
+                tupleTrup = tupleTrup.replace(/-21/, "_B4_Sof-21");
+            }
         }
     }
     if (wordCounter == 0) macroLine = ` ${sep} `;

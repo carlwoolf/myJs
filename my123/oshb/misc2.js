@@ -82,6 +82,10 @@ function getMacroPrefix(osisID) {
             return "ps";
         case "Prov":
             return "pr";
+        case "Song":
+        case "Ruth":
+        case "Eccl":
+            return "sh";
         case "Job":
             if (fields[1] < 3 || (fields[1] == 42 && fields[2] > 6) || osisID == "Job.3.1") {
                 return "hf";

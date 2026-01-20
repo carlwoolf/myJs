@@ -39,6 +39,7 @@ async function initMacroMap(prefix) {
     await importMacrosFromFile(macrosDiv, prefix +"macro-system.json");
     await importMacrosFromFile(macrosDiv, prefix +"macro-penta.json");
     await importMacrosFromFile(macrosDiv, prefix +"macro-haft.json");
+    await importMacrosFromFile(macrosDiv, prefix +"macro-sheker.json");
     await importMacrosFromFile(macrosDiv, prefix +"macro-ps.json");
     await importMacrosFromFile(macrosDiv, prefix +"macro-job.json");
     await importMacrosFromFile(macrosDiv, prefix +"macro-prov.json");
