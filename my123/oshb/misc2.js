@@ -277,6 +277,6 @@ function scrollFunction() {
 }
 function focusTop() {
     $('body,html').animate({ scrollTop: 0 }, 300);
-    $('#pills-about-tab').click();
+    //$('#pills-about-tab').click();
     return true;
 }

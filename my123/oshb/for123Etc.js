@@ -30,7 +30,12 @@ function gabi_content(id) {
 
     return flatContent;
 }
-
+function emitJustVersesAsLyrics() {
+    let wpl = 1000; // 'infinite' words per line
+    emitHelper("", "",  "w:", "", wpl);
+    let verses = gabi_content('lyrics');
+    console.log(verses);
+}
 function emit123Lyrics(doReverse) {
     let wpl = $('#wpl').val();
     emitHelper("T:", "P: ",  "w: ", "|", wpl, doReverse);
@@ -251,7 +256,7 @@ function processOneTupleMacro(verse, i, eoChapter, lastChapter, its123, shortSco
 function processOneTupleWord(tuples, i, words, wordCounter, wordsPerLine,
                              lyricsLines, wordsPrefix, sep, doReverse) {
     let tuple = tuples[i];
-    let word = tuple.word;
+    let word = tuple.word.replace(/\u200d/g, ""); // nuke the null=length connector
     let coordsOutput = myO.showOutputCoords ? ` (${i})` : "";
     words.push(`${word}${coordsOutput}`);
     if (wordCounter >= wordsPerLine - 1) {

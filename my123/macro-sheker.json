@@ -8,13 +8,16 @@
 
     ["Merkha-21",                    "p12L3 0 " ],
     ["Merkha_Paseq-21",              "p12L3 0 0 " ],
+
+    ["Tipcha_B4_Atnach-21",          "p3L32 0 " ],
+    ["Tipcha_Paseq_B4_Atnach-21",    "p3L32 0 0 " ],
+
     ["Tipcha-21",                    "3L53 0 " ],
     ["Tipcha_Paseq-21",              "p3L53 0 0 " ],
     ["Mëayla-3L42",                  "p3L53 0 " ],
-    ["Tipcha_B4_Atnach-21",          "p3L32 0 " ],
-    ["Tipcha_Paseq_B4_Atnach-21",    "p3L32 0 0 " ],
     ["Tipcha_B4_Sof-21",             "p3L53 0 " ],
     ["Tipcha_Paseq_B4_Sof-21",       "p3L53 0 " ],
+
     ["Munnach-21_b4Atnch",           "p2L3 0 " ],
     ["Atnach-21",                    "p21L3 0 " ],
 

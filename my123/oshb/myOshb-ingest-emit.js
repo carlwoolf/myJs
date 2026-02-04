@@ -894,11 +894,7 @@ function getOshbAnchor(osisID, content, klass) {
     let a = $(`<span><span>${content}</span> <span><a title="OSHB" target="_blank" ${classContent} href="${filledTemplate}">(OSHB-parsed)</a></span></span>`);
     return a;
 }
-function getSefariaAncherOuter(osisID, lang, klass, noBookname) {
-    if (!lang) lang = "bi";
-
-    let classIs = klass ? `class="${klass}"` : "";
-
+function getSimpleSefariaUrl(osisID, lang) {
     let fields = unpackOsisId(osisID);
 
     let book = fields[0];
@@ -911,6 +907,15 @@ function getSefariaAncherOuter(osisID, lang, klass, noBookname) {
         .replace("BOO", sefariaBook)
         .replace("FOO", chapVerse)
         .replace("BAR", lang);
+
+    return sefariaUrl;
+}
+function getSefariaAncherOuter(osisID, lang, klass, noBookname) {
+    if (!lang) lang = "bi";
+
+    let classIs = klass ? `class="${klass}"` : "";
+
+    let sefariaUrl = getSimpleSefariaUrl(osisID, lang);
 
     let result1 = ` <a title="Sefaria" ${classIs} target="_blank" href="${sefariaUrl}">(Sefaria)</a>`;
 
