@@ -18,8 +18,8 @@ function setup() {
         unMissify(record);
 
         let dataRow = $(`    
-          <div class="data row solution">
-            <div class="bord data col-3 word">                         ${record.word}</div>
+          <div class="data row solution mt-4 mb-4">
+            <div class="bord data col-3 word">[${i+1}] ${record.word}</div>
             <div class="${rashi} bord data col-3 phrase"> ${record.phrase}</div>
             <div class="bord data col-2"> </div>
             <div class="bord data col-4 tall"> </div>
