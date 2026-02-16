@@ -4,12 +4,16 @@ function setup() {
     let i=0;
     let headerRow = $(`    
           <div class="header row solution">
-            <div class="bord header col-3" class="">   ${columns[i++]}</div>
-            <div class="bord header col-3" class="">   ${columns[i++]}</div>
-            <div class="bord header col-2 ps-1" class="">   Term(English)</div>
-            <div class="bord header col-4" class="">   PhraseContext(English)</div>
+            <div class="bord header col-4" class="">   ${columns[i++]} (and your translation)</div>
+            <div class="bord header col-8" class="">   ${columns[i++]} (and your translation)</div>
           </div>`);
     target.append(headerRow);
+    let sampleRow = $(`    
+          <div class="data row solution bord pt-0 taller">
+            <div class=" header col-4" class="">E.G.:  גָּ֥ד &nbsp;&nbsp; Gad (a tribe)</div>
+            <div class=" header col-8" class="">  דן וְנַפְתָּלִ֖י גָּ֥ד וְאָשֵֽׁר &nbsp;&nbsp; The tribes Dan, Naphtali, Gad and Asher</div>
+          </div>`);
+    target.append(sampleRow);
 
     //data = fisherYatesShuffle(data);
     for (let i=0; i<data.length; i++) {
@@ -18,11 +22,9 @@ function setup() {
         unMissify(record);
 
         let dataRow = $(`    
-          <div class="data row solution mt-4 mb-4">
-            <div class="bord data col-3 word">[${i+1}] ${record.word}</div>
-            <div class="${rashi} bord data col-3 phrase"> ${record.phrase}</div>
-            <div class="bord data col-2"> </div>
-            <div class="bord data col-4 tall"> </div>
+          <div class="data row solution bord pt-0 taller">
+            <div class=" data col-4 word">[${i+1}] ${record.word}</div>
+            <div class="${rashi}  data col-8 phrase"> ${record.phrase}</div>
           </div>`);
          target.append(dataRow);
     }
