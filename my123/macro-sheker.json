@@ -29,10 +29,10 @@
     ["Mahpakh_Paseq-21",             "L6 3 0 0 " ],
     ["Pashta-21",                    "p3L76 0 " ],
     ["Yetiv-21",                     "L786 0 " ],
-    ["Munnach-21_b4Zqf_Qtn",         "p3L6 5^4 0 " ],
+    ["Munnach-21_b4Zqf_Qtn",         "p3L6 5 0 " ],
         ["comment", "with qtn on same word diffs from simply b4"],
-    ["Munnach-21_b4Zqf_Qtn-21",       "p3L6 5^4 0 " ],
-    ["Zaqef_Qatan-21",               "L53 0 " ],
+    ["Munnach-21_b4Zqf_Qtn-21",       "p3L6 5 0 " ],
+    ["Zaqef_Qatan-21",               "p^4L53 0 " ],
 
     ["Darga-21",                     "p3L7 65^4 3 0 " ],
     ["Darga_Paseq-21",               "p3L7 65^4 3 0 0 " ],
