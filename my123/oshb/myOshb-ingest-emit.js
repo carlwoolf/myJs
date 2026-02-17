@@ -222,7 +222,7 @@ function ingestMapmBookXml(xmlDoc, bookShortName) {
             let wordTuples = words.filter(w => w != "_") // weird data error
                 .map(w => ingestMapmWord(w, osisID));
             if (myO.aggressive) {
-                wordTuples = tuplesPostProcess(wordTuples);
+                wordTuples = tuplesPostProcess(wordTuples, osisID);
             }
 
             let chapterVerses = chapterInfo.verses;
@@ -359,7 +359,7 @@ function ingestOshbBookXml(xmlDoc, bookShortName) {
         let xmlWords = verse.find("w,seg");
         let tuples2 = ingestOshbVerseWords(xmlWords, osisID);
         if (myO.aggressive) {
-            tuples2 = tuplesPostProcess(tuples2);
+            tuples2 = tuplesPostProcess(tuples2, osisID);
         }
 
         let verseInfo = {

@@ -199,45 +199,7 @@ function processOneTupleMacro(verse, i, eoChapter, lastChapter, its123, shortSco
         }
         tupleTrup = tupleTrup.replace(/[{}]/g, "");
     } else {
-        tupleTrup = tupleTrup.replace(/(-\d+)[cd]+/g, "$1");
-
-        tupleTrup = tupleTrup.replace(/[{]?(.*)(-\d+[}])?_with_[{]?Paseq/g, "$1_Paseq");
-        tupleTrup = tupleTrup.replace(/[{]?(.*)(-\d+[}])?_and_[{]?Paseq/g, "$1_Paseq");
-        tupleTrup = tupleTrup.replace(/_with_/g, `-${shortScope}_with_`);
-        tupleTrup = tupleTrup.replaceAll(`-${shortScope}}-${shortScope}`, `-${shortScope}`); // not sure how dup's arise
-        tupleTrup = tupleTrup.replace(/_and_/g, `-${shortScope}_and_`);
-        tupleTrup = tupleTrup.replace(/[{}]/g, "");
-        tupleTrup = tupleTrup.replace(/_wi\u200Bth_/g, `_with_`);
-        tupleTrup = tupleTrup.replace(/_and_/g, " ");
-        tupleTrup = tupleTrup.replace(/_with_/g, " ");
-        tupleTrup = tupleTrup.replace(/(\S+) \1/, "$1"); // double pashta / segol should make 1 macro
-        tupleTrup = tupleTrup.replace(/([ë0-9a-zA-Z_-]+)/g, `::${myO.macroPrefix}-$1::`);
-
-        // contextual adjustments -- based on what comes after
-        if (tupleTrup.match(/Revia-3/)) {
-            let nextWord = firstUpcomingMatch(verse.wordTuples, i, /.*/);
-            if (nextWord.match(/Ole/)) {
-                tupleTrup = tupleTrup.replace(/Revia/, "Revia_Qaton");
-            }
-            // let followingAtnachOrSof = firstUpcomingMatch(verse.wordTuples, i, /(Atnach)|(Sof_)/);
-            // console.log(`${verse.wordTuples[i].osisID}.${i}: Revia, next word: ${nextWord}. AtnachOrSof: ${followingAtnachOrSof}`)
-        } else if (tupleTrup.match(/Tarcha/)) {
-            let firstMatch = firstUpcomingMatch(verse.wordTuples, i, /(Atnach)|(Sof_)|(Mugrash)/);
-            if (firstMatch.match(/Atnach/)) {
-                tupleTrup = tupleTrup.replace(/Tarcha/, "Tarcha_B4_Atnach");
-            } else if (firstMatch.match(/Mugrash/)) {
-                tupleTrup = tupleTrup.replace(/Tarcha/, "Tarcha_B4_Mugrash");
-            } else {
-                tupleTrup = tupleTrup.replace(/Tarcha/, "Tarcha_B4_Sof");
-            }
-        } else if (tupleTrup.match(/Tipcha/)) {
-            let firstMatch = firstUpcomingMatch(verse.wordTuples, i, /(Atnach)|(Munnach)|(Sof_)|(Merkha)/);
-            if (firstMatch.match(/(Atnach)|(Munnach)/)) {
-                tupleTrup = tupleTrup.replace(/-21/, "_B4_Atnach-21");
-            } else if (firstMatch.match(/(Sof_)|(Merkha)/)) {
-                tupleTrup = tupleTrup.replace(/-21/, "_B4_Sof-21");
-            }
-        }
+        tupleTrup = tweakTupleInContext(tupleTrup, verse, i, shortScope);
     }
     if (wordCounter == 0) macroLine = ` ${sep} `;
     let coordsOutput = myO.showOutputCoords ? ` class="coord" (${i})` : "";
@@ -251,6 +213,48 @@ function processOneTupleMacro(verse, i, eoChapter, lastChapter, its123, shortSco
         wordCounter = -1; // let auto-increment make it 0
     }
     return {wordCounter, macroLine};
+}
+function tweakTupleInContext(tupleTrup, verse, i, shortScope) {
+    tupleTrup = tupleTrup.replace(/(-\d+)[cd]+/g, "$1");
+
+    tupleTrup = tupleTrup.replace(/[{]?(.*)(-\d+[}])?_with_[{]?Paseq/g, "$1_Paseq");
+    tupleTrup = tupleTrup.replace(/[{]?(.*)(-\d+[}])?_and_[{]?Paseq/g, "$1_Paseq");
+    tupleTrup = tupleTrup.replace(/_with_/g, `-${shortScope}_with_`);
+    tupleTrup = tupleTrup.replaceAll(`-${shortScope}}-${shortScope}`, `-${shortScope}`); // not sure how dup's arise
+    tupleTrup = tupleTrup.replace(/_and_/g, `-${shortScope}_and_`);
+    tupleTrup = tupleTrup.replace(/[{}]/g, "");
+    tupleTrup = tupleTrup.replace(/_with_/g, `_with_`);
+    tupleTrup = tupleTrup.replace(/_and_/g, " ");
+    tupleTrup = tupleTrup.replace(/_with_/g, " ");
+    tupleTrup = tupleTrup.replace(/(\S+) \1/, "$1"); // double pashta / segol should make 1 macro
+    tupleTrup = tupleTrup.replace(/([ë0-9a-zA-Z_-]+)/g, `::${myO.macroPrefix}-$1::`);
+
+    // contextual adjustments -- based on what comes after
+    if (tupleTrup.match(/Revia-3/)) {
+        let nextWord = firstUpcomingMatch(verse.wordTuples, i, /.*/);
+        if (nextWord.match(/Ole/)) {
+            tupleTrup = tupleTrup.replace(/Revia/, "Revia_Qaton");
+        }
+        // let followingAtnachOrSof = firstUpcomingMatch(verse.wordTuples, i, /(Atnach)|(Sof_)/);
+        // console.log(`${verse.wordTuples[i].osisID}.${i}: Revia, next word: ${nextWord}. AtnachOrSof: ${followingAtnachOrSof}`)
+    } else if (tupleTrup.match(/Tarcha/)) {
+        let firstMatch = firstUpcomingMatch(verse.wordTuples, i, /(Atnach)|(Sof_)|(Mugrash)/);
+        if (firstMatch.match(/Atnach/)) {
+            tupleTrup = tupleTrup.replace(/Tarcha/, "Tarcha_B4_Atnach");
+        } else if (firstMatch.match(/Mugrash/)) {
+            tupleTrup = tupleTrup.replace(/Tarcha/, "Tarcha_B4_Mugrash");
+        } else {
+            tupleTrup = tupleTrup.replace(/Tarcha/, "Tarcha_B4_Sof");
+        }
+    } else if (tupleTrup.match(/Tipcha/)) {
+        let firstMatch = firstUpcomingMatch(verse.wordTuples, i, /(Atnach)|(Munnach)|(Sof_)|(Merkha)/);
+        if (firstMatch.match(/(Atnach)|(Munnach)/)) {
+            tupleTrup = tupleTrup.replace(/-21/, "_B4_Atnach-21");
+        } else if (firstMatch.match(/(Sof_)|(Merkha)/)) {
+            tupleTrup = tupleTrup.replace(/-21/, "_B4_Sof-21");
+        }
+    }
+    return tupleTrup;
 }
 
 function processOneTupleWord(tuples, i, words, wordCounter, wordsPerLine,
@@ -307,24 +311,24 @@ function fixNoSyms(tuple, index, tuples) {
     }
 }
 
-function tuplesPostProcess(tuples) {
-    let tuplesResult = tuples;
-    tuplesResult.forEach((tuple, index) => {
+function tuplesPostProcess(tuples22, osisID) {
+    let tuples = tuples22;
+    tuples.forEach((tuple, index) => {
         if (tuple.trup.match(/Munnach_with_Zaqef_Qatan-21d/)) {
             tuple.trup = tuple.trup.replace(/Munnach_with_/, "Munnach-21c_b4")
-                .replace(/Zaqef_Qatan-21d/, "Zqf_Qtn") + "_wi\u200Bth_Zaqef_Qatan-21d";
+                .replace(/Zaqef_Qatan-21d/, "Zqf_Qtn") + "_with_Zaqef_Qatan-21d";
         }
         if (tuple.trup.match(/Munnach_with_Revia-21d/)) {
             tuple.trup = tuple.trup.replace(/Munnach_with_/, "Munnach-21c_b4")
-                .replace(/Revia-21d/, "Rv") + "_wi\u200Bth_Revia-21d";
+                .replace(/Revia-21d/, "Rv") + "_with_Revia-21d";
         }
         if (tuple.trup.match(/Munnach_with_Pazer-21d/)) {
             tuple.trup = tuple.trup.replace(/Munnach_with_/, "Munnach-21c_b4")
-                .replace(/Pazer-21d/, "Pzr") + "_wi\u200Bth_Pazer-21d";
+                .replace(/Pazer-21d/, "Pzr") + "_with_Pazer-21d";
         }
         if (tuple.trup.match(/Shalshelet_Qetana_Paseq/)) {
             // a simple misunderstanding b/t a chain of friends
-            tuple.trup = tuple.trup.replace(/Shalshelet_Qetana_Paseq/, "Shalshelet_Gegola");
+            tuple.trup = tuple.trup.replace(/Shalshelet_Qetana_Paseq/, "Shalshelet_Gedola");
         }
         if (tuple.trup.match(/{Segol-21d}_with_{Segol-21d}/)) {
             // a simple misunderstanding b/t a chain of friends
@@ -333,7 +337,7 @@ function tuplesPostProcess(tuples) {
         let mOrYregex = /(.*[_]?[}]?)Merkha-3c-or-Yored-3d(.*)/;
         if (tuple.trup.match(mOrYregex)) {
             //console.log('tuplesResult=', tuplesResult);
-            if (index > 0 && tuplesResult[index-1].trup.match(/Ole-3[cd]*}?$/)) {
+            if (index > 0 && tuples[index-1].trup.match(/Ole-3[cd]*}?$/)) {
                 tuple.trup = tuple.trup.replace(mOrYregex, "$1Yored-3d$2");
             }
             else {
@@ -346,7 +350,7 @@ function tuplesPostProcess(tuples) {
             tuple.comment = addComment(tuple.comment, myO.comment.manualEditMugrash);
         }
         ///// fix MAPM nosyms
-        tuplesResult = fixNoSyms(tuple, index, tuplesResult);
+        tuples = fixNoSyms(tuple, index, tuples);
 
         // MAPM (not WLC) uses 0599 for Qadma, but it's rendered Pashta in displays
         if (tuple.trup.match(/Pashta-3d/) && tuple.osisID == "Ps.52.7") {
@@ -354,36 +358,36 @@ function tuplesPostProcess(tuples) {
             tuple.comment = addComment(tuple.comment, myO.comment.manualEditAntiPashta);
         }
     });
-    while (tuplesResult.find(t => t.trup == "Yored-3d")) {
+    while (tuples.find(t => t.trup == "Yored-3d")) {
         let oleIndex;
-        tuplesResult.forEach((tuple, index) => {
+        tuples.forEach((tuple, index) => {
             if (tuple.trup == "Yored-3d") {
                 oleIndex = index - 1;
 
-                let oleTuple = tuplesResult[oleIndex];
-                let yoredTuple = tuplesResult[oleIndex + 1];
+                let oleTuple = tuples[oleIndex];
+                let yoredTuple = tuples[oleIndex + 1];
                 let newTuple = combineOleAndYored(oleTuple, yoredTuple);
 
-                tuplesResult = abToC(tuplesResult, oleIndex, 2, newTuple);
+                tuples = abToC(tuples, oleIndex, 2, newTuple);
                 newTuple.comment = addComment(newTuple.comment, myO.comment.manualEditUpDown);
             }
         });
     }
     // smooshing _Paseq onto preceding -- next block for exception Legarmeh, and Shalshelet here below
     // probably only matters in MAPM, oshb handles Paseq earlier
-    while (tuplesResult.find(t => t.trup.match(/^Paseq-/))) {
-        let paseqIndex = tuplesResult.findIndex(t => t.trup.match(/^Paseq-/));
+    while (tuples.find(t => t.trup.match(/^Paseq-/))) {
+        let paseqIndex = tuples.findIndex(t => t.trup.match(/^Paseq-/));
 
-        let paseqTuple = tuplesResult[paseqIndex];
-        let priorTuple = tuplesResult[paseqIndex - 1];
+        let paseqTuple = tuples[paseqIndex];
+        let priorTuple = tuples[paseqIndex - 1];
 
         let newTuple = combinePriorAndPaseq(priorTuple, paseqTuple);
 
-        tuplesResult = abToC(tuplesResult, paseqIndex - 1, 2, newTuple);
+        tuples = abToC(tuples, paseqIndex - 1, 2, newTuple);
 
         if (newTuple.trup.match(/Shalshelet_Qetana_Paseq/)) {
             // a simple misunderstanding b/t a chain of friends
-            newTuple.trup = newTuple.trup.replace(/Shalshelet_Qetana_Paseq/, "Shalshelet_Gegola");
+            newTuple.trup = newTuple.trup.replace(/Shalshelet_Qetana_Paseq/, "Shalshelet_Gedola");
         }
         else {
             newTuple.comment = addComment(newTuple.comment, myO.comment.gluePaseq);
@@ -395,30 +399,30 @@ function tuplesPostProcess(tuples) {
         return tuplesResult.findIndex(t => t.trup.match(/Munnach_Paseq/) &&
             (null == vettedMuSeqs.match(`(${t.word})` )));
     }
-    while (getPossibleLegarmehIndex(tuplesResult) > -1) {
+    while (getPossibleLegarmehIndex(tuples) > -1) {
 
-        let muSeqIndex = getPossibleLegarmehIndex(tuplesResult);
+        let muSeqIndex = getPossibleLegarmehIndex(tuples);
 
-        let tuple = tuplesResult[muSeqIndex];
+        let tuple = tuples[muSeqIndex];
 
         // array.includes() doesn't seem to work
         vettedMuSeqs += `(${tuple.word})`;
 
-        if (foundAndInRange(muSeqIndex + 1, tuplesResult.length)) {
-            if (tuplesResult[muSeqIndex + 1].trup.match(/Revia/) ||
-                tuplesResult[muSeqIndex + 1].trup.match(/Legarmeh/) ||
-                tuplesResult[muSeqIndex + 1].trup.match(/Munnach_b4Rv/) ||
-                (tuplesResult[muSeqIndex + 1].trup.match(/Munnach/) &&
-                    foundAndInRange(muSeqIndex + 2, tuplesResult.length) &&
-                    tuplesResult[muSeqIndex + 2].trup.match(/Revia/))) {
+        if (foundAndInRange(muSeqIndex + 1, tuples.length)) {
+            if (tuples[muSeqIndex + 1].trup.match(/Revia/) ||
+                tuples[muSeqIndex + 1].trup.match(/Legarmeh/) ||
+                tuples[muSeqIndex + 1].trup.match(/Munnach_b4Rv/) ||
+                (tuples[muSeqIndex + 1].trup.match(/Munnach/) &&
+                    foundAndInRange(muSeqIndex + 2, tuples.length) &&
+                    tuples[muSeqIndex + 2].trup.match(/Revia/))) {
                 tuple.trup = tuple.trup.replace(/Munnach_Paseq/, "Legarmeh");
                 tuple.comment = addComment(tuple.comment, myO.comment.manualEditLeg);
                 tuple.comment = tuple.comment.filter(c => c != myO.comment.gluePaseq);
             }
             // as a bonus we reach back one tuple
-            if (foundAndInRange(muSeqIndex - 1, tuplesResult.length)) {
-                if (tuplesResult[muSeqIndex - 1].trup.match(/Munnach_Paseq/)) {
-                    tuple = tuplesResult[muSeqIndex - 1];
+            if (foundAndInRange(muSeqIndex - 1, tuples.length)) {
+                if (tuples[muSeqIndex - 1].trup.match(/Munnach_Paseq/)) {
+                    tuple = tuples[muSeqIndex - 1];
                     tuple.trup = tuple.trup.replace(/Munnach_Paseq/, "Legarmeh");
                     tuple.comment = addComment(tuple.comment, myO.comment.manualEditLeg);
                     tuple.comment = tuple.comment.filter(c => c != myO.comment.gluePaseq);
@@ -429,16 +433,16 @@ function tuplesPostProcess(tuples) {
 
     // after some Munachs have morphed into Legs or Paseqs,
     //  differentiate by context
-    tuplesResult = manyMunachsBefore(tuplesResult);
+    tuples = manyMunachsBefore(tuples);
 
     // not sure how extra -21s got in
-    tuplesResult.forEach(t => {
+    tuples.forEach(t => {
         if (!t.trup.match(/_with_/)) {
             t.trup = t.trup.replace(/(b4[_\w]+)-21[cd]+/g, "$1");
         }
     })
 
-    return tuplesResult;
+    return tuples;
 }
 
 function manyMunachsBefore(tuplesIn) {
@@ -452,7 +456,7 @@ function manyMunachsBefore(tuplesIn) {
             for (let i = 0; i < ms.length; i++) {
                 let m = ms[i];
                 let tuple = tuplesIn[m];
-                if (tuple.trup != "Ktiv" && null == tuple.trup.match(/_wi\u200Bth_/)) {
+                if (tuple.trup != "Ktiv" && null == tuple.trup.match(/_with_/)) {
                     tuple.trup += `_b4${nextTrup
                         .replace(/[aeiou]/g, "")
                         .replace(/(.*)-21[cd]*/, "$1")}`;
