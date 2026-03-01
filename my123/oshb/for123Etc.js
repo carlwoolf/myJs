@@ -302,6 +302,7 @@ function fixNoSyms(tuple, index, tuples) {
             || tuple.osisID == "Exod.10.13"
             || tuple.osisID == "Num.12.9"
             || tuple.osisID == "Deut.32.6"
+            || tuple.osisID == "Song.7.13"
         ) {
             // MAPM has Revia
             let nextTuple = tuples[index+1];
