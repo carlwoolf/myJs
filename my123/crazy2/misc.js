@@ -209,14 +209,22 @@ async function debugTrySequence(seqStr) {
     console.log(msc.winners);
 }
 function rufSeqToAllHues(rufSeq) {
-    clearRuf2hues();
-    let target = $('#ruf2hues');
+    let targetList = $('#ruf2hues');
+    targetList.empty();
+
+    let headerTarget = $('#hueVariantHeader');
+    headerTarget.empty();
+
     let currentRuf = $('#whichRuf').val();
-    let currentRufDiv = $(`<div>Current RUF: ${rufSeq}</div>`);
-    let clearCurrentRufs = $('<button id="currentRufHues"> Clear</button>');
-    currentRufDiv.append(clearCurrentRufs);
-    clearCurrentRufs.on('click', function() {target.empty();})
-    target.append(currentRufDiv);
+    let currentRufSpan = $(`<span>RUF: ${rufSeq}</span>`);
+    let clearCurrentRufsButton = $('<button class="ms-1" id="currentRufHues">X</button>');
+    headerTarget.append(currentRufSpan);
+    headerTarget.append(clearCurrentRufsButton);
+    clearCurrentRufsButton.on('click', function() {
+        targetList.empty();
+        headerTarget.empty();
+    })
+
     for (let hue of [
         "GyGoOy",
         "GyOyGo",
@@ -250,7 +258,7 @@ function rufSeqToAllHues(rufSeq) {
             $('.hueBreak').addClass('d-none');
             oneRufVariant.find('.hueBreak').removeClass('d-none');
         })
-        target.append(oneRufVariant);
+        targetList.append(oneRufVariant);
     }
 
     adjustRufHelper(currentRuf);

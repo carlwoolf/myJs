@@ -170,9 +170,6 @@ function moveSequenceChanged(e) {
    loadInput(newVal);
    showHueVariants();
 }
-function clearRuf2hues() {
-    $('#ruf2hues').empty();
-}
 
 async function loadAndDoMovesIfThere(val, minus, alsoHistorize) {
     if (val) {

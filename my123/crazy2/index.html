@@ -62,11 +62,12 @@
                            custom-class="tooltip"
                            placeholder="Eg: 'r' or 'gy,-go'"/>
                 </div>
-                <div class="col-3">
+                <div id="hueVariantDiv" class="col-3">
                     <button class="mt-1" id="hueVariantsButton"
                             data-toggle="tooltip" data-placement="left"
                             title="Click to load concise hued display of selected macro">HueVariants
                     </button>
+                    <span id="hueVariantHeader"></span>
                 </div>
             </div>
             <div class="row">
@@ -97,7 +98,6 @@
                            title="Check to perform as soon as item is selected"/>
                     <select id="history">
                         <option disabled="true" value="placeholder" selected>history</option>
-                        <!--            <option value="clearHistory">Clear History</option>-->
                     </select>
                     <div id="clearButtons">Clear:
                         <span id="clearButtonsSpan">
@@ -143,7 +143,6 @@
     <div class="ms-4 footnote"><span>Click cross for clockwise move. . . Shift-click for minus move. . . Alt-click to toggle tracking</span>
     </div>
     <div class="ms-1 mt-0 mb-0 me-0 w-100 current row">
-        <!-- in bs5 'col-3' means 25%. simple col as last works around bug of "4x3 < 12"-->
         <div class="svgDisplay2 col-4 p-0 m-0 justify-content-start"  id="svg_gy"></div>
         <div class="svgDisplay2 col-4 m-0 p-0 justify-content-center" id="svg_oy"></div>
         <div class="svgDisplay2 col-4 m-0 p-0 justify-content-end"    id="svg_go"></div>
