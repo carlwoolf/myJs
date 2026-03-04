@@ -41,11 +41,11 @@ async function movePiece2(controlColors, minus, fromClick, alsoHistorize) {
     await highwayMove2(flavor, minus, axis);
 
     // permute/rotate cohort around controls
-    let cohortGrPositionsUpS = ['L3','L6', 'L9','Lc'];
-    let cohortGrPositionsUpK = ['L2', 'L5', 'L7', 'La'];
+    let cohortGrPositionsUpS = ['L2','L6', 'L8','L4'];
+    let cohortGrPositionsUpK = ['L1', 'L3', 'L9', 'L7'];
 
-    let cohortGrPositionsDownS = ['R3','R6', 'R9','Rc'];
-    let cohortGrPositionsDownK = ['R2', 'R5', 'R7', 'Ra'];
+    let cohortGrPositionsDownS = ['R2','R6', 'R8','R4'];
+    let cohortGrPositionsDownK = ['R1', 'R3', 'R9', 'R7'];
 
     await rotateAndCycleThru2(flavor, cohortGrPositionsUpS, minus, axis);
     await rotateAndCycleThru2(flavor, cohortGrPositionsUpK, minus, axis);

@@ -9,7 +9,7 @@ function setupUtilData()
     ck.showXsSmMdHideOthers = "d-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none";
     ck.hideXsSmMdShowOthers = "d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block";
 
-    ck.scale = .65;
+    ck.scale = .85;
     ck.hueVsRuf = false;
 
     ck.boldBorder = 5;

@@ -16,6 +16,9 @@ html,body
 #mainContainer {
     width: 100%;
 }
+#containerId {
+    width: 100% !important;
+}
 .container {
     margin: 0px !important;
     width: 100% !important;
@@ -32,24 +35,25 @@ html,body
     display: inline-block;
 }
 .footnote {
-    font-size: 18px;
+    font-size: 14px;
     background-color: #9bfdff;
+    margin-top: -25px;
 }
-div.current {
-    margin-top: -20px;
+div.current.row {
+    margin-top: -10px !important;
 }
 .xtraControls {
     vertical-align: top;
-    font-size: 12px !important;
+    font-size: 14px !important;
 }
 #rufRLcurrent {
     font-size: 14px;
 }
 #clearButtons {
-    font-size: 16px;
+    font-size: 14px;
 }
 #clearButtonsSpan {
-    font-size: 12px;
+    font-size: 14px;
 }
 button {
     border:none;
@@ -59,8 +63,11 @@ button {
 #lMacro, #lSequence {
     background-color: #9bfdff;
 }
-#macro, #history, #whichRuf {
+#macro, #history {
     width: 50% !important;
+}
+#whichRuf {
+    width: 90px !important;
 }
 #moveSequence {
     width: 75%;
