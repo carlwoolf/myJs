@@ -227,11 +227,11 @@ function rufSeqToAllHues(rufSeq) {
 
     for (let hue of [
         "GyGoOy",
-        "GyOyGo",
+        //"GyOyGo",
         "GoOyGy",
-        "GoGyOy",
+        //"GoGyOy",
         "OyGyGo",
-        "OyGoGy",
+        //"OyGoGy",
     ]) {
         adjustRufHelper(hue);
         let hueSeq = ruf2hue(rufSeq);

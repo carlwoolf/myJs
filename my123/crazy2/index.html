@@ -84,9 +84,9 @@
                     <select id="macro">
                         <option disabled="true" selected>Macro</option>
                     </select>
-                    <input type="checkbox" id="solveWithMacro"
+                    <input type="checkbox" id="showMarcroHueVariants"
                            data-toggle="tooltip" data-placement="left"
-                           title="Check to display macro and hues"/>
+                           title="Show macro's hue variants"/>
                     <br/>
                     <button class="mt-1" for="history" id="lHistory"
                             data-toggle="tooltip" data-placement="left"
@@ -121,12 +121,13 @@
                         <button class="mt-1" for="whichRuf" id="lWhichRuf">Select RUF</button>
                         <select id="whichRuf">
                             <option disabled="true">Which RUF</option>
-                            <option value="GoOyGy"> GoOyGy</option>
-                            <option value="GoGyOy"> GoGyOy</option>
-                            <option value="OyGyGo"> OyGyGo</option>
-                            <option value="OyGoGy"> OyGoGy</option>
                             <option value="GyGoOy" selected>GyGoOy</option>
+                            <option value="GoOyGy"> GoOyGy</option>
+                            <option value="OyGyGo"> OyGyGo</option>
+                            <option disabled="true">Mirrors</option>
                             <option value="GyOyGo"> GyOyGo</option>
+                            <option value="GoGyOy"> GoGyOy</option>
+                            <option value="OyGoGy"> OyGoGy</option>
                         </select>
                         <span class="ms-2 hfBold" id="rufRLcurrent"></span>
                     </div>

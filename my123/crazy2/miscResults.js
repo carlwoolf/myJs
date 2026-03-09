@@ -37,7 +37,7 @@ function collectMacros() {
     ];
     areInitialsAlsoWinners();
          *****/
-    winnerQueries(ck.macs);
+    windowizeWinnerQueries(ck.macs);
 }
 
 msc.applies = [
@@ -232,7 +232,7 @@ function tldr(winners) {
     result = result.sort(sortTldr);
     return result;
 }
-function winnerQueries(collector) {
+function windowizeWinnerQueries(collector) {
     for (f of msc.applies) {
         let name = f.name;
         window[name] = f;

@@ -139,7 +139,7 @@ function setupButtons() {
     $('#macro').on('change', macroChange);
 
     boldHfToggle();
-    $('#solveWithMacro').click();
+    $('#showMarcroHueVariants').click();
 }
 async function macroChange(e) {
     let val = $(e.target).val();
@@ -153,7 +153,7 @@ async function macroChange(e) {
         await loadAndDoMovesIfThere(val, minus);
         unfreeze();
     }
-    else if ($('#solveWithMacro').is(':checked')) {
+    else if ($('#showMarcroHueVariants').is(':checked')) {
         let val4hue = $(e.target).find(':selected').html().replace(/([\d+]x):/, "[$1] "); // .replace(/.* /,'');
         setInput(val4hue);
         $('#hueVariantsButton').click();

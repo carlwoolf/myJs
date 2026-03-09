@@ -80,7 +80,7 @@ function setupUtilData()
     ck.rufRL['GyGoOy'] = 'R:gy/bw . U:go/br . F:oy/rw';
     ck.rufRL['GyOyGo'] = 'R:gy/bw . U:oy/rw . F:go/br';
 
-    ck.hueSeq = ck.GyOyGo;
+    ck.hueSeq = ck.GyGoOy;
 
     ck.svg = {};
     ck.solvedSvg = {};
