@@ -17,12 +17,12 @@ ck.priorMacs = [
     {
         "x": "2",
         "seq": "R,-F,U,-R,F,-U",
-        "label": "__hs_180"
+        "label": "__hs180"
     },
     {
         "x": "2",
         "seq": "R,-U,-U,-R,-U,-U",
-        "label": "__hs_120"
+        "label": "__hs240"
     },
     {
         "x": 4,
@@ -33,6 +33,26 @@ ck.priorMacs = [
         "x": 2,
         "seq": "F,R,U",
         "label": "__s90_6c180"
+    },
+    {
+        "x": 1,
+        "seq": "R,-U,-U,-R,-U,-U",
+        "label": "__ks180_hs120_sw"
+    },
+    {
+        "x": 1,
+        "seq": "R U F U -R -U -F -U",
+        "label": "__ks180_hs120_kw"
+    },
+    {
+        "x": 2,
+        "seq": "R -U -R U",
+        "label": "__k240_bs"
+    },
+    {
+        "x": 2,
+        "seq": "-U R U -R",
+        "label": "__k120_bs"
     },
     {
         "x": "3",
@@ -63,17 +83,7 @@ ck.priorMacs = [
         "x": "1",
         "seq": "[[_sp]] [[_sf]]",
         "label": "_sw"
-    },
-    {
-        "x": 1,
-        "seq": "R,-U,-U,-R,-U,-U",
-        "label": "__ks180_hs120_sw"
-    },
-    {
-        "x": 1,
-        "seq": "R U F U -R -U -F -U",
-        "label": "__ks180_hs120_kw"
-    },
+    }
     // {
     //     "x": "1",
     //     "seq": "R,-F,-F,-F,-F,-R,F,F,F,F",
