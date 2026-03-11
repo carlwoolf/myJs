@@ -196,7 +196,12 @@ function resetHistory() {
 function handleMoveSequenceClick(e) {
     let target = $(e.target);
     let val = target.val();
-    if (e.altKey) alert(`<${val}>`);
+    if (e.altKey) {
+        alert(`<${val}>`);
+    }
+    else if (e.shiftKey){
+        target.toggleClass('veryBig');
+    }
 }
 function resetRuf() {
     let rufFlavor = 'GyGoOy';

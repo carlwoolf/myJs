@@ -146,3 +146,7 @@ g:focus {
     font-size: 19px;
     color: #146c43;
 }
+.veryBig {
+    font-size: 40px !important;
+    color: #146c43;
+}

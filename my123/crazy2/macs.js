@@ -20,6 +20,11 @@ ck.priorMacs = [
         "label": "__hs_180"
     },
     {
+        "x": "2",
+        "seq": "R,-U,-U,-R,-U,-U",
+        "label": "__hs_120"
+    },
+    {
         "x": 4,
         "seq": "F,R,U",
         "label": "__s180"
@@ -62,7 +67,12 @@ ck.priorMacs = [
     {
         "x": 1,
         "seq": "R,-U,-U,-R,-U,-U",
-        "label": "_sw_ks180_hs120"
+        "label": "__ks180_hs120_sw"
+    },
+    {
+        "x": 1,
+        "seq": "R U F U -R -U -F -U",
+        "label": "__ks180_hs120_kw"
     },
     // {
     //     "x": "1",
@@ -95,3 +105,22 @@ ck.priorMacs = [
     //     "label": "f2_h17_zw"
     // }
 ];
+
+function printMacs() {
+    for (let mac of ck.priorMacs) {
+        console.log(`RUF Mac ${mac.label} is: ${mac.x}x: ${mac.seq}`);
+        for (let hue of [
+            "GyGoOy",
+            //"GyOyGo",
+            "GoOyGy",
+            //"GoGyOy",
+            "OyGyGo",
+            //"OyGoGy",
+        ]) {
+            adjustRufHelper(hue);
+            let seq = expandMacrosInSeqStr(mac.seq)
+            let hueMac = ruf2hue(seq);
+            console.log(`-- hue: ${hue} ${mac.label} ===> \n${mac.x}x: ${hueMac}`);
+        }
+    }
+}

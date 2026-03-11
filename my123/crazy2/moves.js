@@ -242,6 +242,7 @@ async function emitSvgDiffs(report) {
         reportSpan.on('click', function() {
             ck.dReports.push(diffArrayReport);
             console.log("Diff Reports", ck.dReports);
+            //alert(JSON.stringify(ck.dReports));
         });
     }
 
