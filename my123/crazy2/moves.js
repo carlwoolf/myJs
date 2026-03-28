@@ -241,8 +241,7 @@ async function emitSvgDiffs(report) {
     if (diffArrayReport) {
         reportSpan.on('click', function() {
             ck.dReports.push(diffArrayReport);
-            console.log("Diff Reports", ck.dReports);
-            //alert(JSON.stringify(ck.dReports));
+            console.log("ck.dReports", ck.dReports);
         });
     }
 

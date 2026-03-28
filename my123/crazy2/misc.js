@@ -205,6 +205,10 @@ async function stringyDiffReport() {
     console.log(JSON.stringify(report));
 }
 async function debugTrySequence(seqStr) {
+    if (! seqStr.match(/,/)) {
+        seqStr = seqStr.split(' ').join(',');
+    }
+    console.log('Try: ', seqStr);
     await trySequence(seqStr, null, true); // will setup winners
     console.log(msc.winners);
 }
@@ -227,15 +231,30 @@ function rufSeqToAllHues(rufSeq) {
 
     for (let hue of [
         "GyGoOy",
-        //"GyOyGo",
         "GoOyGy",
-        //"GoGyOy",
         "OyGyGo",
-        //"OyGoGy",
+        "GyOyGo",
+        "GoGyOy",
+        "OyGoGy",
     ]) {
         adjustRufHelper(hue);
         let hueSeq = ruf2hue(rufSeq);
-        let hs1 = hueSeq.replace(/(.*])(.*)/, "$1<br/>&nbsp;&nbsp;$2");
+        let hs1 = hueSeq.replace(/(.*])(.*)/, "$1<br/>&nbsp;&nbsp;|| $2");
+        // chunk for reading
+        let chunkSeqArray = hs1.split(',');
+        let chunkSeq = '';
+        let i = 0;
+        for (; i<chunkSeqArray.length; i++) {
+            chunkSeq += chunkSeqArray[i] + ' ';
+            if (i%3 == 2) {
+                chunkSeq += '|| ';
+            }
+        }
+        if (i%3 != 2) {
+                chunkSeq += '|| ';
+        }
+        hs1 = chunkSeq;
+        // (end) chunk for reading
 
         let oneRufVariant = $(`<div class="hueVariant"
             data-toggle="tooltip" data-placement="left"

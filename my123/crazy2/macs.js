@@ -15,9 +15,9 @@ ck.priorMacs = [
         "label": "__c6_180"
     },
     {
-        "x": "2",
+        "x": "1",
         "seq": "R,-F,U,-R,F,-U",
-        "label": "__hs180"
+        "label": "__hs180(T:dr-ul)"
     },
     {
         "x": "2",
@@ -121,11 +121,11 @@ function printMacs() {
         console.log(`RUF Mac ${mac.label} is: ${mac.x}x: ${mac.seq}`);
         for (let hue of [
             "GyGoOy",
-            //"GyOyGo",
             "GoOyGy",
-            //"GoGyOy",
             "OyGyGo",
-            //"OyGoGy",
+            "GyOyGo",
+            "GoGyOy",
+            "OyGoGy"
         ]) {
             adjustRufHelper(hue);
             let seq = expandMacrosInSeqStr(mac.seq)
