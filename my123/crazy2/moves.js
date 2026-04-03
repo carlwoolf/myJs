@@ -28,17 +28,18 @@ function other2Axes(axis) {
 }
 async function movePiece2(controlColors, minus, fromClick, alsoHistorize) {
     let flavor = ck.stdTwin.get(controlColors);
-    let axis = ck.axis.get(flavor);
-    //console.log('flavor is ' + flavor);
 
     // rotate the 2 controls, and remember axis
     for (let grPos of ['LM', 'RM']) {
+        if (grPos == 'LM') {
+            flavor = ck.rawTwin.get(flavor);
+        }
         let canItem = grPosKeyToCanonItemFromFlavor(flavor, grPos);
 
-        let rotationMatrix = minus ? m_minusRot(m.r90[axis]) : m.r90[axis];
-        addRotationByMatrix(canItem, rotationMatrix);
+        let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
+        addRotationByMatrix(canItem, rotationMatrix, flavor);
     }
-    await highwayMove2(flavor, minus, axis);
+    await highwayMove2(flavor, minus);
 
     // permute/rotate cohort around controls
     let cohortGrPositionsUpS = ['L2','L6', 'L8','L4'];
@@ -47,11 +48,12 @@ async function movePiece2(controlColors, minus, fromClick, alsoHistorize) {
     let cohortGrPositionsDownS = ['R2','R6', 'R8','R4'];
     let cohortGrPositionsDownK = ['R1', 'R3', 'R9', 'R7'];
 
-    await rotateAndCycleThru2(flavor, cohortGrPositionsUpS, minus, axis);
-    await rotateAndCycleThru2(flavor, cohortGrPositionsUpK, minus, axis);
+    await rotateAndCycleThru2(flavor, cohortGrPositionsUpS, minus);
+    await rotateAndCycleThru2(flavor, cohortGrPositionsUpK, minus);
 
-    await rotateAndCycleThru2(flavor, cohortGrPositionsDownS, minus, axis);
-    await rotateAndCycleThru2(flavor, cohortGrPositionsDownK, minus, axis);
+    let twin = ck.rawTwin.get(flavor);
+    await rotateAndCycleThru2(twin, cohortGrPositionsDownS, minus);
+    await rotateAndCycleThru2(twin, cohortGrPositionsDownK, minus);
 
     await propagateGy();
 
@@ -85,13 +87,7 @@ function findCanonArrayItemFromFlavorCoords(flavor, coords) {
     return canItem;
 }
 
-function highwayMove2(flavor, minus, axis) {
-    let highwayKeysC = [
-        'H2',
-        'H4',
-        'H6',
-        'H8',
-    ];
+function highwayMove2(flavor, minus) {
     let highwayKeysK = [
         'H1',
         'H3',
@@ -99,15 +95,14 @@ function highwayMove2(flavor, minus, axis) {
         'H7',
     ];
 
-    let rotationMatrix = minus ? m_minusRot(m.r120[axis]) : m.r120[axis];
     for (let key of highwayKeysK) {
+        console.log('hiKey', key);
         let canonItem = findCanonArrayItemFromFlavorGrArray(flavor, key);
-
-        /** oops, degradation of values via multiple compositions may raise errors **/
-        /** oops, proliferation of angles suggests (and Claude, perhaps lying, agrees)
-         *  to use the 'same' axis, not separate ones **/
-        let itemColors = canonItem.n.replace(/[TD]+/,'');
-        //let rotationMatrix = minus ? m.r120[itemColors] : m_minusRot(m.r120[itemColors]);
+        let sPiece = pieceToFur(canonItem);
+        let rotationMatrix = m.r120[sPiece];
+        if (minus) {
+            rotationMatrix = m_minusRot(rotationMatrix);
+        }
         addRotationByMatrix(canonItem, rotationMatrix);
     }
 }
@@ -131,15 +126,15 @@ function grPosKeyToFlavorItem(flavor, key) {
     return item;
 }
 }
-function moveAndRotateItem(fromItem, toItem, minus, axis) {
+function moveAndRotateItem(fromItem, toItem, minus, flavor) {
 
     copyAllButB4(fromItem, toItem);
-
-    let rotationMatrix = minus ? m_minusRot(m.r90[axis]) : m.r90[axis];
-    addRotationByMatrix(toItem, rotationMatrix);
+    let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
+    addRotationByMatrix(toItem, rotationMatrix, flavor);
 }
-function rotateAndCycleThru2(flavor, grPosArray, minus, axis) {
+function rotateAndCycleThru2(flavor, grPosArray, minus) {
     let numCoords = grPosArray.length;
+    let axis = m.axis[flavor];
     if (minus) {
         grPosArray = grPosArray.reverse();
     }
@@ -152,12 +147,12 @@ function rotateAndCycleThru2(flavor, grPosArray, minus, axis) {
 
         let fromItem = grPosKeyToCanonItemFromFlavor(flavor, fromGrPosKey);
         let toItem = grPosKeyToCanonItemFromFlavor(flavor, toGrPosKey);
-        moveAndRotateItem(fromItem, toItem, minus, axis);
+        moveAndRotateItem(fromItem, toItem, minus, flavor);
     }
     let initialKey = grPosArray[0];
     let initialItem = grPosKeyToCanonItemFromFlavor(flavor, initialKey);
 
-    moveAndRotateItem(finalItem, initialItem, minus, axis);
+    moveAndRotateItem(finalItem, initialItem, minus, flavor);
 }
 async function showSvgDiffs2() {
     for (let flavor of ['go','gy','oy']) {

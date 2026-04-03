@@ -5,34 +5,34 @@ function setupModel2() {
     ck.canPos = {};
     ck.grPos = {};
     ck.grBkPos = {};
-    ck.canPos.ttr = ck.grPos.H1 = ck.grBkPos.H5 = [0,4];
-    ck.canPos.crw = ck.grPos.H2 = ck.grBkPos.H6 = [1,4];
-    ck.canPos.dgw = ck.grPos.H3 = ck.grBkPos.H7 = [2,4];
-    ck.canPos.cgo = ck.grPos.H4 = ck.grBkPos.H8 = [3,4];
-    ck.canPos.tto = ck.grPos.H5 = ck.grBkPos.H1 = [4,4];
-    ck.canPos.coy = ck.grPos.H6 = ck.grBkPos.H2 = [5,4];
-    ck.canPos.dby = ck.grPos.H7 = ck.grBkPos.H3 = [6,4];
-    ck.canPos.cbr = ck.grPos.H8 = ck.grBkPos.H4 = [7,4];
+    ck.canPos.ttr = ck.grPos.H1 = [0,4];
+    ck.canPos.crw = ck.grPos.H2 = [1,4];
+    ck.canPos.dgw = ck.grPos.H3 = [2,4];
+    ck.canPos.cgo = ck.grPos.H4 = [3,4];
+    ck.canPos.tto = ck.grPos.H5 = [4,4];
+    ck.canPos.coy = ck.grPos.H6 = [5,4];
+    ck.canPos.dby = ck.grPos.H7 = [6,4];
+    ck.canPos.cbr = ck.grPos.H8 = [7,4];
 
-    ck.canPos.jjw = ck.grPos.L1 = ck.grBkPos.L9 = [4,1];
-    ck.canPos.dow = ck.grPos.L2 = ck.grBkPos.L8 = [4,2];
-    ck.canPos.jjo = ck.grPos.L3 = ck.grBkPos.L7 = [4,3];
-    ck.canPos.ttw = ck.grPos.L4 = ck.grBkPos.L6 = [5,1];
-    ck.canPos.cbw = ck.grPos.LM = ck.grBkPos.LM = [5,2];
-    ck.canPos.dbo = ck.grPos.L6 = ck.grBkPos.L4 = [5,3];
-    ck.canPos.brw = ck.grPos.L7 = ck.grBkPos.L3 = [6,1];
-    ck.canPos.ttb = ck.grPos.L8 = ck.grBkPos.L2 = [6,2];
-    ck.canPos.jjb = ck.grPos.L9 = ck.grBkPos.L1 = [6,3];
+    ck.canPos.jjw = ck.grPos.L1 = [4,1];
+    ck.canPos.dow = ck.grPos.L2 = [4,2];
+    ck.canPos.jjo = ck.grPos.L3 = [4,3];
+    ck.canPos.ttw = ck.grPos.L4 = [5,1];
+    ck.canPos.cbw = ck.grPos.LM = [5,2];
+    ck.canPos.dbo = ck.grPos.L6 = [5,3];
+    ck.canPos.brw = ck.grPos.L7 = [6,1];
+    ck.canPos.ttb = ck.grPos.L8 = [6,2];
+    ck.canPos.jjb = ck.grPos.L9 = [6,3];
 
-    ck.canPos.goy = ck.grPos.R1 = ck.grBkPos.R9 = [4,5];
-    ck.canPos.ttg = ck.grPos.R2 = ck.grBkPos.R8 = [4,6];
-    ck.canPos.jjg = ck.grPos.R3 = ck.grBkPos.R7 = [4,7];
-    ck.canPos.tty = ck.grPos.R4 = ck.grBkPos.R6 = [5,5];
-    ck.canPos.cgy = ck.grPos.RM = ck.grBkPos.RM = [5,6];
-    ck.canPos.dgr = ck.grPos.R6 = ck.grBkPos.R4 = [5,7];
-    ck.canPos.jjy = ck.grPos.R7 = ck.grBkPos.R3 = [6,5];
-    ck.canPos.dry = ck.grPos.R8 = ck.grBkPos.R2 = [6,6];
-    ck.canPos.jjr = ck.grPos.R9 = ck.grBkPos.R1 = [6,7];
+    ck.canPos.goy = ck.grPos.R1 = [4,5];
+    ck.canPos.ttg = ck.grPos.R2 = [4,6];
+    ck.canPos.jjg = ck.grPos.R3 = [4,7];
+    ck.canPos.tty = ck.grPos.R4 = [5,5];
+    ck.canPos.cgy = ck.grPos.RM = [5,6];
+    ck.canPos.dgr = ck.grPos.R6 = [5,7];
+    ck.canPos.jjy = ck.grPos.R7 = [6,5];
+    ck.canPos.dry = ck.grPos.R8 = [6,6];
+    ck.canPos.jjr = ck.grPos.R9 = [6,7];
     
     // extra positions for ghosts
     ck.canPos.dgwl = ck.canPos.dgw;
@@ -175,14 +175,31 @@ function addRotationByAngle(current, delta) {
     let result = (Number(current) + 360 + Number(delta)) % 360;
     return result;
 }
-function addRotationByMatrix(piece, matrix) {
+function addRotationByMatrix(piece, matrix, flavor) {
+    let axis;
+    if (flavor) {
+        axis = m.axis[flavor];
+    }
+    else {
+        let fur = pieceToFur(piece);
+        axis = m.axis[fur];
+    }
     let currentMatrix = m_fromCode(piece.drCode);
-    let rotated = m_mult(currentMatrix, matrix);
+    let rotated = m_mult(matrix, currentMatrix);
     piece.drCode = m_toCode(rotated);
-    piece.dr = m_toAngle(rotated);
+    piece.dr = m_toAngle(rotated, axis);
+}
+function pieceToFur(piece) {
+    let result = piece.n
+        .replace(/^C/, '')
+        .replace(/tt/i, 't')
+        .replace(/jj/i, 'j')
+        .toLowerCase();
+    return result;
 }
 function coordsToArrayItem(flavor, coords) {
-    let array = ck.array[flavor];
+    let standardFlavor = ck.stdTwin.get(flavor);
+    let array = ck.array[standardFlavor];
     return array[coords[0]][coords[1]]
 }
 function printArrays(header) {

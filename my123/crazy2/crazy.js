@@ -1,4 +1,6 @@
 async function setupCrazy2() {
+    setupM();
+
     setupUtilData();
     setupButtons();
 

@@ -3,7 +3,7 @@
  * @param {Array<Array<number>>} matrix - 3x3 rotation matrix
  * @returns {Object} Complete rotation analysis
  */
-function analyzeRotationMatrix(matrix, verbose) {
+function myAnalyzeRotationMatrix(matrix, verbose) {
     // Validate input
     if (!matrix || matrix.length !== 3 || matrix[0].length !== 3) {
         throw new Error('Invalid matrix: must be 3x3');
@@ -271,92 +271,4 @@ function cross(v1, v2) {
         v1[0]*v2[1] - v1[1]*v2[0]
     ];
 }
-//////////////////////
 
-// Positive 120° rotations around X-axis edges
-// BY edge (angle: 45°)
-const sqrt6_over_4 = Math.sqrt(6) / 4;  // This is the exact value for 0.612
-m.r120.by = [
-    [-1/2, sqrt6_over_4, -sqrt6_over_4],
-    [-sqrt6_over_4, 1/4, 3/4],
-    [sqrt6_over_4, 3/4, 1/4]
-];
-
-// O edge (angle: 135°)
-m.r120.o = [
-    [-1/2, sqrt6_over_4, sqrt6_over_4],
-    [-sqrt6_over_4, 1/4, -3/4],
-    [-sqrt6_over_4, -3/4, 1/4]
-];
-
-// GW edge (angle: 225°)
-m.r120.gw = [
-    [-1/2, -sqrt6_over_4, sqrt6_over_4],
-    [sqrt6_over_4, 1/4, 3/4],
-    [-sqrt6_over_4, 3/4, 1/4]
-];
-
-// R edge (angle: 315°)
-m.r120.r = [
-    [-1/2, -sqrt6_over_4, -sqrt6_over_4],
-    [sqrt6_over_4, 1/4, -3/4],
-    [sqrt6_over_4, -3/4, 1/4]
-];
-
-// Positive 120° rotations around Y-axis edges
-// Y edge (angle: 45°)
-m.r120.y = [
-    [1/4, sqrt6_over_4, 3/4],
-    [-sqrt6_over_4, -1/2, sqrt6_over_4],
-    [3/4, -sqrt6_over_4, 1/4]
-];
-
-// BO edge (angle: 135°)
-m.r120.bo = [
-    [1/4, sqrt6_over_4, -3/4],
-    [-sqrt6_over_4, -1/2, -sqrt6_over_4],
-    [-3/4, sqrt6_over_4, 1/4]
-];
-
-// W edge (angle: 225°)
-m.r120.w = [
-    [1/4, -sqrt6_over_4, 3/4],
-    [sqrt6_over_4, -1/2, -sqrt6_over_4],
-    [3/4, sqrt6_over_4, 1/4]
-];
-
-// GR edge (angle: 315°)
-m.r120.gr = [
-    [1/4, -sqrt6_over_4, -3/4],
-    [sqrt6_over_4, -1/2, sqrt6_over_4],
-    [-3/4, -sqrt6_over_4, 1/4]
-];
-
-// Positive 120° rotations around Z-axis edges
-// G edge (angle: 45°)
-m.r120.g = [
-    [1/4, 3/4, -sqrt6_over_4],
-    [3/4, 1/4, sqrt6_over_4],
-    [sqrt6_over_4, -sqrt6_over_4, -1/2]
-];
-
-// RY edge (angle: 135°)
-m.r120.ry = [
-    [1/4, -3/4, -sqrt6_over_4],
-    [-3/4, 1/4, -sqrt6_over_4],
-    [sqrt6_over_4, sqrt6_over_4, -1/2]
-];
-
-// B edge (angle: 225°)
-m.r120.b = [
-    [1/4, 3/4, sqrt6_over_4],
-    [3/4, 1/4, -sqrt6_over_4],
-    [-sqrt6_over_4, sqrt6_over_4, -1/2]
-];
-
-// OW edge (angle: 315°)
-m.r120.ow = [
-    [1/4, -3/4, sqrt6_over_4],
-    [-3/4, 1/4, sqrt6_over_4],
-    [-sqrt6_over_4, -sqrt6_over_4, -1/2]
-];
