@@ -130,6 +130,7 @@ function initArray(b,r,w,g,o,y,flavor) {
             newN = newN.replace(/([a-z]+)/, (whole, group) => group.split('').sort().join(''));
             newElt.b4 = newN;
             newElt.n = newN;
+            newElt.offsets = {x:0, y:0, z:0, s:0};
 
             ck.array[flavor][i][j] = newElt;
         }
@@ -177,11 +178,12 @@ function addRotationByAngle(current, delta) {
 }
 function addRotationByMatrix(piece, matrix, flavor) {
     let axis;
+    let fur = pieceToFur(piece); // unconditional, for easy debugging
+    let offsetType = flavor ? ck.axis.get(ck.stdTwin.get(flavor)) : 's';
     if (flavor) {
         axis = m.axis[flavor];
     }
     else {
-        let fur = pieceToFur(piece);
         axis = m.axis[fur];
     }
     let currentMatrix = m_fromCode(piece.drCode);

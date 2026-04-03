@@ -356,6 +356,7 @@ function diffPiece(a) {
         pieceDiffReport.b4 = a.b4;
     }
     pieceDiffReport.dr = a.dr;
+    pieceDiffReport.offsets = a.offsets;
 
     return pieceDiffReport;
 }
@@ -413,6 +414,7 @@ async function diffArray() {
                     arrayReport.deltaR.push({
                         n: n,
                         dr: pieceReport.dr,
+                        offsets: pieceReport.offsets
                     });
 
                     if (pieceInitial.match(/C/)) {

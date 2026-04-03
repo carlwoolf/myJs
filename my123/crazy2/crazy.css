@@ -150,3 +150,6 @@ g:focus {
     font-size: 40px !important;
     color: #146c43;
 }
+.myDivider {
+    margin-top: -80px;
+}

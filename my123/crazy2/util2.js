@@ -9,7 +9,7 @@ function setupUtilData()
     ck.showXsSmMdHideOthers = "d-block d-sm-block d-md-block d-lg-none d-xl-none d-xxl-none";
     ck.hideXsSmMdShowOthers = "d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block";
 
-    ck.scale = .85;
+    ck.scale = .70;
     ck.hueVsRuf = false;
 
     ck.boldBorder = 5;
@@ -116,7 +116,8 @@ function hue2ruf2(input) {
     let rufSeq = ck.rufSeq;
     let hueSeq = ck.hueSeq;
     let result = input.replace(/\b(gy|oy|go|bw|rw|br)\b/g, (m) => {
-        let index = hueSeq.indexOf(m);
+        let std = ck.stdTwin.get(m);
+        let index = hueSeq.indexOf(std);
         return rufSeq[index];
     });
     return result;

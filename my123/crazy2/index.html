@@ -41,7 +41,7 @@
 <body>
 <div class="w-100" id="mainContainer">
 <div id="containerId" class="container">
-    <div class="row ms-3 w-100">
+    <div class="row ms-3 mb-3 w-100">
         <div class="mt-1 col-12 p-0 xtraControls">
 
             <div class="row">
@@ -138,17 +138,16 @@
             </div>
         </div>
     </div>
+    <div class="ms-1 mb-0 me-0 w-100 current row">
+        <div class="svgDisplay2 col-4 p-0 m-0 justify-content-start"  id="svg_gy"></div>
+        <div class="svgDisplay2 col-4 m-0 p-0 justify-content-center" id="svg_oy"></div>
+        <div class="svgDisplay2 col-4 m-0 p-0 justify-content-end"    id="svg_go"></div>
+    </div>
+    <div class="ms-4 footnote myDivider"><span>Click cross for clockwise move. . . Shift-click for minus move. . . Alt-click to toggle tracking</span></div>
     <div class="ms-1 mt-1 mb-0 me-0 w-100 solved row">
         <div class="svgDisplay2 col-4  m-0 p-0 d-flex justify-content-start solved"  id="svg_gySolved"></div>
         <div class="svgDisplay2 col-4 m-0 p-0 d-flex justify-content-center solved" id="svg_oySolved"></div>
         <div class="svgDisplay2 col-4 m-0 p-0 d-flex justify-content-end solved"    id="svg_goSolved"></div>
-    </div>
-    <div class="ms-4 footnote"><span>Click cross for clockwise move. . . Shift-click for minus move. . . Alt-click to toggle tracking</span>
-    </div>
-    <div class="ms-1 mt-0 mb-0 me-0 w-100 current row">
-        <div class="svgDisplay2 col-4 p-0 m-0 justify-content-start"  id="svg_gy"></div>
-        <div class="svgDisplay2 col-4 m-0 p-0 justify-content-center" id="svg_oy"></div>
-        <div class="svgDisplay2 col-4 m-0 p-0 justify-content-end"    id="svg_go"></div>
     </div>
 
     <div id="archtypeDiv" class="w-100">
@@ -156,7 +155,7 @@
         <svg id="archtypeSvg"
              xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 250 250"
-             class="d-none w-100">
+             class="d-none">
             <defs>
                 <g id="Cx" class="d-none Cx">
                     <ellipse fill="rgb(225,225,225)" cx="16" cy="16" rx="16" ry="16"></ellipse>
