@@ -7,7 +7,7 @@ async function setupCrazy2() {
     await reset(null);
     await emitSvgs2(true);
 
-    storageKeys();
+    //storageKeys();
     clearStorage();
 
     // using ck.priorMacs instead of winners

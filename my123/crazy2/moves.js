@@ -37,7 +37,7 @@ async function movePiece2(controlColors, minus, fromClick, alsoHistorize) {
         let canItem = grPosKeyToCanonItemFromFlavor(flavor, grPos);
 
         let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
-        addRotationByMatrix(canItem, rotationMatrix, flavor);
+        addRotationByMatrix(canItem, rotationMatrix, flavor, minus);
     }
     await highwayMove2(flavor, minus);
 
@@ -96,14 +96,14 @@ function highwayMove2(flavor, minus) {
     ];
 
     for (let key of highwayKeysK) {
-        console.log('hiKey', key);
+        //console.log('hiKey', key);
         let canonItem = findCanonArrayItemFromFlavorGrArray(flavor, key);
         let sPiece = pieceToFur(canonItem);
         let rotationMatrix = m.r120[sPiece];
         if (minus) {
             rotationMatrix = m_minusRot(rotationMatrix);
         }
-        addRotationByMatrix(canonItem, rotationMatrix);
+        addRotationByMatrix(canonItem, rotationMatrix, '', minus);
     }
 }
 
@@ -130,7 +130,7 @@ function moveAndRotateItem(fromItem, toItem, minus, flavor) {
 
     copyAllButB4(fromItem, toItem);
     let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
-    addRotationByMatrix(toItem, rotationMatrix, flavor);
+    addRotationByMatrix(toItem, rotationMatrix, flavor, minus);
 }
 function rotateAndCycleThru2(flavor, grPosArray, minus) {
     let numCoords = grPosArray.length;

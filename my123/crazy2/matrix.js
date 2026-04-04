@@ -175,10 +175,10 @@ function setupM() {
     m.r90.br = m_minusRot(m.r90.go);
     m.r90.rw = m_minusRot(m.r90.oy);
 
-    for (let key of ['gy', 'go', 'oy', 'bw', 'br', 'rw']) {
-        let axis = m.axis[key];
-        console.log('piece: ', key, '. axis:', axis.join(','), ' --> angle: ', m_toAngle(m.r90[key], axis));
-    }
+    // for (let key of ['gy', 'go', 'oy', 'bw', 'br', 'rw']) {
+    //     let axis = m.axis[key];
+    //     console.log('piece: ', key, '. axis:', axis.join(','), ' --> angle: ', m_toAngle(m.r90[key], axis));
+    // }
 
     setupHighwayRotations();
 
@@ -218,7 +218,7 @@ function rotationMatrixViaPieceAndAngle(axis, angleRad, piece) {
     ];
     m.r120[piece] = result;
     m.axis[piece] = axis;
-    console.log('piece: ', piece, '. axis:', axis.join(','), ' --> angle: ', m_toAngle(result, axis));
+    //console.log('piece: ', piece, '. axis:', axis.join(','), ' --> angle: ', m_toAngle(result, axis));
 }
 function setupHighwayRotations() {
     let angle = 2 * Math.PI / 3;

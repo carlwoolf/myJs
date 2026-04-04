@@ -1,6 +1,10 @@
 let ck = {};
 ck.array = {};
 
+function getInitialOffsets() {
+    return {x:0, y:0, z:0, s:0};
+}
+
 function setupModel2() {
     ck.canPos = {};
     ck.grPos = {};
@@ -130,7 +134,7 @@ function initArray(b,r,w,g,o,y,flavor) {
             newN = newN.replace(/([a-z]+)/, (whole, group) => group.split('').sort().join(''));
             newElt.b4 = newN;
             newElt.n = newN;
-            newElt.offsets = {x:0, y:0, z:0, s:0};
+            newElt.offsets = getInitialOffsets();
 
             ck.array[flavor][i][j] = newElt;
         }
@@ -176,20 +180,29 @@ function addRotationByAngle(current, delta) {
     let result = (Number(current) + 360 + Number(delta)) % 360;
     return result;
 }
-function addRotationByMatrix(piece, matrix, flavor) {
+function addRotationByMatrix(piece, matrix, flavor, minus) {
     let axis;
     let fur = pieceToFur(piece); // unconditional, for easy debugging
     let offsetType = flavor ? ck.axis.get(ck.stdTwin.get(flavor)) : 's';
+    offsetType = offsetType.toLowerCase();
+    let offsetModulus = 4
+
     if (flavor) {
         axis = m.axis[flavor];
     }
     else {
         axis = m.axis[fur];
+        offsetModulus = 3;
     }
     let currentMatrix = m_fromCode(piece.drCode);
     let rotated = m_mult(matrix, currentMatrix);
     piece.drCode = m_toCode(rotated);
     piece.dr = m_toAngle(rotated, axis);
+
+    let priorOffset = piece.offsets[offsetType];
+    let newOffset = (priorOffset + (minus ? -1 : 1) + offsetModulus) % offsetModulus;
+    piece.offsets[offsetType] = newOffset;
+    return; // here for debugger
 }
 function pieceToFur(piece) {
     let result = piece.n

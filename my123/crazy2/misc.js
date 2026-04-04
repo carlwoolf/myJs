@@ -408,13 +408,14 @@ async function diffArray() {
                         }
                     }
                 }
-                if (pieceReport.dr) {
+                let offsets = prettyOffsets(pieceReport.offsets);
+                if (offsets != prettyOffsets(getInitialOffsets())) {
                     arrayReport.nR++;
                     arrayReport.turns++;
                     arrayReport.deltaR.push({
                         n: n,
-                        dr: pieceReport.dr,
-                        offsets: pieceReport.offsets
+                        offsets: offsets,
+                        dr: pieceReport.dr
                     });
 
                     if (pieceInitial.match(/C/)) {
@@ -454,6 +455,9 @@ async function diffArray() {
     arrayReport.pBreakdown = deltaPhelper(arrayReport.deltaP);
 
     return arrayReport;
+}
+function prettyOffsets(o) {
+    return `[${o.x},${o.y},${o.z}]-${o.s}`;
 }
 function sortByN(a,b) {
     return a.n.localeCompare(b.n);
