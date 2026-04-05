@@ -180,24 +180,25 @@ function addRotationByAngle(current, delta) {
     let result = (Number(current) + 360 + Number(delta)) % 360;
     return result;
 }
-function addRotationByMatrix(piece, matrix, flavor, minus) {
-    let axis;
-    let fur = pieceToFur(piece); // unconditional, for easy debugging
+function getSvgNetRotationByOffset(piece) {
+    let rotations = getSvgDrByOffset(piece);
+    let result = (Number(piece.r4) + 360 + rotations) % 360;
+    return result;
+}
+function getSvgDrByOffset(piece) {
+    let offset = piece.offsets;
+    let rotations = 90*(offset.x + offset.y + offset.z) + 120*(offset.s);
+    let result = (rotations) % 360;
+    return result;
+}
+function updateOffsets(piece, flavor, minus) {
     let offsetType = flavor ? ck.axis.get(ck.stdTwin.get(flavor)) : 's';
     offsetType = offsetType.toLowerCase();
     let offsetModulus = 4
 
-    if (flavor) {
-        axis = m.axis[flavor];
-    }
-    else {
-        axis = m.axis[fur];
+    if (! flavor) {
         offsetModulus = 3;
     }
-    let currentMatrix = m_fromCode(piece.drCode);
-    let rotated = m_mult(matrix, currentMatrix);
-    piece.drCode = m_toCode(rotated);
-    piece.dr = m_toAngle(rotated, axis);
 
     let priorOffset = piece.offsets[offsetType];
     let newOffset = (priorOffset + (minus ? -1 : 1) + offsetModulus) % offsetModulus;
@@ -235,7 +236,7 @@ function printArraysHelper(flavor) {
         let col = coords[1];
         let item = array[row][col];
         console.log(`key, gy, now, rxyz, drx, dry, drz ==== : ${p}, ${item.b4}, ${item.n}, 
-        ${item.r4}, ${item.dr}, ${item.drCode}`);
+        ${item.r4}`);
     }
 }
 

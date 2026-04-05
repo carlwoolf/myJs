@@ -38,7 +38,7 @@ function m_demo() {
 function m_rotateOrInit(piece, matrix) {
     if (!piece.drCode) {
         piece.dr = 0;
-        piece.drCode = m_toCode(m.rID);
+        //piece.drCode = m_toCode(m.rID);
     }
 }
 function m_fromCode(str) {

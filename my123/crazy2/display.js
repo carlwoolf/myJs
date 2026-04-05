@@ -47,7 +47,8 @@ function setupGhosts(svg) {
 
         let ghostG = cloneElement(hauntedSvg, 'ghostOuterG');
         let currentRotate = getSvgRotate(ghostG);
-        let netRotation = addRotationByAngle(currentRotate, ghostRotate);
+        //let netRotation = addRotationByAngle(currentRotate, ghostRotate);
+        let netRotation = currentRotate;
 
         ghostG.attr("transform", `scale(${ck.scale}) translate(${colsGhostTrans},${rowsGhostTrans}) rotate(${netRotation}, 16, 16)`);
         ghostG.attr("opacity", "1");
@@ -110,12 +111,12 @@ async function emitOneSvg2(flavor, solved) {
 
         svgPiece.attr('n', arrayCode.n);
         svgPiece.attr('b4', arrayCode.b4);
-        svgPiece.attr('dr', arrayCode.dr);
-        svgPiece.attr('drCode', arrayCode.drCode);
+        svgPiece.attr('offsets', prettyOffsets(arrayCode.offsets));
         svgPiece.attr('r4', arrayCode.r4);
         svgPiece.attr('pos', posKey);
-        let netRotation = addRotationByAngle(arrayCode.r4, arrayCode.dr);
-        setSvgXformRotate(svgPiece, netRotation);
+
+        setSvgXformRotate(svgPiece, getSvgNetRotationByOffset(arrayCode));
+        svgPiece.attr('dr', getSvgDrByOffset(arrayCode));
 
         addTooltip(svgPiece);
 
@@ -141,7 +142,7 @@ async function emitOneSvg2(flavor, solved) {
                         if (frozen()) return;
                         freeze();
 
-                        await movePiece2(flavor, minus, true, true);
+                        await moveOnePiece(flavor, minus, true, true);
 
                         unfreeze();
                     }
@@ -241,7 +242,8 @@ function makeClonePieceForSvg2(svg, coords, code, scale, solved) {
     if ('brw' == codePiece) {
         effectiveColors = [effectiveColors[0], effectiveColors[2], effectiveColors[1]];
     }
-    let rotate = addRotationByAngle(code.r4, code.dr);
+    //let rotate = addRotationByAngle(code.r4, code.dr);
+    let rotate = getSvgDrByOffset(code);
 
     let archtypePiece = $(`#${archtypeId}`);
     let clonePiece = cloneElement(archtypePiece, archtypeId);

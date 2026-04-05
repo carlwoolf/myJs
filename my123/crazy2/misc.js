@@ -355,30 +355,33 @@ function diffPiece(a) {
         pieceDiffReport.n = a.n;
         pieceDiffReport.b4 = a.b4;
     }
-    pieceDiffReport.dr = a.dr;
-    pieceDiffReport.offsets = a.offsets;
+    //pieceDiffReport.dr = a.dr;
+    if (! codesOffsetIsTrivial(a)) {
+        pieceDiffReport.offsets = a.offsets;
+    }
 
     return pieceDiffReport;
 }
 async function diffArray() {
     let arrayReport = {
         score: 0,
-        nsR: 0,
+        deltaP: [],
+        deltaR: [],
         ncR: 0,
         nkR: 0,
+        nsR: 0,
+        ncP: 0,
+        nkP: 0,
         nsP: 0,
+        nP:0,
+        nR: 0,
         nshP: 0,
         nshR: 0,
         nchR: 0,
-        ncP: 0,
-        nkP: 0,
-        nP:0,
-        nR: 0,
-        moves: 0,
         turns: 0,
-        both: 0,
-        deltaP: [],
-        deltaR: []};
+        moves: 0,
+        both: 0
+    };
 
     let fn = (r,c,array) => {
         let item = array[r][c];
@@ -408,14 +411,14 @@ async function diffArray() {
                         }
                     }
                 }
-                let offsets = prettyOffsets(pieceReport.offsets);
-                if (offsets != prettyOffsets(getInitialOffsets())) {
+                let nonTrivialOffsets = ! codesOffsetIsTrivial(pieceReport);
+                if (nonTrivialOffsets) {
+                    let offsets = prettyOffsets(pieceReport.offsets);
                     arrayReport.nR++;
                     arrayReport.turns++;
                     arrayReport.deltaR.push({
                         n: n,
-                        offsets: offsets,
-                        dr: pieceReport.dr
+                        offsets: offsets
                     });
 
                     if (pieceInitial.match(/C/)) {
@@ -434,7 +437,7 @@ async function diffArray() {
                         }
                     }
                 }
-                if (pieceReport.n && pieceReport.dr) {
+                if (pieceReport.n && nonTrivialOffsets) {
                     arrayReport.both++;
                     arrayReport.turns--;
                     arrayReport.moves--;
@@ -457,7 +460,24 @@ async function diffArray() {
     return arrayReport;
 }
 function prettyOffsets(o) {
-    return `[${o.x},${o.y},${o.z}]-${o.s}`;
+    let result;
+    if (o) {
+        result = `${o.x},${o.y},${o.z},${o.s}`;
+    }
+    else {
+        result = 'error';
+    }
+    return result;
+}
+function codesOffsetIsTrivial(code) {
+    let result = true; // cynical
+    if (code && code.offsets)
+    result = offsetIsTrivial(code.offsets);
+    return result;
+}
+function offsetIsTrivial(o) {
+    let result = ! o || prettyOffsets(o) == prettyOffsets(getInitialOffsets());
+    return result;
 }
 function sortByN(a,b) {
     return a.n.localeCompare(b.n);

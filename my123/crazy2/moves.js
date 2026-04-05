@@ -26,7 +26,7 @@ function other2Axes(axis) {
     }
 
 }
-async function movePiece2(controlColors, minus, fromClick, alsoHistorize) {
+async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
     let flavor = ck.stdTwin.get(controlColors);
 
     // rotate the 2 controls, and remember axis
@@ -37,7 +37,7 @@ async function movePiece2(controlColors, minus, fromClick, alsoHistorize) {
         let canItem = grPosKeyToCanonItemFromFlavor(flavor, grPos);
 
         let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
-        addRotationByMatrix(canItem, rotationMatrix, flavor, minus);
+        updateOffsets(canItem, flavor, minus);
     }
     await highwayMove2(flavor, minus);
 
@@ -66,6 +66,11 @@ async function movePiece2(controlColors, minus, fromClick, alsoHistorize) {
             appendInput(movePrettyName);
             historizeMoves(useHueVsRuf(movePrettyName));
         }
+    }
+
+    if (ck.diffEachMove) {
+        let report = await emitDiffs();
+        console.log("diffReport", report);
     }
 }
 function findCanonArrayItemFromFlavorGrArray(flavor, grKey) {
@@ -103,15 +108,15 @@ function highwayMove2(flavor, minus) {
         if (minus) {
             rotationMatrix = m_minusRot(rotationMatrix);
         }
-        addRotationByMatrix(canonItem, rotationMatrix, '', minus);
+        updateOffsets(canonItem,  '', minus);
     }
 }
 
 function copyAllButB4(fromItem, toItem) {
     toItem.n = fromItem.n;
     toItem.r4 = fromItem.r4;
-    toItem.dr = fromItem.dr;
-    toItem.drCode = fromItem.drCode;
+    // toItem.dr = fromItem.dr;
+    // toItem.drCode = fromItem.drCode;
     toItem.colors = fromItem.colors;
 }
 ////////////////
@@ -130,7 +135,7 @@ function moveAndRotateItem(fromItem, toItem, minus, flavor) {
 
     copyAllButB4(fromItem, toItem);
     let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
-    addRotationByMatrix(toItem, rotationMatrix, flavor, minus);
+    updateOffsets(toItem, flavor, minus);
 }
 function rotateAndCycleThru2(flavor, grPosArray, minus) {
     let numCoords = grPosArray.length;
@@ -158,7 +163,7 @@ async function showSvgDiffs2() {
     for (let flavor of ['go','gy','oy']) {
         let diffReport = await determineSvgDiffs(flavor);
         if (flavor == 'gy') {
-            await emitSvgDiffs(diffReport);
+            await emitDiffs(diffReport);
         }
     }
 }
@@ -169,12 +174,12 @@ function determineSvgDiffs(flavor) {
         candidateG = $(candidateG);
         let isGhost = !!candidateG.attr('ghost'); // !! makes undefined same as false
         let attrN = candidateG.attr('n');
-        let attrDr = Number(candidateG.attr('dr')); // Number() just to be double sure
+        let attrOffsets = candidateG.attr('offsets') != prettyOffsets(getInitialOffsets());
 
         let ellipse = candidateG.find('ellipse');
 
         let positionDiff = (attrN != candidateG.attr('b4'));
-        let rotationDiff = attrDr != 0;
+        let rotationDiff = ! offsetIsTrivial(attrOffsets);
 
         if (! isGhost) {
             if (positionDiff && !rotationDiff) {
@@ -187,14 +192,14 @@ function determineSvgDiffs(flavor) {
                 if (ck.showTurnsDiffs) {
                     setElementFill(ellipse, ck.turnTrack);
                 }
-                appendDeltaRHelper(diffReport, attrN, attrDr);
+                appendDeltaRHelper(diffReport, attrN, attrOffsets);
                 diffReport.turns++;
             }
             else if (rotationDiff && positionDiff) {
                 if (ck.showBothDiffs) {
                     setElementFill(ellipse, ck.bothTrack);
                 }
-                appendDeltaRHelper(diffReport, attrN, attrDr);
+                appendDeltaRHelper(diffReport, attrN, attrOffsets);
                 diffReport.both++;
             }
         }
@@ -205,7 +210,16 @@ function determineSvgDiffs(flavor) {
 function appendDeltaRHelper(diffReport, piece, attrDXr) {
     appendDeltaR(diffReport, piece, attrDXr);
 }
-async function emitSvgDiffs(report) {
+async function emitDiffs() {
+    let report = await diffArray();
+    let reportSpan = $('#reportDiffs');
+    if (report) {
+        reportSpan.off('click');
+        reportSpan.on('click', function() {
+            ck.dReports.push(report);
+            console.log("ck.dReports", ck.dReports);
+        });
+    }
     let result = "";
 
     if (report.moves) {
@@ -224,21 +238,10 @@ async function emitSvgDiffs(report) {
         result = "Diffs: " + result + '(Score: ' + Number(report.score) + ')';
     }
 
-    let reportSpan = $('#reportDiffs');
     reportSpan.html(result);
     $('.reportMoved').css('background-color',  ck.moveTrack);
     $('.reportTurned').css('background-color', ck.turnTrack);
     $('.reportBoth').css('background-color',   ck.bothTrack);
-
-    ck.dReports0.push(report);
-    reportSpan.off('click');
-    let diffArrayReport = await diffArray();
-    if (diffArrayReport) {
-        reportSpan.on('click', function() {
-            ck.dReports.push(diffArrayReport);
-            console.log("ck.dReports", ck.dReports);
-        });
-    }
 
     return report;
 }
@@ -271,7 +274,7 @@ async function performMoveHelper2(moves, fromClick, alsoHistorize) {
     }
 }
 async function movePieceHelper2(flavor, minus, fromClick, alsoHistorize) {
-    await movePiece2(flavor, minus, fromClick, alsoHistorize);
+    await moveOnePiece(flavor, minus, fromClick, alsoHistorize);
 }
 async function performAndHistorizeSequence(moveSeqIn, minus, alsoHistorize) {
     let movesArrayIn = getSequenceMoves(moveSeqIn, minus).filter(m=>!m.match(/\[\d*?m\]/));

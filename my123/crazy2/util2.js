@@ -92,7 +92,6 @@ function setupUtilData()
         ck.solvedSvg[flavor] = solvedSvg;
     }
 
-    ck.dReports0 = [];
     ck.dReports = [];
 }
 
