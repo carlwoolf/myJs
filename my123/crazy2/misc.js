@@ -239,7 +239,8 @@ function rufSeqToAllHues(rufSeq) {
     ]) {
         adjustRufHelper(hue);
         let hueSeq = ruf2hue(rufSeq);
-        let hs1 = hueSeq.replace(/(.*])(.*)/, "$1<br/>&nbsp;&nbsp;|| $2");
+        let hs1 = hueSeq.replace(/(.*])(.*)/, "$1 || $2");
+
         // chunk for reading
         let chunkSeqArray = hs1.split(',');
         let chunkSeq = '';
@@ -250,10 +251,10 @@ function rufSeqToAllHues(rufSeq) {
                 chunkSeq += '|| ';
             }
         }
-        if (i%3 != 2) {
-                chunkSeq += '|| ';
+        if (i%3 != 0) {
+            chunkSeq += '|| ';
         }
-        hs1 = chunkSeq;
+        hs1 = chunkSeq.replace(/\|\|\s+\|\|/, "||");
         // (end) chunk for reading
 
         let oneRufVariant = $(`<div class="hueVariant"

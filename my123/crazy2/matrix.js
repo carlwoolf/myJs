@@ -14,7 +14,7 @@ function m_demo() {
     console.log('angles,  m.rIDxy (0), x90*y90, y90*x90: ', m_toAngle(m.rID), m_toAngle(m_mult(m.r90.gy,m.r90.go)),
         m_toAngle(m_mult(m.r90.go,m.r90.gy)));
 
-    console.log('x,y,yx: ', m_toCode(m.r90.gy), m_toCode(m.r90.go), m_toCode(m_mult(m.r90.go,m.r90.gy)));
+    console.log('x,y,yx: ', m_toCode(m.r90.gy), '----', m_toCode(m.r90.go), '----', m_toCode(m_mult(m.r90.go,m.r90.gy)));
 
     console.log('m.rx, m._rx, ie 90x, -90x, 90y, -90y, 90z, -90z',
         m_toAngle(m.r90.gy, 'X'), m_toAngle(m_minusRot(m.r90.gy)), m_toAngle(m.r90.go), m_toAngle(m_minusRot(m.r90.go)),
@@ -38,7 +38,7 @@ function m_demo() {
 function m_rotateOrInit(piece, matrix) {
     if (!piece.drCode) {
         piece.dr = 0;
-        //piece.drCode = m_toCode(m.rID);
+        piece.drCode = m_toCode(m.rID);
     }
 }
 function m_fromCode(str) {
