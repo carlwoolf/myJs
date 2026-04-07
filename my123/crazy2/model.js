@@ -205,9 +205,10 @@ function updateOffsets(piece, flavor, minus) {
     piece.offsets[offsetType] = newOffset;
     return; // here for debugger
 }
-function pieceToFur(piece) {
-    let result = piece.n
+function pieceNameToFur(name) {
+    let result = name
         .replace(/^C/, '')
+        .replace(/^K/, '')
         .replace(/tt/i, 't')
         .replace(/jj/i, 'j')
         .toLowerCase();

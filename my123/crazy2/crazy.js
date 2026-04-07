@@ -20,6 +20,11 @@ async function setupCrazy2() {
 
     $('body').on('click', resetTooltips);
     $('body').on("contextmenu", resetTooltips);
+
+    console.log('ck.surveilPiece set to a piece.n, eg "dbo", might be good');
+    console.log('ck.diffEachMove set to a true might be good');
+
+    ck.surveilPiece = 'dbo';
 }
 function setupWinners() {
     msc.winnersBySecond = {};

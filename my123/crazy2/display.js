@@ -95,7 +95,7 @@ function displayInfoForG(gElt) {
     let dr = gElt.attr('dr');
     let pos = gElt.attr('pos');
 
-    let info = `Pos:${pos} . ${n}(${b4}) . [${r},${c}] Dr:${dr}`;
+    let info = `Pos:${pos} . ${n}(${b4}) . [${r},${c}]</br>Dr:${dr} (xyz-3D)`;
     return info;
 }
 async function emitOneSvg2(flavor, solved) {
@@ -112,11 +112,11 @@ async function emitOneSvg2(flavor, solved) {
         svgPiece.attr('n', arrayCode.n);
         svgPiece.attr('b4', arrayCode.b4);
         svgPiece.attr('offsets', prettyOffsets(arrayCode.offsets));
+        svgPiece.attr('dr', arrayCode.dr);
         svgPiece.attr('r4', arrayCode.r4);
         svgPiece.attr('pos', posKey);
 
         setSvgXformRotate(svgPiece, getSvgNetRotationByOffset(arrayCode));
-        svgPiece.attr('dr', getSvgDrByOffset(arrayCode));
 
         addTooltip(svgPiece);
 

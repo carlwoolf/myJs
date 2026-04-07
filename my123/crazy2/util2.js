@@ -12,7 +12,7 @@ function setupUtilData()
     ck.scale = .70;
     ck.hueVsRuf = false;
 
-    ck.boldBorder = 5;
+    ck.boldBorder = 7;
     ck.someBorder = 3;
 
     ck.red = "rgb(237,  86, 127)";
@@ -22,7 +22,7 @@ function setupUtilData()
     ck.orange = "rgb(252, 140, 3)";
     ck.yellow = "rgb(255, 255, 0)";
 
-    ck.trackBorderColor = "rgb(113, 52, 234)";
+    ck.trackBorderColor = "rgb(247, 5, 219)";
 
     ck.turnTrack = "rgb(128, 143, 224)";
     ck.moveTrack = "rgb(45, 237, 77)";

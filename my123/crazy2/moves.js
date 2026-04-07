@@ -11,49 +11,34 @@ function canPosKeyToArrayItem(flavor, posKey) {
     return item;
 }
 
-function other2Axes(axis) {
-    let result;
-    switch(axis) {
-        case 'gy':
-            result = ['go','oy'];
-            break;
-        case 'go':
-            result = ['gy','oy'];
-            break;
-        case 'oy':
-            result = ['go','gy'];
-            break;
-    }
-
-}
 async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
     let flavor = ck.stdTwin.get(controlColors);
+    let flavor2 = ck.rawTwin.get(flavor);
 
     // rotate the 2 controls, and remember axis
     for (let grPos of ['LM', 'RM']) {
-        if (grPos == 'LM') {
-            flavor = ck.rawTwin.get(flavor);
-        }
-        let canItem = grPosKeyToCanonItemFromFlavor(flavor, grPos);
+        let flavorTwin = (grPos == 'RM') ? flavor : flavor2;
 
-        let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
-        updateOffsets(canItem, flavor, minus);
+        let canItem = grPosKeyToCanonItemFromFlavor(flavorTwin, grPos);
+
+        let rotationMatrix = minus ? m_minusRot(m.r90[flavorTwin]) : m.r90[flavorTwin];
+        updateOffsets(canItem, flavorTwin, minus);
+        addRotationByMatrix(canItem, rotationMatrix, flavorTwin);
     }
     await highwayMove2(flavor, minus);
 
     // permute/rotate cohort around controls
-    let cohortGrPositionsUpS = ['L2','L6', 'L8','L4'];
-    let cohortGrPositionsUpK = ['L1', 'L3', 'L9', 'L7'];
+    let cohortGrPositionsLeftS = ['L2','L6', 'L8','L4'];
+    let cohortGrPositionsLeftK = ['L1', 'L3', 'L9', 'L7'];
 
-    let cohortGrPositionsDownS = ['R2','R6', 'R8','R4'];
-    let cohortGrPositionsDownK = ['R1', 'R3', 'R9', 'R7'];
+    let cohortGrPositionsRightS = ['R2','R6', 'R8','R4'];
+    let cohortGrPositionsRightK = ['R1', 'R3', 'R9', 'R7'];
 
-    await rotateAndCycleThru2(flavor, cohortGrPositionsUpS, minus);
-    await rotateAndCycleThru2(flavor, cohortGrPositionsUpK, minus);
+    await rotateAndCycleThru2(flavor, cohortGrPositionsRightS, minus);
+    await rotateAndCycleThru2(flavor, cohortGrPositionsRightK, minus);
 
-    let twin = ck.rawTwin.get(flavor);
-    await rotateAndCycleThru2(twin, cohortGrPositionsDownS, minus);
-    await rotateAndCycleThru2(twin, cohortGrPositionsDownK, minus);
+    await rotateAndCycleThru2(flavor2, cohortGrPositionsLeftS, minus);
+    await rotateAndCycleThru2(flavor2, cohortGrPositionsLeftK, minus);
 
     await propagateGy();
 
@@ -68,9 +53,9 @@ async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
         }
     }
 
-    if (ck.diffEachMove) {
+    if (ck.diffEachMove || ck.surveilPiece) {
         let report = await emitDiffs();
-        console.log("diffReport", report);
+        //console.log("diffReport", report);
     }
 }
 function findCanonArrayItemFromFlavorGrArray(flavor, grKey) {
@@ -92,7 +77,7 @@ function findCanonArrayItemFromFlavorCoords(flavor, coords) {
     return canItem;
 }
 
-function highwayMove2(flavor, minus) {
+async function highwayMove2(flavor, minus) {
     let highwayKeysK = [
         'H1',
         'H3',
@@ -100,23 +85,28 @@ function highwayMove2(flavor, minus) {
         'H7',
     ];
 
-    for (let key of highwayKeysK) {
+    for (let grKey of highwayKeysK) {
         //console.log('hiKey', key);
-        let canonItem = findCanonArrayItemFromFlavorGrArray(flavor, key);
-        let sPiece = pieceToFur(canonItem);
-        let rotationMatrix = m.r120[sPiece];
+        let canonItem = findCanonArrayItemFromFlavorGrArray(flavor, grKey);
+        let priorDr = Number(canonItem.dr);
+        let itemN = pieceNameToFur(canonItem.b4);
+        let rotationMatrix = m.r120[itemN];
         if (minus) {
             rotationMatrix = m_minusRot(rotationMatrix);
         }
         updateOffsets(canonItem,  '', minus);
+        await addRotationByMatrix(canonItem, rotationMatrix);
+
+        let prettyRotationName = minus ? `-120[${itemN}]` : `120[${itemN}]`;
+        await logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, Number(canonItem.dr)));
     }
 }
 
 function copyAllButB4(fromItem, toItem) {
     toItem.n = fromItem.n;
     toItem.r4 = fromItem.r4;
-    // toItem.dr = fromItem.dr;
-    // toItem.drCode = fromItem.drCode;
+    toItem.dr = fromItem.dr;
+    toItem.drCode = fromItem.drCode;
     toItem.colors = fromItem.colors;
 }
 ////////////////
@@ -133,13 +123,19 @@ function grPosKeyToFlavorItem(flavor, key) {
 }
 function moveAndRotateItem(fromItem, toItem, minus, flavor) {
 
-    copyAllButB4(fromItem, toItem);
+    copyAllButB4(fromItem, toItem); // toItem now looks a lot like fromItem
+
     let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
     updateOffsets(toItem, flavor, minus);
+    let priorDr = Number(toItem.dr);
+    addRotationByMatrix(toItem, rotationMatrix, flavor);
+
+    let prettyRotationName = minus ? `-90[${flavor}]` : `90[${flavor}]`;
+    let itemN = pieceNameToFur(toItem.n);
+    logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, toItem.dr));
 }
 function rotateAndCycleThru2(flavor, grPosArray, minus) {
     let numCoords = grPosArray.length;
-    let axis = m.axis[flavor];
     if (minus) {
         grPosArray = grPosArray.reverse();
     }
@@ -175,11 +171,12 @@ function determineSvgDiffs(flavor) {
         let isGhost = !!candidateG.attr('ghost'); // !! makes undefined same as false
         let attrN = candidateG.attr('n');
         let attrOffsets = candidateG.attr('offsets') != prettyOffsets(getInitialOffsets());
+        let dr = candidateG.attr('dr');
 
         let ellipse = candidateG.find('ellipse');
 
         let positionDiff = (attrN != candidateG.attr('b4'));
-        let rotationDiff = ! offsetIsTrivial(attrOffsets);
+        let rotationDiff = (Number(dr) > 0) || ! offsetIsTrivial(attrOffsets);
 
         if (! isGhost) {
             if (positionDiff && !rotationDiff) {

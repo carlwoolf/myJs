@@ -4,6 +4,23 @@
 
 let m = { rows:3, cols:3};
 
+function m_test() {
+    let m1 = m.rID;
+
+    for (let m2 of [
+            m.r120.dbo,
+            m.r90.gy,
+            m.r120.dow,
+            m.r90.br,
+            m.r120.to,
+            m.r90.rw
+        ]) {
+        m1 = m_mult(m2, m1);
+        console.log('next: ', m_toAngle(m1));
+    }
+
+    console.log('result: ', m_toAngle(m1));
+}
 function m_demo() {
     console.log('matrix demo');
 
@@ -34,6 +51,31 @@ function m_demo() {
         }
     }
 }
+async function addRotationByMatrix(piece, matrix, flavor) {
+
+    //console.log(`Rotate ${piece.n} by ${matrix.name}`);
+    let axis;
+    let nameProp = 'n';
+
+    if (flavor) {
+        // the turn is on one of the xyz axes, ie, 'gy', 'oy' or 'go'
+        axis = m.axis[flavor];
+    }
+    else {
+        // the turn is on original 'side' piece in that position
+        let fur = pieceNameToFur(piece.b4);
+        axis = m.axis[fur];
+        nameProp = 'b4';
+    }
+    await logIfSurveiling('dbo', piece.n, `${piece.n}: addRotation. b4: ${Number(piece.dr)}. Rotating ${m_toAngle(matrix, axis)} (rotName: ${matrix.name})`);
+
+    let currentMatrix = m_fromCode(piece.drCode);
+    let rotated = m_mult(matrix, currentMatrix);
+    piece.dr = await m_toAngle(rotated, axis);
+    piece.drCode = m_toCode(rotated);
+
+    await logIfSurveiling('dbo', piece[nameProp], `addRotation f2: ${Number(piece.dr)}`);
+}
 
 function m_rotateOrInit(piece, matrix) {
     if (!piece.drCode) {
@@ -54,13 +96,9 @@ function m_toCode(matrix) {
     let flat = matrix[0].concat(matrix[1]).concat(matrix[2]);
     return flat.join(',');
 }
-function m_toAngle_orig(matrix) {
-    let info = myAnalyzeRotationMatrix(matrix);
-
-    return info.angleDegrees * info.angleValence;
-}
 function m_toAngle(matrix, referenceAxis = null) {
     let info = myAnalyzeRotationMatrix(matrix, true);
+    let result = 0;
 
     if (referenceAxis) {
         // Dot product of extracted axis with reference axis
@@ -68,10 +106,11 @@ function m_toAngle(matrix, referenceAxis = null) {
         const dot = info.axis[0] * referenceAxis[0]
             + info.axis[1] * referenceAxis[1]
             + info.axis[2] * referenceAxis[2];
-        return info.angleDegrees * Math.sign(dot);
+        result = info.angleDegrees * Math.sign(dot);
     }
 
-    return info.angleDegrees * info.angleValence;
+    result = info.angleDegrees * info.angleValence;
+    return (result + 360) % 360;
 }
 function m_minusRot(matrix) {
     let result = [];
@@ -81,6 +120,9 @@ function m_minusRot(matrix) {
             srow.push(matrix[r][c]);
         }
         result.push(srow);
+    }
+    if (matrix.name) {
+        result.name = '-' + matrix.name;
     }
     return result;
 }
@@ -157,6 +199,7 @@ function setupM() {
     m.axis.br = [0,-1,0];
     m.axis.rw = [0,0,-1];
 
+    // zero rotation. identity matrix
     m.rID = [[1, 0, 0],
         [0, 1, 0],
         [0, 0, 1]];
@@ -170,6 +213,9 @@ function setupM() {
     m.r90.oy = [[0, -1, 0],
             [1, 0, 0],
             [0, 0, 1]];
+    m.r90.gy.name = 'gy90';
+    m.r90.go.name = 'go90';
+    m.r90.oy.name = 'oy90';
 
     m.r90.bw = m_minusRot(m.r90.gy);
     m.r90.br = m_minusRot(m.r90.go);
@@ -183,7 +229,7 @@ function setupM() {
     setupHighwayRotations();
 
 }
-function rotationMatrixViaPieceAndAngle(axis, angleRad, piece) {
+function rotationMatrixViaAxisAndAngle(axis, angleRad, piece) {
     let [x, y, z] = axis;
 
     // Normalize the axis (important!)
@@ -217,6 +263,7 @@ function rotationMatrixViaPieceAndAngle(axis, angleRad, piece) {
         ]
     ];
     m.r120[piece] = result;
+    m.r120[piece].name = piece+'120';
     m.axis[piece] = axis;
     //console.log('piece: ', piece, '. axis:', axis.join(','), ' --> angle: ', m_toAngle(result, axis));
 }
@@ -226,17 +273,21 @@ function setupHighwayRotations() {
 
      // chatGpt:
      // x == gy. y == oy. z == go
-     rotationMatrixViaPieceAndAngle([recipRt2, recipRt2, 0]  , angle, 'dow');  // [1, 0, 0]     //for xz plane starting at x=1
-     rotationMatrixViaPieceAndAngle([-recipRt2, recipRt2, 0] , angle, 'tb' );  // [0, 1, 0]
-     rotationMatrixViaPieceAndAngle([-recipRt2, -recipRt2, 0], angle, 'dry');  // [0, 0]
-     rotationMatrixViaPieceAndAngle([recipRt2, -recipRt2, 0] , angle, 'tg' );  // [-1, 0]
-     rotationMatrixViaPieceAndAngle([recipRt2, 0, recipRt2]  , angle, 'to' );  // [1, 0, 0]     //similar for xz plane starting at x=1
-     rotationMatrixViaPieceAndAngle([-recipRt2, 0, recipRt2] , angle, 'dby');  // [0, 0, 1]
-     rotationMatrixViaPieceAndAngle([-recipRt2, 0, -recipRt2], angle, 'tr' );  // [-1, 0, 0]
-     rotationMatrixViaPieceAndAngle([recipRt2, 0, -recipRt2] , angle, 'dgw');  // [0, 0, -1]
-     rotationMatrixViaPieceAndAngle([0, recipRt2, recipRt2]  , angle, 'dbo');  // [0, 1, 0]     //and finally the yz plane, starting with y=1
-     rotationMatrixViaPieceAndAngle([0, -recipRt2, recipRt2] , angle, 'ty' );  // [0, 0, 1]
-     rotationMatrixViaPieceAndAngle([0, -recipRt2, -recipRt2], angle, 'dgr');  // [0, -1, 0]
-     rotationMatrixViaPieceAndAngle([0, recipRt2, -recipRt2] , angle, 'tw' );  // [0, 0, -1]
+     rotationMatrixViaAxisAndAngle([recipRt2, recipRt2, 0]  , angle, 'dow');  // [1, 0, 0]     //for xz plane starting at x=1
+     rotationMatrixViaAxisAndAngle([-recipRt2, recipRt2, 0] , angle, 'tb' );  // [0, 1, 0]
+     rotationMatrixViaAxisAndAngle([-recipRt2, -recipRt2, 0], angle, 'dry');  // [0, 0]
+     rotationMatrixViaAxisAndAngle([recipRt2, -recipRt2, 0] , angle, 'tg' );  // [-1, 0]
+     rotationMatrixViaAxisAndAngle([recipRt2, 0, recipRt2]  , angle, 'to' );  // [1, 0, 0]     //similar for xz plane starting at x=1
+     rotationMatrixViaAxisAndAngle([-recipRt2, 0, recipRt2] , angle, 'dby');  // [0, 0, 1]
+     rotationMatrixViaAxisAndAngle([-recipRt2, 0, -recipRt2], angle, 'tr' );  // [-1, 0, 0]
+     rotationMatrixViaAxisAndAngle([recipRt2, 0, -recipRt2] , angle, 'dgw');  // [0, 0, -1]
+     rotationMatrixViaAxisAndAngle([0, recipRt2, recipRt2]  , angle, 'dbo');  // [0, 1, 0]     //and finally the yz plane, starting with y=1
+     rotationMatrixViaAxisAndAngle([0, -recipRt2, recipRt2] , angle, 'ty' );  // [0, 0, 1]
+     rotationMatrixViaAxisAndAngle([0, -recipRt2, -recipRt2], angle, 'dgr');  // [0, -1, 0]
+     rotationMatrixViaAxisAndAngle([0, recipRt2, -recipRt2] , angle, 'tw' );  // [0, 0, -1]
 
+
+     rotationMatrixViaAxisAndAngle([1, 0, 0] , angle, 'gy' );  // [0, 0, -1]
+     rotationMatrixViaAxisAndAngle([0, 1, 0] , angle, 'go' );  // [0, 0, -1]
+     rotationMatrixViaAxisAndAngle([0, 0, 1] , angle, 'oy' );  // [0, 0, -1]
 }

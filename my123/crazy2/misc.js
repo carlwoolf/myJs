@@ -356,10 +356,8 @@ function diffPiece(a) {
         pieceDiffReport.n = a.n;
         pieceDiffReport.b4 = a.b4;
     }
-    //pieceDiffReport.dr = a.dr;
-    if (! codesOffsetIsTrivial(a)) {
-        pieceDiffReport.offsets = a.offsets;
-    }
+    pieceDiffReport.dr = a.dr;
+    pieceDiffReport.offsets = a.offsets;
 
     return pieceDiffReport;
 }
@@ -413,13 +411,14 @@ async function diffArray() {
                     }
                 }
                 let nonTrivialOffsets = ! codesOffsetIsTrivial(pieceReport);
-                if (nonTrivialOffsets) {
+                if (nonTrivialOffsets || pieceReport.dr != 0) {
                     let offsets = prettyOffsets(pieceReport.offsets);
                     arrayReport.nR++;
                     arrayReport.turns++;
                     arrayReport.deltaR.push({
                         n: n,
-                        offsets: offsets
+                        offsets: offsets,
+                        dr:pieceReport.dr
                     });
 
                     if (pieceInitial.match(/C/)) {
@@ -503,5 +502,16 @@ function download(data, filename) {
                 document.body.removeChild(a);
                 window.URL.revokeObjectURL(url);
             }, 10);
+    }
+}
+function microPieceReport(pieceN, priorDr, prettyRotationName, currentDr) {
+    return ''; // `${pieceN} was: ${Number(priorDr)}, rotates: ${prettyRotationName}. now: ${Number(currentDr)}`;
+}
+function amSurveiling(pieceN, candidateN) {
+    return ck.surveilPiece && pieceN.toLowerCase() == candidateN.toLowerCase();
+}
+function logIfSurveiling(pieceN, candidateN, msg) {
+    if (amSurveiling(pieceN, candidateN)) {
+        console.log(`------------ ${msg}`);
     }
 }
