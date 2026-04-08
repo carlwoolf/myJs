@@ -16,7 +16,7 @@ function m_test() {
             m.r90.rw
         ]) {
         m1 = m_mult(m2, m1);
-        console.log('next: ', m_toAngle(m1));
+        console.log(`next: rotation ${m2.name} and get ${m_toAngle(m1)}`);
     }
 
     console.log('result: ', m_toAngle(m1));
@@ -272,22 +272,24 @@ function setupHighwayRotations() {
     let recipRt2 = 1/Math.sqrt(2);
 
      // chatGpt:
-     // x == gy. y == oy. z == go
-     rotationMatrixViaAxisAndAngle([recipRt2, recipRt2, 0]  , angle, 'dow');  // [1, 0, 0]     //for xz plane starting at x=1
-     rotationMatrixViaAxisAndAngle([-recipRt2, recipRt2, 0] , angle, 'tb' );  // [0, 1, 0]
-     rotationMatrixViaAxisAndAngle([-recipRt2, -recipRt2, 0], angle, 'dry');  // [0, 0]
-     rotationMatrixViaAxisAndAngle([recipRt2, -recipRt2, 0] , angle, 'tg' );  // [-1, 0]
-     rotationMatrixViaAxisAndAngle([recipRt2, 0, recipRt2]  , angle, 'to' );  // [1, 0, 0]     //similar for xz plane starting at x=1
-     rotationMatrixViaAxisAndAngle([-recipRt2, 0, recipRt2] , angle, 'dby');  // [0, 0, 1]
-     rotationMatrixViaAxisAndAngle([-recipRt2, 0, -recipRt2], angle, 'tr' );  // [-1, 0, 0]
-     rotationMatrixViaAxisAndAngle([recipRt2, 0, -recipRt2] , angle, 'dgw');  // [0, 0, -1]
-     rotationMatrixViaAxisAndAngle([0, recipRt2, recipRt2]  , angle, 'dbo');  // [0, 1, 0]     //and finally the yz plane, starting with y=1
-     rotationMatrixViaAxisAndAngle([0, -recipRt2, recipRt2] , angle, 'ty' );  // [0, 0, 1]
-     rotationMatrixViaAxisAndAngle([0, -recipRt2, -recipRt2], angle, 'dgr');  // [0, -1, 0]
-     rotationMatrixViaAxisAndAngle([0, recipRt2, -recipRt2] , angle, 'tw' );  // [0, 0, -1]
+     // x == gy. y == go. z == oy
+     rotationMatrixViaAxisAndAngle([recipRt2, recipRt2, 0]  , angle, 'tg' );
+     rotationMatrixViaAxisAndAngle([-recipRt2, recipRt2, 0] , angle, 'dow');
+     rotationMatrixViaAxisAndAngle([-recipRt2, -recipRt2, 0], angle, 'tb' );
+     rotationMatrixViaAxisAndAngle([recipRt2, -recipRt2, 0] , angle, 'dry');
+
+     rotationMatrixViaAxisAndAngle([recipRt2, 0, recipRt2]  , angle, 'ty' );
+     rotationMatrixViaAxisAndAngle([-recipRt2, 0, recipRt2] , angle, 'dbo');
+     rotationMatrixViaAxisAndAngle([-recipRt2, 0, -recipRt2], angle, 'tw' );
+     rotationMatrixViaAxisAndAngle([recipRt2, 0, -recipRt2] , angle, 'dgr');
+
+     rotationMatrixViaAxisAndAngle([0, recipRt2, recipRt2]  , angle, 'to' );
+     rotationMatrixViaAxisAndAngle([0, -recipRt2, recipRt2] , angle, 'dby');
+     rotationMatrixViaAxisAndAngle([0, -recipRt2, -recipRt2], angle, 'tr' );
+     rotationMatrixViaAxisAndAngle([0, recipRt2, -recipRt2] , angle, 'dgw');
 
 
-     rotationMatrixViaAxisAndAngle([1, 0, 0] , angle, 'gy' );  // [0, 0, -1]
-     rotationMatrixViaAxisAndAngle([0, 1, 0] , angle, 'go' );  // [0, 0, -1]
-     rotationMatrixViaAxisAndAngle([0, 0, 1] , angle, 'oy' );  // [0, 0, -1]
+     rotationMatrixViaAxisAndAngle([1, 0, 0] , angle, 'gy' );
+     rotationMatrixViaAxisAndAngle([0, 1, 0] , angle, 'go' );
+     rotationMatrixViaAxisAndAngle([0, 0, 1] , angle, 'oy' );
 }
