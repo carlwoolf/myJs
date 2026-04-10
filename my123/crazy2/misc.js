@@ -357,6 +357,7 @@ function diffPiece(a) {
         pieceDiffReport.b4 = a.b4;
     }
     pieceDiffReport.dr = a.dr;
+
     pieceDiffReport.offsets = a.offsets;
 
     return pieceDiffReport;
@@ -415,11 +416,18 @@ async function diffArray() {
                     let offsets = prettyOffsets(pieceReport.offsets);
                     arrayReport.nR++;
                     arrayReport.turns++;
-                    arrayReport.deltaR.push({
-                        n: n,
-                        offsets: offsets,
-                        dr:pieceReport.dr
-                    });
+                    let dr = item.dr;
+                    let deltaRcandidate = {
+                        n:          n,
+                        offsets:    offsets,
+                        dr:         dr
+                    };
+                    if (item.dr > 0 ||
+                            prettyOffsets(getXyzOffsets(offsets))
+                        !=  prettyOffsets(getXyzOffsets(getInitialOffsets()))
+                     ) {
+                        arrayReport.deltaR.push(deltaRcandidate);
+                    }
 
                     if (pieceInitial.match(/C/)) {
                         arrayReport.ncR ++;
@@ -462,7 +470,10 @@ async function diffArray() {
 function prettyOffsets(o) {
     let result;
     if (o) {
-        result = `${o.x},${o.y},${o.z},${o.s}`;
+        result = `${o.x},${o.y},${o.z}`;
+        if (o.s) {
+            result += `,${o.s}`;
+        }
     }
     else {
         result = 'error';
@@ -476,7 +487,9 @@ function codesOffsetIsTrivial(code) {
     return result;
 }
 function offsetIsTrivial(o) {
-    let result = ! o || prettyOffsets(o) == prettyOffsets(getInitialOffsets());
+    let result = ! o
+                || (o.s && prettyOffsets(o) == prettyOffsets(getInitialOffsets()))
+                || (! o.s && prettyOffsets(o) == prettyOffsets(getInitialXyzOffsets()))
     return result;
 }
 function sortByN(a,b) {
@@ -507,11 +520,11 @@ function download(data, filename) {
 function microPieceReport(pieceN, priorDr, prettyRotationName, currentDr) {
     return ''; // `${pieceN} was: ${Number(priorDr)}, rotates: ${prettyRotationName}. now: ${Number(currentDr)}`;
 }
-function amSurveiling(pieceN, candidateN) {
-    return ck.surveilPiece && pieceN.toLowerCase() == candidateN.toLowerCase();
+function amSurveiling(candidateN) {
+    return ck.surveilPiece && ck.surveilPiece.toLowerCase() == candidateN.toLowerCase();
 }
-function logIfSurveiling(pieceN, candidateN, msg) {
-    if (amSurveiling(pieceN, candidateN)) {
+function logIfSurveiling(candidateN, msg) {
+    if (amSurveiling(candidateN)) {
         console.log(`------------ ${msg}`);
     }
 }

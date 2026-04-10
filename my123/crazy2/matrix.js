@@ -8,11 +8,11 @@ function m_test() {
     let m1 = m.rID;
 
     for (let m2 of [
-            m.r120.dbo,
+            //m.r120.dbo,
             m.r90.gy,
-            m.r120.dow,
+            // m.r120.dow,
             m.r90.br,
-            m.r120.to,
+            // m.r120.to,
             m.r90.rw
         ]) {
         m1 = m_mult(m2, m1);
@@ -67,14 +67,14 @@ async function addRotationByMatrix(piece, matrix, flavor) {
         axis = m.axis[fur];
         nameProp = 'b4';
     }
-    await logIfSurveiling('dbo', piece.n, `${piece.n}: addRotation. b4: ${Number(piece.dr)}. Rotating ${m_toAngle(matrix, axis)} (rotName: ${matrix.name})`);
+    await logIfSurveiling(piece.n, `${piece.n}: addRotation. b4: ${Number(piece.dr)}. Rotating ${m_toAngle(matrix, axis)} (rotName: ${matrix.name})`);
 
     let currentMatrix = m_fromCode(piece.drCode);
     let rotated = m_mult(matrix, currentMatrix);
     piece.dr = await m_toAngle(rotated, axis);
     piece.drCode = m_toCode(rotated);
 
-    await logIfSurveiling('dbo', piece[nameProp], `addRotation f2: ${Number(piece.dr)}`);
+    await logIfSurveiling(piece[nameProp], `addRotation f2: ${Number(piece.dr)}`);
 }
 
 function m_rotateOrInit(piece, matrix) {

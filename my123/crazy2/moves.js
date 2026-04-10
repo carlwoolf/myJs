@@ -22,10 +22,10 @@ async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
         let canItem = grPosKeyToCanonItemFromFlavor(flavorTwin, grPos);
 
         let rotationMatrix = minus ? m_minusRot(m.r90[flavorTwin]) : m.r90[flavorTwin];
-        updateOffsets(canItem, flavorTwin, minus);
         addRotationByMatrix(canItem, rotationMatrix, flavorTwin);
+        updateOffsets(canItem, flavorTwin, minus);
     }
-    await highwayMove2(flavor, minus);
+    await highwayMove(flavor, minus);
 
     // permute/rotate cohort around controls
     let cohortGrPositionsLeftS = ['L2','L6', 'L8','L4'];
@@ -34,11 +34,11 @@ async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
     let cohortGrPositionsRightS = ['R2','R6', 'R8','R4'];
     let cohortGrPositionsRightK = ['R1', 'R3', 'R9', 'R7'];
 
-    await rotateAndCycleThru2(flavor, cohortGrPositionsRightS, minus);
-    await rotateAndCycleThru2(flavor, cohortGrPositionsRightK, minus);
+    await rotateAndCycleThru(flavor, cohortGrPositionsRightS, minus);
+    await rotateAndCycleThru(flavor, cohortGrPositionsRightK, minus);
 
-    await rotateAndCycleThru2(flavor2, cohortGrPositionsLeftS, minus);
-    await rotateAndCycleThru2(flavor2, cohortGrPositionsLeftK, minus);
+    await rotateAndCycleThru(flavor2, cohortGrPositionsLeftS, minus);
+    await rotateAndCycleThru(flavor2, cohortGrPositionsLeftK, minus);
 
     await propagateGy();
 
@@ -77,7 +77,7 @@ function findCanonArrayItemFromFlavorCoords(flavor, coords) {
     return canItem;
 }
 
-async function highwayMove2(flavor, minus) {
+async function highwayMove(flavor, minus) {
     let highwayKeysK = [
         'H1',
         'H3',
@@ -95,10 +95,10 @@ async function highwayMove2(flavor, minus) {
             rotationMatrix = m_minusRot(rotationMatrix);
         }
         updateOffsets(canonItem,  '', minus);
-        await addRotationByMatrix(canonItem, rotationMatrix);
+        //await addRotationByMatrix(canonItem, rotationMatrix);
 
-        let prettyRotationName = minus ? `-120[${itemN}]` : `120[${itemN}]`;
-        await logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, Number(canonItem.dr)));
+        // let prettyRotationName = minus ? `-120[${itemN}]` : `120[${itemN}]`;
+        // await logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, Number(canonItem.dr)));
     }
 }
 
@@ -125,16 +125,17 @@ function moveAndRotateItem(fromItem, toItem, minus, flavor) {
 
     copyAllButB4(fromItem, toItem); // toItem now looks a lot like fromItem
 
-    let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
-    updateOffsets(toItem, flavor, minus);
     let priorDr = Number(toItem.dr);
+
+    let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
     addRotationByMatrix(toItem, rotationMatrix, flavor);
+    updateOffsets(toItem, flavor, minus);
 
     let prettyRotationName = minus ? `-90[${flavor}]` : `90[${flavor}]`;
     let itemN = pieceNameToFur(toItem.n);
-    logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, toItem.dr));
+    logIfSurveiling(itemN, microPieceReport(itemN, priorDr, prettyRotationName, toItem.dr));
 }
-function rotateAndCycleThru2(flavor, grPosArray, minus) {
+function rotateAndCycleThru(flavor, grPosArray, minus) {
     let numCoords = grPosArray.length;
     if (minus) {
         grPosArray = grPosArray.reverse();

@@ -5,6 +5,13 @@ function getInitialOffsets() {
     return {x:0, y:0, z:0, s:0};
 }
 
+function getInitialXyzOffsets() {
+    return {x:0, y:0, z:0};
+}
+function getXyzOffsets(o) {
+    return {x:o.x, y:o.y, z:o.z};
+}
+
 function setupModel2() {
     ck.canPos = {};
     ck.grPos = {};
