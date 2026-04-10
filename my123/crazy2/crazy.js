@@ -21,10 +21,10 @@ async function setupCrazy2() {
     $('body').on('click', resetTooltips);
     $('body').on("contextmenu", resetTooltips);
 
-    console.log('ck.surveilPiece set to a piece.n, eg "dbo", might be good');
-    console.log('ck.diffEachMove set to a true might be good');
+    console.log("ck.surveilPiece set to a set of piece names, eg ['dbo', 'jg'], might be good");
+    console.log('ck.surveilAll set to a true is shortcut for all the pieces');
+    ck.surveilPiece = ['dry', 'dow'];
 
-    ck.surveilPiece = 'dbo';
 }
 function setupWinners() {
     msc.winnersBySecond = {};

@@ -67,14 +67,14 @@ async function addRotationByMatrix(piece, matrix, flavor) {
         axis = m.axis[fur];
         nameProp = 'b4';
     }
-    await logIfSurveiling(piece.n, `${piece.n}: addRotation. b4: ${Number(piece.dr)}. Rotating ${m_toAngle(matrix, axis)} (rotName: ${matrix.name})`);
+    //await logIfSurveiling(piece.n, `B4: ${piece.n}: addRotation ${Number(piece.dr)}. Rotating ${m_toAngle(matrix, axis)} (rotName: ${matrix.name})`);
 
     let currentMatrix = m_fromCode(piece.drCode);
-    let rotated = m_mult(matrix, currentMatrix);
+    let rotated = await m_mult(matrix, currentMatrix);
     piece.dr = await m_toAngle(rotated, axis);
     piece.drCode = m_toCode(rotated);
 
-    await logIfSurveiling(piece[nameProp], `addRotation f2: ${Number(piece.dr)}`);
+    await logIfSurveiling(piece[nameProp], `F2 rotation: ${piece.n} ${Number(piece.dr)}`);
 }
 
 function m_rotateOrInit(piece, matrix) {
@@ -126,7 +126,7 @@ function m_minusRot(matrix) {
     }
     return result;
 }
-function m_mult(m1, m2, verbose){
+async function m_mult(m1, m2, verbose){
     let result = [];
     for (let r=0; r<m.rows; r++) {
         let m1Row = m1[r];

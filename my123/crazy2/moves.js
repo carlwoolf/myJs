@@ -13,7 +13,9 @@ function canPosKeyToArrayItem(flavor, posKey) {
 
 async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
     let flavor = ck.stdTwin.get(controlColors);
-    let flavor2 = ck.rawTwin.get(flavor);
+    // try just standard, not 'raw' flavor
+    //let flavor2 = ck.rawTwin.get(flavor);
+    let flavor2 = flavor;
 
     // rotate the 2 controls, and remember axis
     for (let grPos of ['LM', 'RM']) {
@@ -53,10 +55,10 @@ async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
         }
     }
 
-    if (ck.diffEachMove || ck.surveilPiece) {
-        let report = await emitDiffs();
-        //console.log("diffReport", report);
-    }
+    // if (ck.surveilPiece) {
+    //     let report = await emitDiffs();
+    //     //console.log("diffReport", report);
+    // }
 }
 function findCanonArrayItemFromFlavorGrArray(flavor, grKey) {
     let grCoords = ck.grPos[grKey];
@@ -133,7 +135,7 @@ function moveAndRotateItem(fromItem, toItem, minus, flavor) {
 
     let prettyRotationName = minus ? `-90[${flavor}]` : `90[${flavor}]`;
     let itemN = pieceNameToFur(toItem.n);
-    logIfSurveiling(itemN, microPieceReport(itemN, priorDr, prettyRotationName, toItem.dr));
+    // logIfSurveiling(itemN, microPieceReport(itemN, priorDr, prettyRotationName, toItem.dr));
 }
 function rotateAndCycleThru(flavor, grPosArray, minus) {
     let numCoords = grPosArray.length;

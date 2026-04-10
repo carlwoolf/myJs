@@ -518,10 +518,12 @@ function download(data, filename) {
     }
 }
 function microPieceReport(pieceN, priorDr, prettyRotationName, currentDr) {
-    return ''; // `${pieceN} was: ${Number(priorDr)}, rotates: ${prettyRotationName}. now: ${Number(currentDr)}`;
+    return `${pieceN} was: ${Number(priorDr)}, rotates: ${prettyRotationName}. now: ${Number(currentDr)}`;
 }
 function amSurveiling(candidateN) {
-    return ck.surveilPiece && ck.surveilPiece.toLowerCase() == candidateN.toLowerCase();
+    return      ck.surveilAll
+            || (ck.surveilPiece && ck.surveilPiece.length &&
+                ck.surveilPiece.filter(p => p.toLowerCase() == candidateN.toLowerCase()).length);
 }
 function logIfSurveiling(candidateN, msg) {
     if (amSurveiling(candidateN)) {
