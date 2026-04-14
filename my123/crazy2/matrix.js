@@ -4,22 +4,40 @@
 
 let m = { rows:3, cols:3};
 
-function m_test() {
+async function m_test() {
     let m1 = m.rID;
 
     for (let m2 of [
-            //m.r120.dbo,
             m.r90.gy,
-            // m.r120.dow,
-            m.r90.br,
-            // m.r120.to,
-            m.r90.rw
+            m.r90.rw,
+            m.r90.go,
+            m.r90.gy,
+            m.r90.rw,
+            m.r90.go
         ]) {
         m1 = m_mult(m2, m1);
         console.log(`next: rotation ${m2.name} and get ${m_toAngle(m1)}`);
     }
-
     console.log('result: ', m_toAngle(m1));
+
+    for (let m2 of [
+        m.r90.gy,
+        m.r90.go,
+        m.r90.oy
+    ]) {
+        m1 = m.rID;
+        m1 = m_mult(m2, m1);
+        let minus = m_minusRot(m2);
+        m1 = m_mult(minus, m1);
+        console.log(`should be 0: ${m2.name} x minus == ${m_toAngle(m1)}`);
+    }
+    console.log('result: ', m_toAngle(m1));
+
+    console.log('B4 checking that opposites are minus');
+    console.assert(pretty3x3(m.r90.bw) == pretty3x3(m_minusRot(m.r90.gy)), 'bw prob');
+    console.assert(pretty3x3(m.r90.br) == pretty3x3(m_minusRot(m.r90.go)), 'br prob');
+    console.assert(pretty3x3(m.r90.rw) == pretty3x3(m_minusRot(m.r90.oy)), 'rw prob');
+    console.log('F2 checking that opposites are minus');
 }
 function m_demo() {
     console.log('matrix demo');
@@ -70,7 +88,7 @@ async function addRotationByMatrix(piece, matrix, flavor) {
     //await logIfSurveiling(piece.n, `B4: ${piece.n}: addRotation ${Number(piece.dr)}. Rotating ${m_toAngle(matrix, axis)} (rotName: ${matrix.name})`);
 
     let currentMatrix = m_fromCode(piece.drCode);
-    let rotated = await m_mult(matrix, currentMatrix);
+    let rotated = m_mult(matrix, currentMatrix);
     piece.dr = await m_toAngle(rotated, axis);
     piece.drCode = m_toCode(rotated);
 
@@ -126,7 +144,7 @@ function m_minusRot(matrix) {
     }
     return result;
 }
-async function m_mult(m1, m2, verbose){
+function m_mult(m1, m2, verbose){
     let result = [];
     for (let r=0; r<m.rows; r++) {
         let m1Row = m1[r];
@@ -205,14 +223,14 @@ function setupM() {
         [0, 0, 1]];
 
     m.r90.gy = [[1, 0, 0],
-            [0, 0, -1],
-            [0, 1, 0]];
-    m.r90.go = [[0, 0, 1],
-            [0, 1, 0],
-            [-1, 0, 0]];
-    m.r90.oy = [[0, -1, 0],
-            [1, 0, 0],
-            [0, 0, 1]];
+                [0, 0, 1],
+                [0, -1, 0]];
+    m.r90.go = [[0, 0, -1],
+                [0, 1, 0],
+                [1, 0, 0]];
+    m.r90.oy = [[0, 1, 0],
+                [-1, 0, 0],
+                [0, 0, 1]];
     m.r90.gy.name = 'gy90';
     m.r90.go.name = 'go90';
     m.r90.oy.name = 'oy90';

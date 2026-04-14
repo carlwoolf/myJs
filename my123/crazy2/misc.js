@@ -220,7 +220,7 @@ function rufSeqToAllHues(rufSeq) {
     headerTarget.empty();
 
     let currentRuf = $('#whichRuf').val();
-    let currentRufSpan = $(`<span>RUF: ${rufSeq}</span>`);
+    let currentRufSpan = $(`<span>RUF: <br/>${rufSeq}</span>`);
     let clearCurrentRufsButton = $('<button class="ms-1" id="currentRufHues">X</button>');
     headerTarget.append(currentRufSpan);
     headerTarget.append(clearCurrentRufsButton);

@@ -13,9 +13,7 @@ function canPosKeyToArrayItem(flavor, posKey) {
 
 async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
     let flavor = ck.stdTwin.get(controlColors);
-    // try just standard, not 'raw' flavor
-    //let flavor2 = ck.rawTwin.get(flavor);
-    let flavor2 = flavor;
+    let flavor2 = ck.rawTwin.get(flavor);
 
     // rotate the 2 controls, and remember axis
     for (let grPos of ['LM', 'RM']) {
@@ -24,7 +22,7 @@ async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
         let canItem = grPosKeyToCanonItemFromFlavor(flavorTwin, grPos);
 
         let rotationMatrix = minus ? m_minusRot(m.r90[flavorTwin]) : m.r90[flavorTwin];
-        addRotationByMatrix(canItem, rotationMatrix, flavorTwin);
+        await addRotationByMatrix(canItem, rotationMatrix, flavorTwin);
         updateOffsets(canItem, flavorTwin, minus);
     }
     await highwayMove(flavor, minus);
