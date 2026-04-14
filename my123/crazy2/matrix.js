@@ -4,7 +4,7 @@
 
 let m = { rows:3, cols:3};
 
-async function m_test() {
+function m_test() {
     let m1 = m.rID;
 
     for (let m2 of [
@@ -56,18 +56,6 @@ function m_demo() {
         m_toAngle(m.r90.oy), m_toAngle(m_minusRot(m.r90.oy)));
     console.log('m.r90.gy * m._rx, m._rx * m.r90.gy, angle', m_mult(m.r90.gy, m_minusRot(m.r90.gy)), m_mult(m_minusRot(m.r90.gy), m.r90.gy),
         m_toAngle(m_mult(m.r90.gy, m_minusRot(m.r90.gy))));
-
-    console.log('120 on three axes: ', m_toAngle(m.r120.X.H3), m_toAngle(m.r120.Y.H3), m_toAngle(m.r120.Z.H3));
-    console.log('-120 on three axes: ', m_toAngle(m_minusRot(m.r120.X.H3)), m_toAngle(m_minusRot(m.r120.Y.H3)), m_toAngle(m_minusRot(m.r120.Z.H3)));
-
-    let mm = m.rID;
-    for (let i=0; i<2; i++) {
-        for (let m2 of [m.r90.gy, m.r90.go, m.r90.oy, m.r120.X.H3, m.r120.Y.H3, m.r120.Z.H3,
-                m_minusRot(m.r90.gy), m_minusRot(m.r90.go), m_minusRot(m.r90.oy), m_minusRot(m.r120.X.H3), m_minusRot(m.r120.Y.H3), m_minusRot(m.r120.Z.H3)]) {
-            mm = m_mult(m2, mm);
-            console.log(m_toAngle(mm));
-        }
-    }
 }
 async function addRotationByMatrix(piece, matrix, flavor) {
 
