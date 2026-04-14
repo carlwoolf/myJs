@@ -23,7 +23,7 @@ async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
 
         let rotationMatrix = minus ? m_minusRot(m.r90[flavorTwin]) : m.r90[flavorTwin];
         await addRotationByMatrix(canItem, rotationMatrix, flavorTwin);
-        updateOffsets(canItem, flavorTwin, minus);
+        //updateOffsets(canItem, flavorTwin, minus);
     }
     await highwayMove(flavor, minus);
 
@@ -94,7 +94,7 @@ async function highwayMove(flavor, minus) {
         if (minus) {
             rotationMatrix = m_minusRot(rotationMatrix);
         }
-        updateOffsets(canonItem,  '', minus);
+        //updateOffsets(canonItem,  '', minus);
         await addRotationByMatrix(canonItem, rotationMatrix);
 
         let prettyRotationName = minus ? `-120[${itemN}]` : `120[${itemN}]`;
@@ -108,7 +108,7 @@ function copyAllButB4(fromItem, toItem) {
     toItem.dr = fromItem.dr;
     toItem.drCode = fromItem.drCode;
     toItem.colors = fromItem.colors;
-    toItem.offsets = fromItem.offsets;
+    //toItem.offsets = fromItem.offsets;
 }
 ////////////////
 function grPosKeyToCanonItemFromFlavor(flavor, key) {
@@ -130,7 +130,7 @@ function moveAndRotateItem(fromItem, toItem, minus, flavor) {
 
     let rotationMatrix = minus ? m_minusRot(m.r90[flavor]) : m.r90[flavor];
     addRotationByMatrix(toItem, rotationMatrix, flavor);
-    updateOffsets(toItem, flavor, minus);
+    //updateOffsets(toItem, flavor, minus);
 
     let prettyRotationName = minus ? `-90[${flavor}]` : `90[${flavor}]`;
     let itemN = pieceNameToFur(toItem.n);
@@ -172,13 +172,13 @@ function determineSvgDiffs(flavor) {
         candidateG = $(candidateG);
         let isGhost = !!candidateG.attr('ghost'); // !! makes undefined same as false
         let attrN = candidateG.attr('n');
-        let attrOffsets = candidateG.attr('offsets') != prettyOffsets(getInitialOffsets());
+        //let attrOffsets = candidateG.attr('offsets') != prettyOffsets(getInitialOffsets());
         let dr = candidateG.attr('dr');
 
         let ellipse = candidateG.find('ellipse');
 
         let positionDiff = (attrN != candidateG.attr('b4'));
-        let rotationDiff = (Number(dr) > 0) || ! offsetIsTrivial(attrOffsets);
+        let rotationDiff = (Number(dr) > 0) /*|| ! offsetIsTrivial(attrOffsets)*/ ;
 
         if (! isGhost) {
             if (positionDiff && !rotationDiff) {
@@ -191,14 +191,14 @@ function determineSvgDiffs(flavor) {
                 if (ck.showTurnsDiffs) {
                     setElementFill(ellipse, ck.turnTrack);
                 }
-                appendDeltaRHelper(diffReport, attrN, attrOffsets);
+                appendDeltaRHelper(diffReport, attrN, dr);
                 diffReport.turns++;
             }
             else if (rotationDiff && positionDiff) {
                 if (ck.showBothDiffs) {
                     setElementFill(ellipse, ck.bothTrack);
                 }
-                appendDeltaRHelper(diffReport, attrN, attrOffsets);
+                appendDeltaRHelper(diffReport, attrN, dr);
                 diffReport.both++;
             }
         }

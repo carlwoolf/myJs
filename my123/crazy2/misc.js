@@ -358,7 +358,7 @@ function diffPiece(a) {
     }
     pieceDiffReport.dr = a.dr;
 
-    pieceDiffReport.offsets = a.offsets;
+    //pieceDiffReport.offsets = a.offsets;
 
     return pieceDiffReport;
 }
@@ -411,20 +411,20 @@ async function diffArray() {
                         }
                     }
                 }
-                let nonTrivialOffsets = ! codesOffsetIsTrivial(pieceReport);
-                if (nonTrivialOffsets || pieceReport.dr != 0) {
-                    let offsets = prettyOffsets(pieceReport.offsets);
+                //let nonTrivialOffsets = ! codesOffsetIsTrivial(pieceReport);
+                if (/*nonTrivialOffsets || */ pieceReport.dr != 0) {
+                    //let offsets = prettyOffsets(pieceReport.offsets);
                     arrayReport.nR++;
                     arrayReport.turns++;
                     let dr = item.dr;
                     let deltaRcandidate = {
                         n:          n,
-                        offsets:    offsets,
+                        //offsets:    offsets,
                         dr:         dr
                     };
-                    if (item.dr > 0 ||
+                    if (item.dr > 0 /*||
                             prettyOffsets(getXyzOffsets(offsets))
-                        !=  prettyOffsets(getXyzOffsets(getInitialOffsets()))
+                        !=  prettyOffsets(getXyzOffsets(getInitialOffsets()))*/
                      ) {
                         arrayReport.deltaR.push(deltaRcandidate);
                     }
@@ -445,7 +445,7 @@ async function diffArray() {
                         }
                     }
                 }
-                if (pieceReport.n && nonTrivialOffsets) {
+                if (pieceReport.n && pieceReport.dr != 0 /*&& nonTrivialOffsets*/ ) {
                     arrayReport.both++;
                     arrayReport.turns--;
                     arrayReport.moves--;

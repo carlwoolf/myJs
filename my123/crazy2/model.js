@@ -141,7 +141,7 @@ function initArray(b,r,w,g,o,y,flavor) {
             newN = newN.replace(/([a-z]+)/, (whole, group) => group.split('').sort().join(''));
             newElt.b4 = newN;
             newElt.n = newN;
-            newElt.offsets = getInitialOffsets();
+            //newElt.offsets = getInitialOffsets();
 
             ck.array[flavor][i][j] = newElt;
         }
@@ -207,9 +207,9 @@ function updateOffsets(piece, flavor, minus) {
         offsetModulus = 3;
     }
 
-    let priorOffset = piece.offsets[offsetType];
-    let newOffset = (priorOffset + (minus ? -1 : 1) + offsetModulus) % offsetModulus;
-    piece.offsets[offsetType] = newOffset;
+    // let priorOffset = piece.offsets[offsetType];
+    // let newOffset = (priorOffset + (minus ? -1 : 1) + offsetModulus) % offsetModulus;
+    // piece.offsets[offsetType] = newOffset;
     return; // here for debugger
 }
 function pieceNameToFur(name) {

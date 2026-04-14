@@ -111,12 +111,12 @@ async function emitOneSvg2(flavor, solved) {
 
         svgPiece.attr('n', arrayCode.n);
         svgPiece.attr('b4', arrayCode.b4);
-        svgPiece.attr('offsets', prettyOffsets(arrayCode.offsets));
+        //svgPiece.attr('offsets', prettyOffsets(arrayCode.offsets));
         svgPiece.attr('dr', arrayCode.dr);
         svgPiece.attr('r4', arrayCode.r4);
         svgPiece.attr('pos', posKey);
 
-        setSvgXformRotate(svgPiece, getSvgNetRotationByOffset(arrayCode));
+        setSvgXformRotate(svgPiece, /* getSvgNetRotationByOffset(arrayCode)*/ arrayCode.dr);
 
         addTooltip(svgPiece);
 
@@ -242,8 +242,8 @@ function makeClonePieceForSvg2(svg, coords, code, scale, solved) {
     if ('brw' == codePiece) {
         effectiveColors = [effectiveColors[0], effectiveColors[2], effectiveColors[1]];
     }
-    //let rotate = addRotationByAngle(code.r4, code.dr);
-    let rotate = getSvgDrByOffset(code);
+    let rotate = addRotationByAngle(code.r4, code.dr);
+    //let rotate = getSvgDrByOffset(code);
 
     let archtypePiece = $(`#${archtypeId}`);
     let clonePiece = cloneElement(archtypePiece, archtypeId);
