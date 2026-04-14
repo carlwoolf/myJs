@@ -95,10 +95,10 @@ async function highwayMove(flavor, minus) {
             rotationMatrix = m_minusRot(rotationMatrix);
         }
         updateOffsets(canonItem,  '', minus);
-        //await addRotationByMatrix(canonItem, rotationMatrix);
+        await addRotationByMatrix(canonItem, rotationMatrix);
 
-        // let prettyRotationName = minus ? `-120[${itemN}]` : `120[${itemN}]`;
-        // await logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, Number(canonItem.dr)));
+        let prettyRotationName = minus ? `-120[${itemN}]` : `120[${itemN}]`;
+        await logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, Number(canonItem.dr)));
     }
 }
 
@@ -108,6 +108,7 @@ function copyAllButB4(fromItem, toItem) {
     toItem.dr = fromItem.dr;
     toItem.drCode = fromItem.drCode;
     toItem.colors = fromItem.colors;
+    toItem.offsets = fromItem.offsets;
 }
 ////////////////
 function grPosKeyToCanonItemFromFlavor(flavor, key) {
