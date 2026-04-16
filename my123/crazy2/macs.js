@@ -2,42 +2,22 @@ ck.priorMacs = [
     {
         "x": "3",
         "seq": "U,-R,-R,-F,-R,F,-U,R ",
-        "label": "__c2_180"
+        "label": "__c2_180++"
     },
     {
         "x": "1",
         "seq": "R,-F,-F,-F,-R,-U,R,F,-R,-U",
-        "label": "__c4_180"
+        "label": "__c4_180++"
     },
     {
         "x": "2",
         "seq": "R,-F,-F,-U,-F,-R,U,-R,-U",
-        "label": "__c6_180"
+        "label": "__c6_180++"
     },
     {
         "x": "1",
-        "seq": "R,-F,U,-R,F,-U",
-        "label": "__hs180(T:dr-ul)"
-    },
-    {
-        "x": "2",
-        "seq": "R,-U,-U,-R,-U,-U",
-        "label": "__hs240"
-    },
-    {
-        "x": 4,
-        "seq": "F,R,U",
-        "label": "__s180"
-    },
-    {
-        "x": 2,
-        "seq": "F,R,U",
-        "label": "__s90_6c180"
-    },
-    {
-        "x": 1,
-        "seq": "R,-U,-U,-R,-U,-U",
-        "label": "__ks180_hs120_sw"
+        "seq": "F,-R,U,-F,R,-U",
+        "label": "__s180Hyz"
     },
     {
         "x": 1,
@@ -48,11 +28,6 @@ ck.priorMacs = [
         "x": 2,
         "seq": "R -U -R U",
         "label": "__k240_bs"
-    },
-    {
-        "x": 2,
-        "seq": "-U R U -R",
-        "label": "__k120_bs"
     },
     {
         "x": "3",
@@ -84,16 +59,6 @@ ck.priorMacs = [
         "seq": "[[_sp]] [[_sf]]",
         "label": "_sw"
     }
-    // {
-    //     "x": "1",
-    //     "seq": "R,-F,-F,-F,-F,-R,F,F,F,F",
-    //     "label": "__s240"
-    // },
-    // {
-    //     "x": "1",
-    //     "seq": "R,-F,-F,-F,-F,R,R,R",
-    //     "label": "__s120"
-    // },
     // {
     //     "x": 1,
     //     "seq": "R,U,F,F,U,-R,-F,-U,-U,-F",

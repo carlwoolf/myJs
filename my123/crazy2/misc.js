@@ -367,17 +367,16 @@ async function diffArray() {
         score: 0,
         deltaP: [],
         deltaR: [],
-        ncR: 0,
-        nkR: 0,
-        nsR: 0,
-        ncP: 0,
-        nkP: 0,
-        nsP: 0,
         nP:0,
         nR: 0,
-        nshP: 0,
-        nshR: 0,
+        ncR: 0,
         nchR: 0,
+        nkR: 0,
+        nkP: 0,
+        nsR: 0,
+        nshR: 0,
+        nsP: 0,
+        nshP: 0,
         turns: 0,
         moves: 0,
         both: 0
@@ -399,7 +398,7 @@ async function diffArray() {
                         n: pieceReport.n
                     })
                     if (pieceInitial.match(/C/)) {
-                        arrayReport.ncP ++;
+                        // not possible, C-s do not move in this simulation
                     }
                     else if (pieceInitial.match(/[KJgb]/)) {
                         arrayReport.nkP ++;
