@@ -112,8 +112,56 @@ msc.applies = [
             && (w.rBreakdown[180].filter(p => p[0] == 'T'
                     || p.n == 'goy' || p.n == 'brw').length == 8);
     },
+    // function __score_le16(w) {
+    //     return w._00_score <= 16 && w._00_score > 12;
+    // },
+    // function __score_le12(w) {
+    //     return w._00_score <= 12 && w._00_score > 8;
+    // },
+    // function __score_le8(w) {
+    //     return w._00_score <= 8;
+    // },
+    function __scoreM120_le16(w) {
+        let num120 = get120plusMinus(w);
+        let score = w._00_score - num120;
+        return score <= 16 && score > 12;
+    },
+    function __scoreM120_le12(w) {
+        let num120 = get120plusMinus(w);
+        let score = w._00_score - num120;
+        return score <= 12 && score > 8;
+    },
+    function __scoreM120_le8(w) {
+        let num120 = get120plusMinus(w);
+        let score = w._00_score - num120;
+        return score <= 8 && score > 4;
+    },
+    function __scoreM120_le4(w) {
+        let num120 = get120plusMinus(w);
+        let score = w._00_score - num120;
+        return score <= 4;
+    },
+    // function __st120_ge4(w) {
+    //     let num = get120plusMinus(w);
+    //     return num >= 4 && num < 8;
+    // },
+    // function __st120_ge8(w) {
+    //     let num = get120plusMinus(w);
+    //     return num >= 8 && num < 12;
+    // },
+    // function __st120_12(w) {
+    //     let num = get120plusMinus(w);
+    //     return num == 12;
+    // },
 ].sort((a,b) => a.name.localeCompare(b.name));
 
+function get120plusMinus(w) {
+    let num120 = w.rBreakdown[120] ?
+        w.rBreakdown[120].filter(p => p[0] == 'T' || p[0] == 'D').length : 0;
+    let num240 = w.rBreakdown[240] ?
+        w.rBreakdown[240].filter(p => p[0] == 'T' || p[0] == 'D').length : 0;
+    return num120 + num240;
+}
 const matchDeltaP = (w, deltaPsub) => {
     let result = deltaPsub.length == w.r._01_deltaP.length;
 
@@ -203,7 +251,7 @@ function tldr(winners) {
     let result = winners.map(w=>{
         let totalMoves = w.x * w.seq.split(',').length;
         return {
-            s:`${pad(w._00_score,3)}sc ${pad(totalMoves,3)}tm ${w.r._33_turns}t.${w.r._33_turns}m.${w.r._35_both}b ${w.x}${hue2ruf2(w.seq)}`,
+            s:`${pad(w._00_score,3)}sc ${pad(totalMoves,3)}tm ${w.r._33_turns}t.${w.r._33_turns}m.${w.r._35_trNmv}b ${w.x}${hue2ruf2(w.seq)}`,
             r:w.r
         }
     });

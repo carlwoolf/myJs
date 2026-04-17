@@ -167,7 +167,7 @@ async function showSvgDiffs2() {
 }
 function determineSvgDiffs(flavor) {
     let candidate = ck.svg[flavor];
-    let diffReport = { _33_turns: 0, _33_turns: 0, _35_both: 0, _02_deltaR: []};
+    let diffReport = { _33_turns: 0, _33_turns: 0, _35_trNmv: 0, _02_deltaR: []};
     candidate.find('g').each((index,candidateG) => {
         candidateG = $(candidateG);
         let isGhost = !!candidateG.attr('ghost'); // !! makes undefined same as false
@@ -199,15 +199,28 @@ function determineSvgDiffs(flavor) {
                     setElementFill(ellipse, ck.bothTrack);
                 }
                 appendDeltaRHelper(diffReport, attrN, dr);
-                diffReport._35_both++;
+                diffReport._35_trNmv++;
             }
         }
     });
-    diffReport._00_score = (2 * diffReport._35_both) + diffReport._33_turns + diffReport._33_turns;
+    diffReport._00_score = (2 * diffReport._35_trNmv) + diffReport._33_turns + diffReport._33_turns;
     return diffReport;
 }
 function appendDeltaRHelper(diffReport, piece, attrDXr) {
     appendDeltaR(diffReport, piece, attrDXr);
+}
+function checkSatisfaction(report, doLog) {
+    let numSatisfies = 0;
+    for (f of msc.applies) {
+        if (f(report)) {
+            if (doLog) console.log(`** Satisfies ${f.name}`);
+            numSatisfies++;
+        }
+    }
+    if (!numSatisfies) {
+        if (doLog) console.log('Oh well, unsatisfactory!');
+    }
+    return numSatisfies > 0;
 }
 async function emitDiffs() {
     let report = await diffArray();
@@ -218,11 +231,7 @@ async function emitDiffs() {
             ck.dReports.push(report);
             //console.log("ck.dReports", ck.dReports);
             console.log('ck.dReports has report list', report);
-            for (f of msc.applies) {
-                if (f(report)) {
-                    console.log(`** Satisfies ${f.name}`);
-                }
-            }
+            checkSatisfaction(report, true);
         });
     }
     let result = "";
@@ -233,8 +242,8 @@ async function emitDiffs() {
     if (report._34_moves) {
         result += `<span class="reportTurned">${report._34_moves} moves</span> `;
     }
-    if (report._35_both)      {
-        result += `<span class="reportBoth">${report._35_both} move+turn</span> `;
+    if (report._35_trNmv)      {
+        result += `<span class="reportBoth">${report._35_trNmv} move+turn</span> `;
     }
     if (! result) {
         result = 'Solved';

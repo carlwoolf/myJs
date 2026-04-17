@@ -21,8 +21,8 @@ async function setupCrazy2() {
     $('body').on('click', resetTooltips);
     $('body').on("contextmenu", resetTooltips);
 
-    console.log(`ck.surveilPiece (currently ${ck.surveilPiece}) set to a set of piece names, eg ['dbo', 'jg'], might be good`);
-    console.log(`ck.surveilAll (currently ${ck.surveilAll}) set to a true is shortcut for all the pieces`);
+    // console.log(`ck.surveilPiece (currently ${ck.surveilPiece}) set to a set of piece names, eg ['dbo', 'jg'], might be good`);
+    // console.log(`ck.surveilAll (currently ${ck.surveilAll}) set to a true is shortcut for all the pieces`);
     //ck.surveilPiece = ['dry', 'dow'];
 
 }

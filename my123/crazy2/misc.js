@@ -379,7 +379,7 @@ async function diffArray() {
         _12_nshP: 0,
         _33_turns: 0,
         _34_moves: 0,
-        _35_both: 0
+        _35_trNmv: 0
     };
 
     let fn = (r,c,array) => {
@@ -445,7 +445,7 @@ async function diffArray() {
                     }
                 }
                 if (pieceReport.n && pieceReport.dr != 0 /*&& nonTrivialOffsets*/ ) {
-                    arrayReport._35_both++;
+                    arrayReport._35_trNmv++;
                     arrayReport._33_turns--;
                     arrayReport._34_moves--;
                 }
@@ -454,7 +454,7 @@ async function diffArray() {
         return true; // keep iteratino
     }
     forEachArrayItem(ck.array.gy, fn);
-    arrayReport._00_score = (2 * arrayReport._35_both) + arrayReport._34_moves + arrayReport._33_turns;
+    arrayReport._00_score = (2 * arrayReport._35_trNmv) + arrayReport._34_moves + arrayReport._33_turns;
 
     arrayReport._01_deltaP = arrayReport._01_deltaP.sort(sortByN);
     arrayReport._02_deltaR = arrayReport._02_deltaR.sort(sortByN);
