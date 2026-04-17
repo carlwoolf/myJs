@@ -42,106 +42,84 @@ function collectMacros() {
 
 msc.applies = [
     function __c2_180(w) {
-        return w.r.score==2 && w.r.ncR > 0 && w.r.rBreakdown[180];
+        return w._00_score < 38 && w.rBreakdown[180]
+            && w.rBreakdown[180].filter(p => p[0] == 'C').length == 2;
     },
     function __c4_180(w) {
-        return w.r.score==4 && w.r.ncR == 4 && w.r.rBreakdown[180];
+        return w._00_score < 40 && w.rBreakdown[180]
+            && w.rBreakdown[180].filter(p => p[0] == 'C').length == 4;
     },
     function __c6_180(w) {
-        return w.r.score==6 && w.r.ncR == 6 && w.r.rBreakdown[180];
+        return w._00_score < 42 && w.rBreakdown[180]
+            && w.rBreakdown[180].filter(p => p[0] == 'C').length == 6;
     },
     function _kw(w) {
         return (
-                w.r.deltaP.filter(p => p.b4 === 'JJw' && p.n === 'goy').length
-            &&  w.r.deltaP.filter(p => p.b4 === 'JJo' && p.n === 'JJg').length
-            &&  w.r.deltaP.filter(p => p.b4 === 'JJb' && p.n === 'JJr').length
-            &&  w.r.deltaP.filter(p => p.b4 === 'brw' && p.n === 'JJy').length
+                w._01_deltaP.filter(p => p.b4 === 'JJw' && p.n === 'goy').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'JJo' && p.n === 'JJg').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'JJb' && p.n === 'JJr').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'brw' && p.n === 'JJy').length
         )
     },
     function _kf(w) {
         return (
-            w.r.deltaP.filter(p => p.b4 === 'JJw' && p.n === 'JJr').length
-            &&  w.r.deltaP.filter(p => p.b4 === 'JJo' && p.n === 'JJy').length
-            &&  w.r.deltaP.filter(p => p.b4 === 'JJb' && p.n === 'goy').length
-            &&  w.r.deltaP.filter(p => p.b4 === 'brw' && p.n === 'JJg').length
+                w._01_deltaP.filter(p => p.b4 === 'JJw' && p.n === 'JJr').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'JJo' && p.n === 'JJy').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'JJb' && p.n === 'goy').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'brw' && p.n === 'JJg').length
         )
     },
     function _kp(w) {
         return (
-                w.r.deltaP.filter(p => p.b4 === 'JJw'   && p.n === 'JJb'  ).length
-            &&  w.r.deltaP.filter(p => p.b4 === 'JJo'   && p.n === 'brw').length
-            &&  w.r.deltaP.filter(p => p.b4 === 'goy' && p.n === 'JJr'  ).length
-            &&  w.r.deltaP.filter(p => p.b4 === 'JJg'   && p.n === 'JJy'  ).length
+                w._01_deltaP.filter(p => p.b4 === 'JJw'   && p.n === 'JJb'  ).length
+            &&  w._01_deltaP.filter(p => p.b4 === 'JJo'   && p.n === 'brw').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'goy'   && p.n === 'JJr'  ).length
+            &&  w._01_deltaP.filter(p => p.b4 === 'JJg'   && p.n === 'JJy'  ).length
         );
     },
     function _sp(w) {
         return (
-            w.r.deltaP.filter(p => p.b4 === 'TTw'  && p.n === 'Dbo').length
-            && w.r.deltaP.filter(p => p.b4 === 'TTb'  && p.n === 'Dow').length
-            && w.r.deltaP.filter(p => p.b4 === 'TTy'  && p.n === 'Dgr').length
-            && w.r.deltaP.filter(p => p.b4 === 'Dry' && p.n === 'TTg' ).length
+                w._01_deltaP.filter(p => p.b4 === 'TTw'   && p.n === 'Dbo').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'TTb'   && p.n === 'Dow').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'TTy'   && p.n === 'Dgr').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'Dry'   && p.n === 'TTg' ).length
         );
     },
     function _sw(w) {
         return (
-            w.r.score == 8 && w.r.nsP == 8
+                w._01_deltaP.filter(p => p.b4 === 'TTw'   && p.n === 'TTy').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'TTb'   && p.n === 'Dry').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'Dbo'   && p.n === 'Dgr').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'Dow'   && p.n === 'TTg' ).length
         );
     },
-    // no hits
     function _sf(w) {
-       return (
-           w.r.score == 8 && w.r.nsP == 8 && (
-               (w.r.deltaP.filter(p => p.b4 === 'TTw'  && p.n === 'Dgr').length && w.r.deltaP.filter(p =>  p.n == 'Dow' && p.n == 'Dry').length)
-           ||  (w.r.deltaP.filter(p => p.b4 === 'TTr'  && p.n === 'Dby').length && w.r.deltaP.filter(p =>  p.n == 'Dgr' && p.n == 'Dbo').length)
-           ||  (w.r.deltaP.filter(p => p.b4 === 'TTb' && p.n === 'Dow' ).length && w.r.deltaP.filter(p =>  p.n == 'Dby' && p.n == 'Dgw').length)
-           ));
-    },
-    // no hits for 12, but 4 and 8 are good
-    function __hs_180(w) {
-        return w.r.score == 4 && w.r.nsR==4 && w.r.rBreakdown[180]
-                && w.r.rBreakdown[180].includes('TTr') && w.r.rBreakdown[180].includes('Dgw');
-    },
-    // no hits
-    function __s12_180(w) {
-        return w.r.score == 12 && w.r.nsR==8 && w.r.rBreakdown[180];
+        return (
+                w._01_deltaP.filter(p => p.b4 === 'TTw'   && p.n === 'Dgr').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'TTb'   && p.n === 'TTg').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'Dbo'   && p.n === 'TTy').length
+            &&  w._01_deltaP.filter(p => p.b4 === 'Dow'   && p.n === 'Dry' ).length
+           );
     },
     // no hits
     function __k4_180(w) {
-        return w.r.score == 4 && w.r.nkR==4 && w.r.rBreakdown[180];
+        return w._07_nkR==4 && w.rBreakdown[180]
+            && (w.rBreakdown[180].filter(p => p[0] == 'T'
+                    || p.n == 'goy' || p.n == 'brw').length == 4);
     },
     function __k8_180(w) {
-        return w.r.score == 8 && w.r.nkR==8 && w.r.rBreakdown[180];
+        return w._07_nkR==8 && w.rBreakdown[180]
+            && (w.rBreakdown[180].filter(p => p[0] == 'T'
+                    || p.n == 'goy' || p.n == 'brw').length == 8);
     },
-    // function __s240(w) {
-    //     return (
-    //         w.r.score == 8 && w.r.nsR == 8 && w.r.rBreakdown[-120] &&
-    //         w.r.rBreakdown[-120].includes('Dow') &&
-    //         w.r.rBreakdown[-120].includes('Dbo') &&
-    //         w.r.rBreakdown[-120].includes('TTw') &&
-    //         w.r.rBreakdown[-120].includes('TTb')
-    //     );
-    // },
-    // function __s120(w) {
-    //     return w.score==8 && w.r.nsR==8;
-    // },
-    // ad hoc version is fewer moves
-    // function __s180(w) {
-    //     return (
-    //         w.r.score == 8 && w.r.nsR == 8 && w.r.rBreakdown[180] &&
-    //         w.r.rBreakdown[180].includes('Dow') &&
-    //         w.r.rBreakdown[180].includes('Dbo') &&
-    //         w.r.rBreakdown[180].includes('TTw') &&
-    //         w.r.rBreakdown[180].includes('TTb')
-    //     )
-    // },
 ].sort((a,b) => a.name.localeCompare(b.name));
 
 const matchDeltaP = (w, deltaPsub) => {
-    let result = deltaPsub.length == w.r.deltaP.length;
+    let result = deltaPsub.length == w.r._01_deltaP.length;
 
     if (result) { // so far so good
         for (let sub of deltaPsub) {
-            result = result && w.r.deltaP.filter(p => p.b4 == sub.b4 && p.n == sub.n).length;
+            result = result && w.r._01_deltaP.filter(p => p.b4 == sub.b4 && p.n == sub.n).length;
             if (!result) break;
         }
     }
@@ -155,13 +133,13 @@ function f_ac(array, val) {
 function f_as(array, val) {
     return (w) => w.r[array].size == val
 }
-function f_at(w)  { return (w.r.deltaR.length); }
-function f_nst(w) { return (w.r.nsR === 0); }
-function f_nkt(w) { return (w.r.nkR === 0); }
-function f_nct(w) { return (w.r.ncR === 0); }
-function f_oct(w) { return (w.r.ncR > 0         && w.r.nkR === 0 && w.r.nsR === 0); }
-function f_ost(w) { return (w.r.nsR > 0         && w.r.nkR === 0 && w.r.ncR === 0); }
-function f_okt(w) { return (w.r.nkR > 0         && w.r.ncR === 0 && w.r.nsR === 0); }
+function f_at(w)  { return (w.r._02_deltaR.length); }
+function f_nst(w) { return (w.r._09_nsR === 0); }
+function f_nkt(w) { return (w.r._07_nkR === 0); }
+function f_nct(w) { return (w.r._05_ncR === 0); }
+function f_oct(w) { return (w.r._05_ncR > 0         && w.r._07_nkR === 0 && w.r._09_nsR === 0); }
+function f_ost(w) { return (w.r._09_nsR > 0         && w.r._07_nkR === 0 && w.r._05_ncR === 0); }
+function f_okt(w) { return (w.r._07_nkR > 0         && w.r._05_ncR === 0 && w.r._09_nsR === 0); }
 
 function f_not(f) { return (w) => !f(w) }
 
@@ -176,45 +154,45 @@ function f_ge  (a, b) { return (w) => w.r[a] >=     b }
 // a piece did or did not move (to X)
 function f_noP(a) {
     return (w) => {
-        let result = !(w.r.deltaP.filter(p=> p.b4 == a).length);
+        let result = !(w.r._01_deltaP.filter(p=> p.b4 == a).length);
         return result;
      }}
 function f_yesP(a) {
     return (w) => {
-        let result = w.r.deltaP.filter(p=> p.b4 == a).length;
+        let result = w.r._01_deltaP.filter(p=> p.b4 == a).length;
         return result;
      }}
 function f_b4Is (a, b) {
     return (w) => {
-        let result = w.r.deltaP.filter(p=>p.b4 == a &&  p.n==b).length;
+        let result = w.r._01_deltaP.filter(p=>p.b4 == a &&  p.n==b).length;
         return result;
     }}
 function f_b4IsNot (a, b) {
     return (w) => {
-        let result = w.r.deltaP.filter(p=> p.b4 == a).length &&
-                    !(w.r.deltaP.filter(p=> p.b4==a && p.n == b).length)
+        let result = w.r._01_deltaP.filter(p=> p.b4 == a).length &&
+                    !(w.r._01_deltaP.filter(p=> p.b4==a && p.n == b).length)
     }}
 
 // a piece did (or did not) rotate (by x)
 function f_noR(a) {
     return (w) => {
-        let result = !(w.r.deltaR.filter(p=> p.n == a).length);
+        let result = !(w.r._02_deltaR.filter(p=> p.n == a).length);
         return result;
      }}
 function f_yesR(a) {
     return (w) => {
-        let result = w.r.deltaR.filter(p=> p.n == a).length;
+        let result = w.r._02_deltaR.filter(p=> p.n == a).length;
         return result;
     }}
 function f_drIs (a, b) {
     return (w) => {
-        let result = w.r.deltaR.filter(p=>p.n==a && p.dr == b).length;
+        let result = w.r._02_deltaR.filter(p=>p.n==a && p.dr == b).length;
         return result;
     }}
 function f_drIsNot (a, b) {
     return (w) => {
-        let result = w.r.deltaR.filter(p=>p.n==a).length &&
-                    !(w.r.deltaR.filter(p=> p.n==a && p.dr == b).length);
+        let result = w.r._02_deltaR.filter(p=>p.n==a).length &&
+                    !(w.r._02_deltaR.filter(p=> p.n==a && p.dr == b).length);
         return result;
     }}
 
@@ -225,7 +203,7 @@ function tldr(winners) {
     let result = winners.map(w=>{
         let totalMoves = w.x * w.seq.split(',').length;
         return {
-            s:`${pad(w.score,3)}sc ${pad(totalMoves,3)}tm ${w.r.turns}t.${w.r.moves}m.${w.r.both}b ${w.x}${hue2ruf2(w.seq)}`,
+            s:`${pad(w._00_score,3)}sc ${pad(totalMoves,3)}tm ${w.r._33_turns}t.${w.r._33_turns}m.${w.r._35_both}b ${w.x}${hue2ruf2(w.seq)}`,
             r:w.r
         }
     });

@@ -192,7 +192,7 @@ function dotP(row, col) {
     //return +result.toFixed(3);
 }
 
-function setupM() {
+function setupMatrices() {
     m.r90 = {};
     m.r120 = {};
     m.axis = {};

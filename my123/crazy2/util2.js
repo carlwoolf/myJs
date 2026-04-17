@@ -185,17 +185,6 @@ function assertTrue(expr) {
         alert('oops');
     }
 }
-function diffDeltaRs(deltas) {
-    let result = "";
-    if (deltas.length) {
-        let items = deltaRhelper(deltas, 'piece', 'deltaR');
-        result = `deltaRs (via 'piece'):\n`;
-        Object.keys(items).sort().forEach(function(key) {
-            result += `${key}: ${items[key].sort().join(' ')}\n`;
-        });
-    }
-    return result;
-}
 function frozen() {
     //console.log('check if frozen????????');
     let result = ck.freeze == 1;

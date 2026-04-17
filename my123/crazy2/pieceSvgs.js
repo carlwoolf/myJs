@@ -93,8 +93,8 @@ function initialBorders() {
 
 function appendDeltaR(target, piece, delta) {
     let item = {piece: piece};
-    item.deltaR = delta;
-    target.deltaR.push(item);
+    item._02_deltaR = delta;
+    target._02_deltaR.push(item);
 }
 function deltaRhelper(deltas, pieceProp, deltaRprop) {
     let items = {};

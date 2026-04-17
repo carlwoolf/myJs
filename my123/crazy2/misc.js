@@ -8,7 +8,7 @@
  */
 
 function defaultScoreChecker(r) {
-    return r.score <= 10 && r.tm <= 25;
+    return r._00_score <= 10 && r.tm <= 25;
 }
 
 let msc = {};
@@ -106,7 +106,7 @@ async function narrowAllCandidates(options) {
     msc.winners = [];
     msc.winnerStrings.forEach((statsObj, reportStr) => {
         statsObj.r = JSON.parse(String(reportStr));
-        statsObj.score = statsObj.r.score;
+        statsObj._00_score = statsObj.r._00_score;
         msc.winners.push(statsObj);
     });
 
@@ -296,7 +296,7 @@ async function trySequence(seqStr, reportCheck, debug) {
     unfreeze();
 }
 function stringyWinner(winner) {
-    let result = JSON.stringify(winner.r.deltaP) + '.' + JSON.stringify(winner.r.deltaR);
+    let result = JSON.stringify(winner.r._01_deltaP) + '.' + JSON.stringify(winner.r._02_deltaR);
     return result;
 }
 async function trySequenceHelper(seqStr, reportCheck, innerReps, debug) {
@@ -329,13 +329,13 @@ async function trySequenceHelper(seqStr, reportCheck, innerReps, debug) {
         diffReport.seq = seqStr;
 
         let goodReport = reportCheck(diffReport);
-        if (diffReport && goodReport && diffReport.score) {
+        if (diffReport && goodReport && diffReport._00_score) {
             won = true;
-            let winner = {score: diffReport.score, x: i+1, seq: seqStr, r: diffReport};
+            let winner = {_00_score: diffReport._00_score, x: i+1, seq: seqStr, r: diffReport};
 
             envelopeArray(winner);
         }
-        if (diffReport.score == 0) { // we've traversed the whole sub-group back to initial
+        if (diffReport._00_score == 0) { // we've traversed the whole sub-group back to initial
             break;
         }
     }
@@ -364,22 +364,22 @@ function diffPiece(a) {
 }
 async function diffArray() {
     let arrayReport = {
-        score: 0,
-        deltaP: [],
-        deltaR: [],
-        nP:0,
-        nR: 0,
-        ncR: 0,
-        nchR: 0,
-        nkR: 0,
-        nkP: 0,
-        nsR: 0,
-        nshR: 0,
-        nsP: 0,
-        nshP: 0,
-        turns: 0,
-        moves: 0,
-        both: 0
+        _00_score: 0,
+        _01_deltaP: [],
+        _02_deltaR: [],
+        _03_nP:0,
+        _04_nR: 0,
+        _05_ncR: 0,
+        _06_nchR: 0,
+        _07_nkR: 0,
+        _08_nkP: 0,
+        _09_nsR: 0,
+        _10_nshR: 0,
+        _11_nshR: 0,
+        _12_nshP: 0,
+        _33_turns: 0,
+        _34_moves: 0,
+        _35_both: 0
     };
 
     let fn = (r,c,array) => {
@@ -391,9 +391,9 @@ async function diffArray() {
                 let pieceInitial = n[0];
 
                 if (pieceReport.n) {
-                    arrayReport.moves++;
-                    arrayReport.nP++;
-                    arrayReport.deltaP.push({
+                    arrayReport._34_moves++;
+                    arrayReport._03_nP++;
+                    arrayReport._01_deltaP.push({
                         b4: pieceReport.b4,
                         n: pieceReport.n
                     })
@@ -401,20 +401,20 @@ async function diffArray() {
                         // not possible, C-s do not move in this simulation
                     }
                     else if (pieceInitial.match(/[KJgb]/)) {
-                        arrayReport.nkP ++;
+                        arrayReport._08_nkP ++;
                     }
                     else if (pieceInitial.match(/[TD]/)) {
-                        arrayReport.nsP ++;
+                        arrayReport._11_nshR ++;
                         if (['TTo','Dgw','TTr','Dby',].includes(n)) {
-                            arrayReport.nshP++;
+                            arrayReport._12_nshP++;
                         }
                     }
                 }
                 //let nonTrivialOffsets = ! codesOffsetIsTrivial(pieceReport);
                 if (/*nonTrivialOffsets || */ pieceReport.dr != 0) {
                     //let offsets = prettyOffsets(pieceReport.offsets);
-                    arrayReport.nR++;
-                    arrayReport.turns++;
+                    arrayReport._04_nR++;
+                    arrayReport._33_turns++;
                     let dr = item.dr;
                     let deltaRcandidate = {
                         n:          n,
@@ -425,44 +425,44 @@ async function diffArray() {
                             prettyOffsets(getXyzOffsets(offsets))
                         !=  prettyOffsets(getXyzOffsets(getInitialOffsets()))*/
                      ) {
-                        arrayReport.deltaR.push(deltaRcandidate);
+                        arrayReport._02_deltaR.push(deltaRcandidate);
                     }
 
                     if (pieceInitial.match(/C/)) {
-                        arrayReport.ncR ++;
+                        arrayReport._05_ncR ++;
                         if (['Crw','Cgo','Coy','Cbr',].includes(n)) {
-                            arrayReport.nchR++;
+                            arrayReport._06_nchR++;
                         }
                     }
                     else if (pieceInitial.match(/[KJbg]/)) {
-                        arrayReport.nkR ++;
+                        arrayReport._07_nkR ++;
                     }
                     else if (pieceInitial.match(/[TD]/)) {
-                        arrayReport.nsR ++;
+                        arrayReport._09_nsR ++;
                         if (['TTo','Dgw','TTr','Dby',].includes(n)) {
-                            arrayReport.nshR++;
+                            arrayReport._10_nshR++;
                         }
                     }
                 }
                 if (pieceReport.n && pieceReport.dr != 0 /*&& nonTrivialOffsets*/ ) {
-                    arrayReport.both++;
-                    arrayReport.turns--;
-                    arrayReport.moves--;
+                    arrayReport._35_both++;
+                    arrayReport._33_turns--;
+                    arrayReport._34_moves--;
                 }
             }
         }
         return true; // keep iteratino
     }
     forEachArrayItem(ck.array.gy, fn);
-    arrayReport.score = (2 * arrayReport.both) + arrayReport.moves + arrayReport.turns;
+    arrayReport._00_score = (2 * arrayReport._35_both) + arrayReport._34_moves + arrayReport._33_turns;
 
-    arrayReport.deltaP = arrayReport.deltaP.sort(sortByN);
-    arrayReport.deltaR = arrayReport.deltaR.sort(sortByN);
+    arrayReport._01_deltaP = arrayReport._01_deltaP.sort(sortByN);
+    arrayReport._02_deltaR = arrayReport._02_deltaR.sort(sortByN);
 
     // rotations
-    arrayReport.rBreakdown = deltaRhelper(arrayReport.deltaR, 'n', 'dr');
+    arrayReport.rBreakdown = deltaRhelper(arrayReport._02_deltaR, 'n', 'dr');
     // positions
-    arrayReport.pBreakdown = deltaPhelper(arrayReport.deltaP);
+    arrayReport.pBreakdown = deltaPhelper(arrayReport._01_deltaP);
 
     return arrayReport;
 }
