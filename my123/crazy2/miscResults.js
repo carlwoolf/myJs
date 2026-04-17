@@ -104,13 +104,19 @@ msc.applies = [
     // no hits
     function __k4_180(w) {
         return w._07_nkR==4 && w.rBreakdown[180]
-            && (w.rBreakdown[180].filter(p => p[0] == 'T'
-                    || p.n == 'goy' || p.n == 'brw').length == 4);
+            && (w.rBreakdown[180].filter(p => p[0] == 'T' || p == 'goy' || p == 'brw').length == 4);
     },
     function __k8_180(w) {
         return w._07_nkR==8 && w.rBreakdown[180]
-            && (w.rBreakdown[180].filter(p => p[0] == 'T'
-                    || p.n == 'goy' || p.n == 'brw').length == 8);
+            && (w.rBreakdown[180].filter(p => p[0] == 'T' || p == 'goy' || p == 'brw').length == 8);
+    },
+    function __kxyz_120(w) {
+        return w.rBreakdown[120]
+            && (w.rBreakdown[120].filter(p => p == 'goy' || p == 'brw').length == 2);
+    },
+    function __kxyz_240(w) {
+        return w.rBreakdown[240]
+            && (w.rBreakdown[240].filter(p => p == 'goy' || p == 'brw').length == 2);
     },
     // function __score_le16(w) {
     //     return w._00_score <= 16 && w._00_score > 12;
@@ -122,22 +128,22 @@ msc.applies = [
     //     return w._00_score <= 8;
     // },
     function __scoreM120_le16(w) {
-        let num120 = get120plusMinus(w);
+        let num120 = getS120plusMinus(w);
         let score = w._00_score - num120;
         return score <= 16 && score > 12;
     },
     function __scoreM120_le12(w) {
-        let num120 = get120plusMinus(w);
+        let num120 = getS120plusMinus(w);
         let score = w._00_score - num120;
         return score <= 12 && score > 8;
     },
     function __scoreM120_le8(w) {
-        let num120 = get120plusMinus(w);
+        let num120 = getS120plusMinus(w);
         let score = w._00_score - num120;
         return score <= 8 && score > 4;
     },
     function __scoreM120_le4(w) {
-        let num120 = get120plusMinus(w);
+        let num120 = getS120plusMinus(w);
         let score = w._00_score - num120;
         return score <= 4;
     },
@@ -155,7 +161,7 @@ msc.applies = [
     // },
 ].sort((a,b) => a.name.localeCompare(b.name));
 
-function get120plusMinus(w) {
+function getS120plusMinus(w) {
     let num120 = w.rBreakdown[120] ?
         w.rBreakdown[120].filter(p => p[0] == 'T' || p[0] == 'D').length : 0;
     let num240 = w.rBreakdown[240] ?

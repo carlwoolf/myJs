@@ -210,6 +210,7 @@ function appendDeltaRHelper(diffReport, piece, attrDXr) {
     appendDeltaR(diffReport, piece, attrDXr);
 }
 function checkSatisfaction(report, doLog) {
+    if (doLog) console.log(report);
     let numSatisfies = 0;
     for (f of msc.applies) {
         if (f(report)) {
@@ -230,7 +231,7 @@ async function emitDiffs() {
         reportSpan.on('click', function() {
             ck.dReports.push(report);
             //console.log("ck.dReports", ck.dReports);
-            console.log('ck.dReports has report list', report);
+            console.log('ck.dReports has report list');
             checkSatisfaction(report, true);
         });
     }

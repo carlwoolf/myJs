@@ -320,23 +320,24 @@ async function trySequenceHelper(seqStr, reportCheck, innerReps, debug) {
         await performMoveHelper2(seqInnerRep, false);
         let diffReport = await diffArray();
 
-        if (debug) {
-            console.log(seq.join(','), ' x==', i+1);
-            //await emitSvgs2();
-            await stringyDiffReport();
-        }
-        diffReport.tm = tm;
-        diffReport.seq = seqStr;
-
-        let goodReport = reportCheck(diffReport);
-        if (diffReport && goodReport && diffReport._00_score) {
-            won = true;
-            let winner = {_00_score: diffReport._00_score, x: i+1, seq: seqStr, r: diffReport};
-
-            envelopeArray(winner);
-        }
         if (diffReport._00_score == 0) { // we've traversed the whole sub-group back to initial
             break;
+        }
+        else {
+            if (debug) {
+                console.log(seq.join(','), ' x==', i + 1);
+            }
+            diffReport.tm = tm;
+            diffReport.seq = seqStr;
+
+            let goodReport = checkSatisfaction(diffReport, debug) > 0;
+
+            if (diffReport && goodReport) {
+                won = true;
+                let winner = {_00_score: diffReport._00_score, x: i + 1, seq: seqStr, r: diffReport};
+
+                envelopeArray(winner);
+            }
         }
     }
     return won;
