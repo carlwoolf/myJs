@@ -41,16 +41,23 @@ function collectMacros() {
 }
 
 msc.applies = [
+    function __c0(w) {
+        return w._05_ncR == 0;
+    },
+    function __c4(w) {
+        return w._05_ncR <= 4;
+    },
+
     function __c2_180(w) {
-        return w._00_score < 38 && w.rBreakdown[180]
+        return w._00_score120 < 38 && w.rBreakdown[180]
             && w.rBreakdown[180].filter(p => p[0] == 'C').length == 2;
     },
     function __c4_180(w) {
-        return w._00_score < 40 && w.rBreakdown[180]
+        return w._00_score120 < 40 && w.rBreakdown[180]
             && w.rBreakdown[180].filter(p => p[0] == 'C').length == 4;
     },
     function __c6_180(w) {
-        return w._00_score < 42 && w.rBreakdown[180]
+        return w._00_score120 < 42 && w.rBreakdown[180]
             && w.rBreakdown[180].filter(p => p[0] == 'C').length == 6;
     },
     function _kw(w) {
@@ -118,50 +125,23 @@ msc.applies = [
         return w.rBreakdown[240]
             && (w.rBreakdown[240].filter(p => p == 'goy' || p == 'brw').length == 2);
     },
-    // function __score_le16(w) {
-    //     return w._00_score <= 16 && w._00_score > 12;
-    // },
-    // function __score_le12(w) {
-    //     return w._00_score <= 12 && w._00_score > 8;
-    // },
-    // function __score_le8(w) {
-    //     return w._00_score <= 8;
-    // },
-    function __scoreM120_le16(w) {
-        let num120 = getS120plusMinus(w);
-        let score = w._00_score - num120;
-        return score <= 16 && score > 12;
+    function __scoreM120_le32(w) {
+        return w._00_score120 <= 32 && w._00_score120 > 28;
     },
-    function __scoreM120_le12(w) {
-        let num120 = getS120plusMinus(w);
-        let score = w._00_score - num120;
-        return score <= 12 && score > 8;
+    function __scoreM120_le28(w) {
+        return w._00_score120 <= 28 && w._00_score120 > 8;
     },
     function __scoreM120_le8(w) {
-        let num120 = getS120plusMinus(w);
-        let score = w._00_score - num120;
-        return score <= 8 && score > 4;
+        return w._00_score120 <= 8;
     },
-    function __scoreM120_le4(w) {
-        let num120 = getS120plusMinus(w);
-        let score = w._00_score - num120;
-        return score <= 4;
-    },
-    // function __st120_ge4(w) {
-    //     let num = get120plusMinus(w);
-    //     return num >= 4 && num < 8;
-    // },
-    // function __st120_ge8(w) {
-    //     let num = get120plusMinus(w);
-    //     return num >= 8 && num < 12;
-    // },
-    // function __st120_12(w) {
-    //     let num = get120plusMinus(w);
-    //     return num == 12;
-    // },
 ].sort((a,b) => a.name.localeCompare(b.name));
 
 function getS120plusMinus(w) {
+    // svg diff does not have breakdown!?
+    if (! w.rBreakdown) {
+        return 0;
+    }
+
     let num120 = w.rBreakdown[120] ?
         w.rBreakdown[120].filter(p => p[0] == 'T' || p[0] == 'D').length : 0;
     let num240 = w.rBreakdown[240] ?
@@ -257,7 +237,7 @@ function tldr(winners) {
     let result = winners.map(w=>{
         let totalMoves = w.x * w.seq.split(',').length;
         return {
-            s:`${pad(w._00_score,3)}sc ${pad(totalMoves,3)}tm ${w.r._33_turns}t.${w.r._33_turns}m.${w.r._35_trNmv}b ${w.x}${hue2ruf2(w.seq)}`,
+            s:`${pad(w._00_score120,3)}sc ${pad(totalMoves,3)}tm ${w.r._33_turns}t.${w.r._33_turns}m.${w.r._35_trNmv}b ${w.x}${hue2ruf2(w.seq)}`,
             r:w.r
         }
     });
@@ -265,9 +245,11 @@ function tldr(winners) {
     return result;
 }
 function windowizeWinnerQueries(collector) {
+    msc.f = {};
     for (f of msc.applies) {
         let name = f.name;
         window[name] = f;
+        msc.f[name] = f;
         // using ck.priors
         //applyFilters({collector: collector, filters: f, label: name});
     }
@@ -294,28 +276,43 @@ function setupMscWinners() {
                         .concat(_wins_Go);
     }
 }
+function indirectFilter(candidates, directFilter) {
+    let result = candidates.filter(c => {
+        if (c.x) {
+            return directFilter(c.r);
+        }
+        else {
+            return directFilter(c);
+        }
+    });
+    return result;
+}
 function applyFilters(options) {
     if (typeof options === 'function') {
         options = {filters: [options]};
+    }
+    else if (Array.isArray(options)) {
+        options = {filters: options};
     }
     if (!options.collector) {
         options.collector = [];
     }
 
     let filters = options.filters;
+    if (!Array.isArray(filters)) { //oops
+        filters = [ filters ];
+    }
+
     let customFields = options.customFields;
     let label = options.label ? options.label : '';
     let mySort = options.sort ? options.sort : tldr;
 
-    if (!Array.isArray(filters)) { //oops
-        filters = [ filters ];
-    }
     let filterResult = [];
     setupMscWinners();
     if (filters && filters.length && msc.winners) {
         filterResult = msc.winners;
         for (let myFilter of filters) {
-            filterResult = filterResult.filter(myFilter);
+            filterResult = indirectFilter(filterResult, myFilter);
         }
         if (customFields && customFields.length) {
             filterResult = sortByWR_MovesFieldList(filterResult, customFields);

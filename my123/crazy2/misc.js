@@ -14,7 +14,7 @@ function defaultScoreChecker(r) {
 let msc = {};
 msc.moves = ['gy', '-gy',  'go', '-go', 'oy', '-oy'];
 msc.movesDebug = ['gy', 'oy'];
-msc.defaultMaxLen = 10 ; // 6
+msc.defaultMaxLen = 7 ; // 10
 msc.defaultReps = 12;       // 6
 msc.maxMoves = 250;  // 37
 msc.progressMarker = 2000;
@@ -107,6 +107,7 @@ async function narrowAllCandidates(options) {
     msc.winnerStrings.forEach((statsObj, reportStr) => {
         statsObj.r = JSON.parse(String(reportStr));
         statsObj._00_score = statsObj.r._00_score;
+        statsObj._00_score120 = statsObj.r._00_score120;
         msc.winners.push(statsObj);
     });
 
@@ -334,7 +335,7 @@ async function trySequenceHelper(seqStr, reportCheck, innerReps, debug) {
 
             if (diffReport && goodReport) {
                 won = true;
-                let winner = {_00_score: diffReport._00_score, x: i + 1, seq: seqStr, r: diffReport};
+                let winner = {x: i + 1, seq: seqStr, _00_score120: diffReport._00_score120, r: diffReport, _00_score: diffReport._00_score};
 
                 envelopeArray(winner);
             }
@@ -366,6 +367,7 @@ function diffPiece(a) {
 async function diffArray() {
     let arrayReport = {
         _00_score: 0,
+        _00_score120: 0,
         _01_deltaP: [],
         _02_deltaR: [],
         _03_nP:0,
@@ -464,6 +466,8 @@ async function diffArray() {
     arrayReport.rBreakdown = deltaRhelper(arrayReport._02_deltaR, 'n', 'dr');
     // positions
     arrayReport.pBreakdown = deltaPhelper(arrayReport._01_deltaP);
+
+    arrayReport._00_score120 = arrayReport._00_score - getS120plusMinus(arrayReport);
 
     return arrayReport;
 }

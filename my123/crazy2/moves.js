@@ -159,9 +159,9 @@ function rotateAndCycleThru(flavor, grPosArray, minus) {
 }
 async function showSvgDiffs2() {
     for (let flavor of ['go','gy','oy']) {
-        let diffReport = await determineSvgDiffs(flavor);
+        determineSvgDiffs(flavor);
         if (flavor == 'gy') {
-            await emitDiffs(diffReport);
+            await emitDiffs();
         }
     }
 }
@@ -250,7 +250,7 @@ async function emitDiffs() {
         result = 'Solved';
     }
     else {
-        result = "Diffs: " + result + '(Score: ' + Number(report._00_score) + ')';
+        result = `Diffs: ${result} (Score: ${Number(report._00_score)} [${Number(report._00_score120)}])`;
     }
 
     reportSpan.html(result);
