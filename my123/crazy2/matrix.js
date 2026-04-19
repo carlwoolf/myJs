@@ -71,7 +71,6 @@ async function addRotationByMatrix(piece, matrix, flavor) {
         // the turn is on original 'side' piece in that position
         let fur = pieceNameToFur(piece.b4);
         axis = m.axis[fur];
-        nameProp = 'b4';
     }
     //await logIfSurveiling(piece.n, `B4: ${piece.n}: addRotation ${Number(piece.dr)}. Rotating ${m_toAngle(matrix, axis)} (rotName: ${matrix.name})`);
 
@@ -80,7 +79,7 @@ async function addRotationByMatrix(piece, matrix, flavor) {
     piece.dr = await m_toAngle(rotated, axis);
     piece.drCode = m_toCode(rotated);
 
-    await logIfSurveiling(piece[nameProp], `F2 rotation: ${piece.n} ${Number(piece.dr)}`);
+    await logIfSurveiling(piece[nameProp], `F2 rotation: ${piece.n} ${Number(piece.dr)} array:${pretty3x3(rotated)}`);
 }
 
 function m_rotateOrInit(piece, matrix) {
@@ -172,7 +171,7 @@ function pretty3x3(m) {
     let result = '';
     for (let i = 0; i < 3; i++) {
         for (let j = 0; j < 3; j++) {
-            result += ' ' + m[i][j];
+            result += ' ' + Number(m[i][j]).toFixed(3);
         }
     }
     return result;

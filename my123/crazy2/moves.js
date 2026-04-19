@@ -52,11 +52,6 @@ async function moveOnePiece(controlColors, minus, fromClick, alsoHistorize) {
             historizeMoves(useHueVsRuf(movePrettyName));
         }
     }
-
-    // if (ck.surveilPiece) {
-    //     let report = await emitDiffs();
-    //     //console.log("diffReport", report);
-    // }
 }
 function findCanonArrayItemFromFlavorGrArray(flavor, grKey) {
     let grCoords = ck.grPos[grKey];
@@ -97,8 +92,8 @@ async function highwayMove(flavor, minus) {
         //updateOffsets(canonItem,  '', minus);
         await addRotationByMatrix(canonItem, rotationMatrix);
 
-        let prettyRotationName = minus ? `-120[${itemN}]` : `120[${itemN}]`;
-        await logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, Number(canonItem.dr)));
+        // let prettyRotationName = minus ? `-120[${itemN}]` : `120[${itemN}]`;
+        // await logIfSurveiling('dbo', itemN, microPieceReport(itemN, priorDr, prettyRotationName, Number(canonItem.dr)));
     }
 }
 

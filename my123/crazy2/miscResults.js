@@ -40,13 +40,31 @@ function collectMacros() {
     windowizeWinnerQueries(ck.macs);
 }
 
-msc.applies = [
+msc.applies2 = [
     function __c0(w) {
         return w._05_ncR == 0;
     },
     function __c4(w) {
         return w._05_ncR <= 4;
     },
+    function __scoreM120_le32(w) {
+        return w._00_score120 <= 32 && w._00_score120 > 28;
+    },
+    function __scoreM120_le28(w) {
+        return w._00_score120 <= 28 && w._00_score120 > 22;
+    },
+    function __scoreM120_le22(w) {
+        return w._00_score120 <= 22 && w._00_score120 > 8;
+    },
+    function __scoreM120_le8(w) {
+        return w._00_score120 <= 8;
+    },
+];
+msc.applies = [
+    function __scoreM120_le8(w) {
+        return w._00_score <= 24;
+    },
+
 
     function __c2_180(w) {
         return w._00_score120 < 38 && w.rBreakdown[180]
@@ -124,15 +142,6 @@ msc.applies = [
     function __kxyz_240(w) {
         return w.rBreakdown[240]
             && (w.rBreakdown[240].filter(p => p == 'goy' || p == 'brw').length == 2);
-    },
-    function __scoreM120_le32(w) {
-        return w._00_score120 <= 32 && w._00_score120 > 28;
-    },
-    function __scoreM120_le28(w) {
-        return w._00_score120 <= 28 && w._00_score120 > 8;
-    },
-    function __scoreM120_le8(w) {
-        return w._00_score120 <= 8;
     },
 ].sort((a,b) => a.name.localeCompare(b.name));
 
@@ -250,8 +259,11 @@ function windowizeWinnerQueries(collector) {
         let name = f.name;
         window[name] = f;
         msc.f[name] = f;
-        // using ck.priors
-        //applyFilters({collector: collector, filters: f, label: name});
+    }
+    for (f of msc.applies2) {
+        let name = f.name;
+        window[name] = f;
+        msc.f[name] = f;
     }
 }
 

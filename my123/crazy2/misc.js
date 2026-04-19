@@ -1,7 +1,7 @@
 /**
  *
  *  try             collectMacroCandidates(maxLen)
- *                  filterAllCandidates(reportCheck)
+ *                  filterAllCandidates()
  *
  *                  then look at msc.winners
  *
@@ -14,7 +14,7 @@ function defaultScoreChecker(r) {
 let msc = {};
 msc.moves = ['gy', '-gy',  'go', '-go', 'oy', '-oy'];
 msc.movesDebug = ['gy', 'oy'];
-msc.defaultMaxLen = 7 ; // 10
+msc.defaultMaxLen = 10 ; // 10
 msc.defaultReps = 12;       // 6
 msc.maxMoves = 250;  // 37
 msc.progressMarker = 2000;
@@ -67,26 +67,23 @@ function collectSeqListHelper(currentLength) {
 }
 async function narrowAllCandidates(options) {
     if (options == '-n') {
-        console.log(`reps: ${msc.defaultReps}, suppressDownload: true, downloadLabel: '', reportCheck: defaultScoreChecker`)
+        console.log(`reps: ${msc.defaultReps}, suppressDownload: true, downloadLabel: ''`)
         return;
     }
     let reps = options && options.reps ? options.reps : msc.defaultReps;
     let suppressDownload = options && options.suppressDownload ? options.suppressDownload : false;
     let downloadLabel = options && options.downloadLabel ? options.downloadLabel : '';
-    let reportCheck = options && options.reportCheck ? options.reps : defaultScoreChecker;
-    console.log(`reps: ${reps}, suppressDownload: ${suppressDownload}, downloadLabel: ${downloadLabel}, reportCheck: ${reportCheck}`)
+    console.log(`reps: ${reps}, suppressDownload: ${suppressDownload}, downloadLabel: ${downloadLabel}`)
 
     let download = !suppressDownload;
     console.log("Begin finding winners at ", showNow());
-    if (!reportCheck) {
-        reportCheck = defaultScoreChecker;
-    }
+
     resetWinners();
     let sizeKeys = Object.keys(msc.candidatesByLength).sort((a, b) => Number(a) - Number(b));
     for (let sizeKey of sizeKeys) {
         console.log('Trying these candidates of size ' + sizeKey, msc.candidatesByLength[sizeKey]);
         try {
-            await narrowCandidates(sizeKey, reportCheck);
+            await narrowCandidates(sizeKey);
             await mySleep(40); // doe this work under a try?
 
             let numWinnerStrings = msc.winnerStrings.size;
@@ -126,7 +123,7 @@ async function narrowAllCandidates(options) {
     }
     dumpWinners();
 }
-async function narrowCandidates(sizeKey, reportCheck) {
+async function narrowCandidates(sizeKey) {
     let startTime = performance.now(); // Get a high-resolution timestamp
 
     let candidates = msc.candidatesByLength[sizeKey];
@@ -134,7 +131,7 @@ async function narrowCandidates(sizeKey, reportCheck) {
         let seqStr = candidates[i].join(',');
         console.log('working...');
         unfreeze(); // just in case
-        await trySequence(seqStr, reportCheck);
+        await trySequence(seqStr);
     }
 
     let endTime = performance.now(); // Get a high-resolution timestamp after execution
@@ -142,28 +139,6 @@ async function narrowCandidates(sizeKey, reportCheck) {
     console.log(`Size ${sizeKey} took: ${timeTaken / 1000} seconds, ${timeTaken / 1000 / 60} minutes`);
 }
 
-function downloadWinners(label) {
-    if (!label) label = '';
-    downloadHelper(msc.winnersBySecond['gy'] ,label, 'winsGy');
-    downloadHelper(msc.winnersBySecond['go'] ,label, 'winsGo');
-    downloadHelper(msc.winnersBySecond['-go'],label, 'wins_Go');
-    downloadHelper(msc.winnersBySecond['oy'] ,label, 'winsOy');
-    downloadHelper(msc.winnersBySecond['-oy'],label, 'wins_Oy');
-}
-async function downloadHelper(rawData, label, winFlavor) {
-    let stringyData = JSON.stringify(rawData);
-    let data = `let _${winFlavor} = \n${stringyData}`;
-    await download(data, label + winFlavor + '.js');
-    console.log('Look for ' + winFlavor + ' in ...Downloads (unless you cancelled)!');
-}
-function dumpWinners(fn) {
-    if (!fn) fn = (x) => x;
-    console.log(fn(msc.winnersBySecond['gy'] ));
-    console.log(fn(msc.winnersBySecond['go'] ));
-    console.log(fn(msc.winnersBySecond['-go']));
-    console.log(fn(msc.winnersBySecond['oy'] ));
-    console.log(fn(msc.winnersBySecond['-oy']));
-}
 function antiMove(move) {
     let result = '';
     if (move.includes('-')) {
@@ -210,7 +185,7 @@ async function debugTrySequence(seqStr) {
         seqStr = seqStr.split(' ').join(',');
     }
     console.log('Try: ', seqStr);
-    await trySequence(seqStr, null, true); // will setup winners
+    await trySequence(seqStr, true); // will setup winners
     console.log(msc.winners);
 }
 function rufSeqToAllHues(rufSeq) {
@@ -285,14 +260,11 @@ function rufSeqToAllHues(rufSeq) {
 
     adjustRufHelper(currentRuf);
 }
-async function trySequence(seqStr, reportCheck, debug) {
+async function trySequence(seqStr, debug) {
     if (frozen()) return;
     freeze();
 
-    if (! reportCheck) {
-        reportCheck = defaultScoreChecker;
-    }
-    await trySequenceHelper(seqStr,reportCheck,1, debug);
+    await trySequenceHelper(seqStr,1, debug);
 
     unfreeze();
 }
@@ -300,7 +272,7 @@ function stringyWinner(winner) {
     let result = JSON.stringify(winner.r._01_deltaP) + '.' + JSON.stringify(winner.r._02_deltaR);
     return result;
 }
-async function trySequenceHelper(seqStr, reportCheck, innerReps, debug) {
+async function trySequenceHelper(seqStr, innerReps, debug) {
     if (debug) resetWinners();
 
     await initArrays();
@@ -502,24 +474,6 @@ function sortByN(a,b) {
 function deltaPhelper(deltas) {
     let items = deltas.map(item => `${item.b4} => ${item.n}`);
     return items.sort();
-}
-        // https://stackoverflow.com/questions/13405129/create-and-save-a-file-with-javascript
-function download(data, filename) {
-        let file = new Blob([data], {type: 'text/plain;charset=UTF-8'});
-        if (window.navigator.msSaveOrOpenBlob) // IE10+
-            window.navigator.msSaveOrOpenBlob(file, filename);
-        else { // Others
-            let a = document.createElement("a"),
-                url = URL.createObjectURL(file);
-            a.href = url;
-            a.download = filename;
-            document.body.appendChild(a);
-            a.click();
-            setTimeout(function () {
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
-            }, 10);
-    }
 }
 function microPieceReport(pieceN, priorDr, prettyRotationName, currentDr) {
     return `${pieceN} was: ${Number(priorDr)}, rotates: ${prettyRotationName}. now: ${Number(currentDr)}`;

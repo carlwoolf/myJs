@@ -225,3 +225,44 @@ function clearStorage() {
 function storageKeys() {
     console.log("localstorage keys: <" + Object.keys(localStorage).join(',') + ">");
 }
+//////////////////
+function downloadWinners(label) {
+    if (!label) label = '';
+    downloadHelper(msc.winnersBySecond['gy'] ,label, 'winsGy');
+    downloadHelper(msc.winnersBySecond['go'] ,label, 'winsGo');
+    downloadHelper(msc.winnersBySecond['-go'],label, 'wins_Go');
+    downloadHelper(msc.winnersBySecond['oy'] ,label, 'winsOy');
+    downloadHelper(msc.winnersBySecond['-oy'],label, 'wins_Oy');
+}
+async function downloadHelper(rawData, label, winFlavor) {
+    let stringyData = JSON.stringify(rawData);
+    let data = `let _${winFlavor} = \n${stringyData}`;
+    await download(data, label + winFlavor + '.js');
+    console.log('Look for ' + winFlavor + ' in ...Downloads (unless you cancelled)!');
+}
+function dumpWinners(fn) {
+    if (!fn) fn = (x) => x;
+    console.log(fn(msc.winnersBySecond['gy'] ));
+    console.log(fn(msc.winnersBySecond['go'] ));
+    console.log(fn(msc.winnersBySecond['-go']));
+    console.log(fn(msc.winnersBySecond['oy'] ));
+    console.log(fn(msc.winnersBySecond['-oy']));
+}
+// https://stackoverflow.com/questions/13405129/create-and-save-a-file-with-javascript
+function download(data, filename) {
+    let file = new Blob([data], {type: 'text/plain;charset=UTF-8'});
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        window.navigator.msSaveOrOpenBlob(file, filename);
+    else { // Others
+        let a = document.createElement("a"),
+            url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function () {
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }, 10);
+    }
+}
