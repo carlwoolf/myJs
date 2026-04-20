@@ -1,3 +1,12 @@
+function tmp() {
+    console.log('0', msc.stringSet0);
+    console.log('1', msc.stringSet1);
+    console.log('0 subset of 1', msc.stringSet0.isSubsetOf(msc.stringSet1));
+    console.log('1 subset of 0', msc.stringSet1.isSubsetOf(msc.stringSet0));
+    //console.log('1 subtract 0', msc.stringSet1.difference(msc.stringSet0));
+
+    return msc.stringSet1.difference(msc.stringSet0);
+}
 async function setupCrazy2() {
     setupMatrices();
 

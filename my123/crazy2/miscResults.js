@@ -245,10 +245,11 @@ function tldr(winners) {
     }
     let result = winners.map(w=>{
         let totalMoves = w.x * w.seq.split(',').length;
-        return {
-            s:`${pad(w._00_score120,3)}sc ${pad(totalMoves,3)}tm ${w.r._33_turns}t.${w.r._33_turns}m.${w.r._35_trNmv}b ${w.x}${hue2ruf2(w.seq)}`,
+        let winnerCode = {
+            s:`${pad(w.s,3)}sc ${pad(totalMoves,3)}tm ${w.r._33_turns}t.${w.r._33_turns}m.${w.r._35_trNmv}b ${w.x}${hue2ruf2(w.seq)}`,
             r:w.r
         }
+        return winnerCode;
     });
     result = result.sort(sortTldr);
     return result;

@@ -65,15 +65,38 @@ function collectSeqListHelper(currentLength) {
     msc.candidates = msc.candidates.concat(newCandidates);
     return newCandidates;
 }
+async function narrowAllCandidates2() {
+    resetWinners();
+
+    let chunk = -1;
+    msc.winnerStrings2 = new Map();
+    msc.winners2 = [];
+    for (let i=0; i<msc.candidates.length; i++) {
+        if (i % 10000 == 0) {
+            chunk++;
+            msc.winnerStrings2[chunk] = new Map();
+            //msc.winners2[chunk] = [];
+        }
+        let candidate = msc.candidates[i];
+        if (candidate.length == 1) {
+            continue; // don't bother with initial ['gy']
+        }
+        let seqStr = candidate.join(','); // trySequence expects string, not array
+        await trySequence(seqStr, msc.winnerStrings2[chunk]);
+        //winnifyStrings(msc.winnerStrings2[chunk], msc.winners2[chunk]);
+    }
+    winnifyStrings(msc.winnerStrings2[chunk], msc.winners2);
+    console.log(tldr(msc.winners2));
+    msc.stringSet1 = new Set(msc.winners2.map(w=>JSON.stringify(w)));
+}
 async function narrowAllCandidates(options) {
     if (options == '-n') {
-        console.log(`reps: ${msc.defaultReps}, suppressDownload: true, downloadLabel: ''`)
+        console.log(`suppressDownload: [true]], downloadLabel: ''`)
         return;
     }
-    let reps = options && options.reps ? options.reps : msc.defaultReps;
-    let suppressDownload = options && options.suppressDownload ? options.suppressDownload : false;
+    let suppressDownload = options && options.suppressDownload ? options.suppressDownload : true;
     let downloadLabel = options && options.downloadLabel ? options.downloadLabel : '';
-    console.log(`reps: ${reps}, suppressDownload: ${suppressDownload}, downloadLabel: ${downloadLabel}`)
+    console.log(`suppressDownload: ${suppressDownload}, downloadLabel: ${downloadLabel}`)
 
     let download = !suppressDownload;
     console.log("Begin finding winners at ", showNow());
@@ -101,12 +124,10 @@ async function narrowAllCandidates(options) {
     console.log(`Yay, Total winnerStrings!`, msc.winnerStrings);
 
     msc.winners = [];
-    msc.winnerStrings.forEach((statsObj, reportStr) => {
-        statsObj.r = JSON.parse(String(reportStr));
-        statsObj._00_score = statsObj.r._00_score;
-        statsObj._00_score120 = statsObj.r._00_score120;
-        msc.winners.push(statsObj);
-    });
+    winnifyStrings(msc.winnerStrings, msc.winners);
+
+    console.log(tldr(msc.winners));
+    msc.stringSet0 = new Set(msc.winners.map(w=>JSON.stringify(w)));
 
     console.log(`Done!`);
 
@@ -123,6 +144,17 @@ async function narrowAllCandidates(options) {
     }
     dumpWinners();
 }
+function winnerRedaction(winner) {
+
+}
+function winnifyStrings(winnerStrings, winners) {
+    winnerStrings.forEach((statsObj, reportStr) => {
+        statsObj.r = JSON.parse(String(reportStr));
+        statsObj._00_score = statsObj.r._00_score;
+        statsObj._00_score120 = statsObj.r._00_score120;
+        winners.push(statsObj);
+    });
+}
 async function narrowCandidates(sizeKey) {
     let startTime = performance.now(); // Get a high-resolution timestamp
 
@@ -131,7 +163,7 @@ async function narrowCandidates(sizeKey) {
         let seqStr = candidates[i].join(',');
         console.log('working...');
         unfreeze(); // just in case
-        await trySequence(seqStr);
+        await trySequence(seqStr, msc.winnerStrings);
     }
 
     let endTime = performance.now(); // Get a high-resolution timestamp after execution
@@ -152,6 +184,7 @@ function antiMove(move) {
 
 function resetWinners() {
     msc.winnerStrings = new Map();
+    msc.winnerStrings2 = [];
     msc.previousWinnerStringsTotal = 0;
 }
 
@@ -185,7 +218,7 @@ async function debugTrySequence(seqStr) {
         seqStr = seqStr.split(' ').join(',');
     }
     console.log('Try: ', seqStr);
-    await trySequence(seqStr, true); // will setup winners
+    await trySequence(seqStr, msc.winnerStrings, true); // will setup winners
     console.log(msc.winners);
 }
 function rufSeqToAllHues(rufSeq) {
@@ -260,20 +293,22 @@ function rufSeqToAllHues(rufSeq) {
 
     adjustRufHelper(currentRuf);
 }
-async function trySequence(seqStr, debug) {
+async function trySequence(seqStr, winnerStrings, debug) {
     if (frozen()) return;
     freeze();
 
-    await trySequenceHelper(seqStr,1, debug);
+    let winner = await trySequenceHelper(seqStr,1, debug, winnerStrings);
 
     unfreeze();
+
+    return winner;
 }
 function stringyWinner(winner) {
     let result = JSON.stringify(winner.r._01_deltaP) + '.' + JSON.stringify(winner.r._02_deltaR);
     return result;
 }
-async function trySequenceHelper(seqStr, innerReps, debug) {
-    if (debug) resetWinners();
+async function trySequenceHelper(seqStr, innerReps, debug, winnerStrings) {
+    let winner = null;
 
     await initArrays();
     let seq = seqStr.split(',');
@@ -307,21 +342,21 @@ async function trySequenceHelper(seqStr, innerReps, debug) {
 
             if (diffReport && goodReport) {
                 won = true;
-                let winner = {x: i + 1, seq: seqStr, _00_score120: diffReport._00_score120, r: diffReport, _00_score: diffReport._00_score};
+                winner = {x: i + 1, seq: seqStr, _00_score120: diffReport._00_score120, r: diffReport, _00_score: diffReport._00_score};
 
-                envelopeArray(winner);
+                envelopeArray(winner, winnerStrings);
             }
         }
     }
-    return won;
+    return winner;
 }
-function envelopeArray(winner) {
+function envelopeArray(winner, winnerStrings) {
     let report = JSON.stringify(winner.r);
 
-    let reportStats = msc.winnerStrings.get(report);
+    let reportStats = winnerStrings.get(report);
     // keep min total moves alternate if >1
     if (!reportStats || (winner.x * winner.seq.length) < (reportStats.x * reportStats.seq.length)) {
-        msc.winnerStrings.set(report, {x: winner.x, seq: winner.seq});
+        winnerStrings.set(report, {x: winner.x, seq: winner.seq, s:winner._00_score});
     }
 }
 function diffPiece(a) {
