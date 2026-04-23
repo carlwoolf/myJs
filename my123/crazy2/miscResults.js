@@ -54,18 +54,13 @@ msc.applies2 = [
         return w._00_score120 <= 28 && w._00_score120 > 22;
     },
     function __scoreM120_le22(w) {
-        return w._00_score120 <= 22 && w._00_score120 > 8;
-    },
-    function __scoreM120_le8(w) {
-        return w._00_score120 <= 8;
+        return w._00_score120 <= 22;
     },
 ];
+function __score_le22(w) {
+    return w._00_score <= 22;
+}
 msc.applies = [
-    function __scoreM120_le8(w) {
-        return w._00_score <= 24;
-    },
-
-
     function __c2_180(w) {
         return w._00_score120 < 38 && w.rBreakdown[180]
             && w.rBreakdown[180].filter(p => p[0] == 'C').length == 2;

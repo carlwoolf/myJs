@@ -206,17 +206,23 @@ function appendDeltaRHelper(diffReport, piece, attrDXr) {
 }
 function checkSatisfaction(report, doLog) {
     if (doLog) console.log(report);
-    let numSatisfies = 0;
-    for (f of msc.applies) {
-        if (f(report)) {
-            if (doLog) console.log(`** Satisfies ${f.name}`);
-            numSatisfies++;
+    let result = false; // burden of proof
+
+    if (__score_le22(report)) {
+        let numSatisfies = 0;
+        for (f of msc.applies) {
+            if (f(report)) {
+                if (doLog) console.log(`** Satisfies ${f.name}`);
+                numSatisfies++;
+            }
+        }
+        if (!numSatisfies) {
+            if (doLog) console.log('Oh well, unsatisfactory!');
+        } else {
+            result = true;
         }
     }
-    if (!numSatisfies) {
-        if (doLog) console.log('Oh well, unsatisfactory!');
-    }
-    return numSatisfies > 0;
+    return result;
 }
 async function emitDiffs() {
     let report = await diffArray();

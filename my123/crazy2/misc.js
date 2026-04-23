@@ -71,21 +71,25 @@ async function narrowAllCandidates2() {
     let chunk = -1;
     msc.winnerStrings2 = new Map();
     msc.winners2 = [];
+    console.log(`${msc.candidates.length} Candidates...`);
     for (let i=0; i<msc.candidates.length; i++) {
+        if (i % 500 == 0) {
+            await mySleep(40); // doe this work under a try?
+        }
         if (i % 10000 == 0) {
+            await mySleep(40); // doe this work under a try?
             chunk++;
-            msc.winnerStrings2[chunk] = new Map();
-            //msc.winners2[chunk] = [];
+            // msc.winnerStrings2[chunk] = new Map();
         }
         let candidate = msc.candidates[i];
         if (candidate.length == 1) {
             continue; // don't bother with initial ['gy']
         }
         let seqStr = candidate.join(','); // trySequence expects string, not array
-        await trySequence(seqStr, msc.winnerStrings2[chunk]);
-        //winnifyStrings(msc.winnerStrings2[chunk], msc.winners2[chunk]);
+        console.log(`Working...`);
+        await trySequence(seqStr, msc.winnerStrings2);
     }
-    winnifyStrings(msc.winnerStrings2[chunk], msc.winners2);
+    winnifyStrings(msc.winnerStrings2, msc.winners2);
     console.log(tldr(msc.winners2));
     msc.stringSet1 = new Set(msc.winners2.map(w=>JSON.stringify(w)));
 }
@@ -307,7 +311,7 @@ function stringyWinner(winner) {
     let result = JSON.stringify(winner.r._01_deltaP) + '.' + JSON.stringify(winner.r._02_deltaR);
     return result;
 }
-async function trySequenceHelper(seqStr, innerReps, debug, winnerStrings) {
+async function trySequenceHelper(seqStr, innerReps, debug, winnerStringsMap) {
     let winner = null;
 
     await initArrays();
@@ -342,21 +346,25 @@ async function trySequenceHelper(seqStr, innerReps, debug, winnerStrings) {
 
             if (diffReport && goodReport) {
                 won = true;
-                winner = {x: i + 1, seq: seqStr, _00_score120: diffReport._00_score120, r: diffReport, _00_score: diffReport._00_score};
+                winner = {x: i + 1, seq: seqStr, _00_score: diffReport._00_score, r: diffReport, _00_score120: diffReport._00_score120};
 
-                envelopeArray(winner, winnerStrings);
+                envelopeArray(winner, winnerStringsMap);
             }
         }
     }
     return winner;
 }
 function envelopeArray(winner, winnerStrings) {
-    let report = JSON.stringify(winner.r);
+    let stringyWinner_r = JSON.stringify(winner.r);
+    let rCopy = JSON.parse(stringyWinner_r);
+    delete rCopy.seq;
+    delete rCopy.tm;
+    let stringyTrimmedWinner_r = JSON.stringify(rCopy);
 
-    let reportStats = winnerStrings.get(report);
+    let winner_rCode = winnerStrings.get(stringyWinner_r);
     // keep min total moves alternate if >1
-    if (!reportStats || (winner.x * winner.seq.length) < (reportStats.x * reportStats.seq.length)) {
-        winnerStrings.set(report, {x: winner.x, seq: winner.seq, s:winner._00_score});
+    if (!winner_rCode || winner._00_score < winner_rCode.s || (winner.x * winner.seq.length) < (winner_rCode.x * winner_rCode.seq.length)) {
+        winnerStrings.set(stringyTrimmedWinner_r, {x: winner.x, seq: winner.seq, s:winner._00_score});
     }
 }
 function diffPiece(a) {
